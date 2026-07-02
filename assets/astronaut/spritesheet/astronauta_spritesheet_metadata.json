@@ -1,0 +1,347 @@
+{
+  "sheet": "astronauta_spritesheet_unity_godot.png",
+  "cell_size": {
+    "width": 192,
+    "height": 256
+  },
+  "columns": 8,
+  "rows": 6,
+  "animations": {
+    "idle": {
+      "row": 0,
+      "frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "filename": "idle_01.png",
+          "x": 0,
+          "y": 0,
+          "width": 192,
+          "height": 256,
+          "source_width": 113,
+          "source_height": 191
+        },
+        {
+          "index": 1,
+          "filename": "idle_02.png",
+          "x": 192,
+          "y": 0,
+          "width": 192,
+          "height": 256,
+          "source_width": 109,
+          "source_height": 191
+        },
+        {
+          "index": 2,
+          "filename": "idle_03.png",
+          "x": 384,
+          "y": 0,
+          "width": 192,
+          "height": 256,
+          "source_width": 108,
+          "source_height": 191
+        },
+        {
+          "index": 3,
+          "filename": "idle_04.png",
+          "x": 576,
+          "y": 0,
+          "width": 192,
+          "height": 256,
+          "source_width": 106,
+          "source_height": 192
+        }
+      ]
+    },
+    "run": {
+      "row": 1,
+      "frame_count": 8,
+      "frames": [
+        {
+          "index": 0,
+          "filename": "run_01.png",
+          "x": 0,
+          "y": 256,
+          "width": 192,
+          "height": 256,
+          "source_width": 159,
+          "source_height": 240
+        },
+        {
+          "index": 1,
+          "filename": "run_02.png",
+          "x": 192,
+          "y": 256,
+          "width": 192,
+          "height": 256,
+          "source_width": 147,
+          "source_height": 197
+        },
+        {
+          "index": 2,
+          "filename": "run_03.png",
+          "x": 384,
+          "y": 256,
+          "width": 192,
+          "height": 256,
+          "source_width": 143,
+          "source_height": 198
+        },
+        {
+          "index": 3,
+          "filename": "run_04.png",
+          "x": 576,
+          "y": 256,
+          "width": 192,
+          "height": 256,
+          "source_width": 141,
+          "source_height": 197
+        },
+        {
+          "index": 4,
+          "filename": "run_05.png",
+          "x": 768,
+          "y": 256,
+          "width": 192,
+          "height": 256,
+          "source_width": 143,
+          "source_height": 197
+        },
+        {
+          "index": 5,
+          "filename": "run_06.png",
+          "x": 960,
+          "y": 256,
+          "width": 192,
+          "height": 256,
+          "source_width": 144,
+          "source_height": 198
+        },
+        {
+          "index": 6,
+          "filename": "run_07.png",
+          "x": 1152,
+          "y": 256,
+          "width": 192,
+          "height": 256,
+          "source_width": 143,
+          "source_height": 199
+        },
+        {
+          "index": 7,
+          "filename": "run_08.png",
+          "x": 1344,
+          "y": 256,
+          "width": 192,
+          "height": 256,
+          "source_width": 125,
+          "source_height": 203
+        }
+      ]
+    },
+    "jump": {
+      "row": 2,
+      "frame_count": 5,
+      "frames": [
+        {
+          "index": 0,
+          "filename": "jump_01.png",
+          "x": 0,
+          "y": 512,
+          "width": 192,
+          "height": 256,
+          "source_width": 146,
+          "source_height": 209
+        },
+        {
+          "index": 1,
+          "filename": "jump_02.png",
+          "x": 192,
+          "y": 512,
+          "width": 192,
+          "height": 256,
+          "source_width": 170,
+          "source_height": 234
+        },
+        {
+          "index": 2,
+          "filename": "jump_03.png",
+          "x": 384,
+          "y": 512,
+          "width": 192,
+          "height": 256,
+          "source_width": 147,
+          "source_height": 250
+        },
+        {
+          "index": 3,
+          "filename": "jump_04.png",
+          "x": 576,
+          "y": 512,
+          "width": 192,
+          "height": 256,
+          "source_width": 144,
+          "source_height": 219
+        },
+        {
+          "index": 4,
+          "filename": "jump_05.png",
+          "x": 768,
+          "y": 512,
+          "width": 192,
+          "height": 256,
+          "source_width": 154,
+          "source_height": 182
+        }
+      ]
+    },
+    "fall": {
+      "row": 3,
+      "frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "filename": "fall_01.png",
+          "x": 0,
+          "y": 768,
+          "width": 192,
+          "height": 256,
+          "source_width": 149,
+          "source_height": 185
+        },
+        {
+          "index": 1,
+          "filename": "fall_02.png",
+          "x": 192,
+          "y": 768,
+          "width": 192,
+          "height": 256,
+          "source_width": 145,
+          "source_height": 185
+        },
+        {
+          "index": 2,
+          "filename": "fall_03.png",
+          "x": 384,
+          "y": 768,
+          "width": 192,
+          "height": 256,
+          "source_width": 147,
+          "source_height": 185
+        },
+        {
+          "index": 3,
+          "filename": "fall_04.png",
+          "x": 576,
+          "y": 768,
+          "width": 192,
+          "height": 256,
+          "source_width": 146,
+          "source_height": 185
+        }
+      ]
+    },
+    "attack": {
+      "row": 4,
+      "frame_count": 6,
+      "frames": [
+        {
+          "index": 0,
+          "filename": "attack_01.png",
+          "x": 0,
+          "y": 1024,
+          "width": 192,
+          "height": 256,
+          "source_width": 123,
+          "source_height": 155
+        },
+        {
+          "index": 1,
+          "filename": "attack_02.png",
+          "x": 192,
+          "y": 1024,
+          "width": 192,
+          "height": 256,
+          "source_width": 157,
+          "source_height": 138
+        },
+        {
+          "index": 2,
+          "filename": "attack_03.png",
+          "x": 384,
+          "y": 1024,
+          "width": 192,
+          "height": 256,
+          "source_width": 180,
+          "source_height": 136
+        },
+        {
+          "index": 3,
+          "filename": "attack_04.png",
+          "x": 576,
+          "y": 1024,
+          "width": 192,
+          "height": 256,
+          "source_width": 120,
+          "source_height": 137
+        },
+        {
+          "index": 4,
+          "filename": "attack_05.png",
+          "x": 768,
+          "y": 1024,
+          "width": 192,
+          "height": 256,
+          "source_width": 159,
+          "source_height": 136
+        },
+        {
+          "index": 5,
+          "filename": "attack_06.png",
+          "x": 960,
+          "y": 1024,
+          "width": 192,
+          "height": 256,
+          "source_width": 138,
+          "source_height": 135
+        }
+      ]
+    },
+    "hurt": {
+      "row": 5,
+      "frame_count": 3,
+      "frames": [
+        {
+          "index": 0,
+          "filename": "hurt_01.png",
+          "x": 0,
+          "y": 1280,
+          "width": 192,
+          "height": 256,
+          "source_width": 131,
+          "source_height": 145
+        },
+        {
+          "index": 1,
+          "filename": "hurt_02.png",
+          "x": 192,
+          "y": 1280,
+          "width": 192,
+          "height": 256,
+          "source_width": 145,
+          "source_height": 138
+        },
+        {
+          "index": 2,
+          "filename": "hurt_03.png",
+          "x": 384,
+          "y": 1280,
+          "width": 192,
+          "height": 256,
+          "source_width": 137,
+          "source_height": 120
+        }
+      ]
+    }
+  }
+}

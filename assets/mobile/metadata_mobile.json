@@ -1,0 +1,3279 @@
+{
+  "pack_name": "cosmo_kid_mobile_optimized",
+  "target": "mobile only",
+  "asset_count": 363,
+  "optimization": {
+    "worlds": "JPG resized to max 1600x900, quality 76",
+    "sprites_ui_vfx": "PNG resized and compressed for mobile",
+    "alpha": "PNG kept when transparency exists"
+  },
+  "assets": [
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/action_01.png",
+      "file": "player/001_astronauta_sprites_separados_action_01.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 157,
+      "height": 193,
+      "bytes": 60943
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/action_02.png",
+      "file": "player/002_astronauta_sprites_separados_action_02.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 155,
+      "height": 193,
+      "bytes": 68118
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/action_03.png",
+      "file": "player/003_astronauta_sprites_separados_action_03.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 165,
+      "height": 194,
+      "bytes": 69249
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/action_04.png",
+      "file": "player/004_astronauta_sprites_separados_action_04.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 170,
+      "height": 194,
+      "bytes": 65510
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/action_05.png",
+      "file": "player/005_astronauta_sprites_separados_action_05.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 160,
+      "height": 193,
+      "bytes": 61559
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/action_06.png",
+      "file": "player/006_astronauta_sprites_separados_action_06.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 163,
+      "height": 194,
+      "bytes": 61435
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/fall_01.png",
+      "file": "player/007_astronauta_sprites_separados_fall_01.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 142,
+      "height": 187,
+      "bytes": 54539
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/fall_02.png",
+      "file": "player/008_astronauta_sprites_separados_fall_02.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 149,
+      "height": 185,
+      "bytes": 53935
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/fall_03.png",
+      "file": "player/009_astronauta_sprites_separados_fall_03.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 130,
+      "height": 185,
+      "bytes": 51076
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/fall_04.png",
+      "file": "player/010_astronauta_sprites_separados_fall_04.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 128,
+      "height": 184,
+      "bytes": 50706
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/idle_01.png",
+      "file": "player/011_astronauta_sprites_separados_idle_01.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 151,
+      "height": 229,
+      "bytes": 74891
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/idle_02.png",
+      "file": "player/012_astronauta_sprites_separados_idle_02.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 148,
+      "height": 229,
+      "bytes": 74843
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/idle_03.png",
+      "file": "player/013_astronauta_sprites_separados_idle_03.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 144,
+      "height": 228,
+      "bytes": 73071
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/idle_04.png",
+      "file": "player/014_astronauta_sprites_separados_idle_04.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 158,
+      "height": 231,
+      "bytes": 75591
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/jump_01.png",
+      "file": "player/015_astronauta_sprites_separados_jump_01.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 126,
+      "height": 253,
+      "bytes": 49193
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/jump_02.png",
+      "file": "player/016_astronauta_sprites_separados_jump_02.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 140,
+      "height": 253,
+      "bytes": 51369
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/jump_03.png",
+      "file": "player/017_astronauta_sprites_separados_jump_03.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 135,
+      "height": 252,
+      "bytes": 59810
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/jump_04.png",
+      "file": "player/018_astronauta_sprites_separados_jump_04.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 155,
+      "height": 251,
+      "bytes": 72523
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/jump_05.png",
+      "file": "player/019_astronauta_sprites_separados_jump_05.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 137,
+      "height": 253,
+      "bytes": 62943
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/jump_06.png",
+      "file": "player/020_astronauta_sprites_separados_jump_06.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 138,
+      "height": 252,
+      "bytes": 59069
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/jump_07.png",
+      "file": "player/021_astronauta_sprites_separados_jump_07.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 183,
+      "height": 255,
+      "bytes": 61619
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/run_01.png",
+      "file": "player/022_astronauta_sprites_separados_run_01.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 151,
+      "height": 197,
+      "bytes": 60579
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/run_02.png",
+      "file": "player/023_astronauta_sprites_separados_run_02.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 145,
+      "height": 196,
+      "bytes": 62600
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/run_03.png",
+      "file": "player/024_astronauta_sprites_separados_run_03.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 146,
+      "height": 197,
+      "bytes": 62461
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/run_04.png",
+      "file": "player/025_astronauta_sprites_separados_run_04.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 150,
+      "height": 198,
+      "bytes": 61429
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/run_05.png",
+      "file": "player/026_astronauta_sprites_separados_run_05.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 140,
+      "height": 197,
+      "bytes": 57142
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/run_06.png",
+      "file": "player/027_astronauta_sprites_separados_run_06.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 146,
+      "height": 198,
+      "bytes": 59923
+    },
+    {
+      "source": "/mnt/data/astronauta_sprites_separados/run_07.png",
+      "file": "player/028_astronauta_sprites_separados_run_07.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 154,
+      "height": 197,
+      "bytes": 60177
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/01_boton_izquierda.png",
+      "file": "hud/001_pack_botones_cosmo_kid_01_boton_izquierda.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 150,
+      "height": 150,
+      "bytes": 46934
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/02_boton_derecha.png",
+      "file": "hud/002_pack_botones_cosmo_kid_02_boton_derecha.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 150,
+      "height": 150,
+      "bytes": 46828
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/03_boton_saltar.png",
+      "file": "hud/003_pack_botones_cosmo_kid_03_boton_saltar.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 150,
+      "height": 150,
+      "bytes": 49361
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/04_boton_disparo.png",
+      "file": "hud/004_pack_botones_cosmo_kid_04_boton_disparo.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 180,
+      "height": 160,
+      "bytes": 64324
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/05_boton_dash.png",
+      "file": "hud/005_pack_botones_cosmo_kid_05_boton_dash.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 155,
+      "height": 150,
+      "bytes": 50789
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/06_boton_agacharse.png",
+      "file": "hud/006_pack_botones_cosmo_kid_06_boton_agacharse.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 165,
+      "height": 150,
+      "bytes": 54848
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/07_boton_pausa.png",
+      "file": "hud/007_pack_botones_cosmo_kid_07_boton_pausa.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 160,
+      "height": 160,
+      "bytes": 58650
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/08_boton_jugar.png",
+      "file": "hud/008_pack_botones_cosmo_kid_08_boton_jugar.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 385,
+      "height": 145,
+      "bytes": 114644
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/09_boton_continuar.png",
+      "file": "hud/009_pack_botones_cosmo_kid_09_boton_continuar.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 400,
+      "height": 145,
+      "bytes": 118352
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/10_boton_reiniciar.png",
+      "file": "hud/010_pack_botones_cosmo_kid_10_boton_reiniciar.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 400,
+      "height": 145,
+      "bytes": 115387
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/11_boton_ajustes.png",
+      "file": "hud/011_pack_botones_cosmo_kid_11_boton_ajustes.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 370,
+      "height": 135,
+      "bytes": 105063
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/12_boton_salir.png",
+      "file": "hud/012_pack_botones_cosmo_kid_12_boton_salir.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 345,
+      "height": 135,
+      "bytes": 96450
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/13_boton_musica_on.png",
+      "file": "hud/013_pack_botones_cosmo_kid_13_boton_musica_on.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 110,
+      "height": 130,
+      "bytes": 34091
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/14_boton_musica_off.png",
+      "file": "hud/014_pack_botones_cosmo_kid_14_boton_musica_off.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 110,
+      "height": 130,
+      "bytes": 35576
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/15_boton_efectos_on.png",
+      "file": "hud/015_pack_botones_cosmo_kid_15_boton_efectos_on.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 110,
+      "height": 130,
+      "bytes": 33059
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/16_boton_efectos_off.png",
+      "file": "hud/016_pack_botones_cosmo_kid_16_boton_efectos_off.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 110,
+      "height": 130,
+      "bytes": 32990
+    },
+    {
+      "source": "/mnt/data/pack_botones_cosmo_kid/17_boton_pantalla_completa.png",
+      "file": "hud/017_pack_botones_cosmo_kid_17_boton_pantalla_completa.png",
+      "category": "hud",
+      "format": "png_alpha",
+      "width": 110,
+      "height": 130,
+      "bytes": 31428
+    },
+    {
+      "source": "/mnt/data/pack_hud_cosmo_kid/01_barra_vida_jugador.png",
+      "file": "hud/018_pack_hud_cosmo_kid_01_barra_vida_jugador.png",
+      "category": "hud",
+      "format": "png",
+      "width": 1280,
+      "height": 320,
+      "bytes": 485040
+    },
+    {
+      "source": "/mnt/data/pack_hud_cosmo_kid/02_icono_corazon_vida.png",
+      "file": "hud/019_pack_hud_cosmo_kid_02_icono_corazon_vida.png",
+      "category": "hud",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 668073
+    },
+    {
+      "source": "/mnt/data/pack_hud_cosmo_kid/03_icono_cristal.png",
+      "file": "hud/020_pack_hud_cosmo_kid_03_icono_cristal.png",
+      "category": "hud",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 554094
+    },
+    {
+      "source": "/mnt/data/pack_hud_cosmo_kid/04_icono_monedas_contador.png",
+      "file": "hud/021_pack_hud_cosmo_kid_04_icono_monedas_contador.png",
+      "category": "hud",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 552983
+    },
+    {
+      "source": "/mnt/data/pack_hud_cosmo_kid/05_barra_vida_boss.png",
+      "file": "hud/022_pack_hud_cosmo_kid_05_barra_vida_boss.png",
+      "category": "hud",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 392869
+    },
+    {
+      "source": "/mnt/data/pack_hud_cosmo_kid/06_panel_mision_1_8.png",
+      "file": "hud/023_pack_hud_cosmo_kid_06_panel_mision_1_8.png",
+      "category": "hud",
+      "format": "png",
+      "width": 1280,
+      "height": 320,
+      "bytes": 457243
+    },
+    {
+      "source": "/mnt/data/pack_hud_cosmo_kid/07_nivel_completado.png",
+      "file": "hud/024_pack_hud_cosmo_kid_07_nivel_completado.png",
+      "category": "hud",
+      "format": "png",
+      "width": 1280,
+      "height": 320,
+      "bytes": 518155
+    },
+    {
+      "source": "/mnt/data/pack_hud_cosmo_kid/08_game_over.png",
+      "file": "hud/025_pack_hud_cosmo_kid_08_game_over.png",
+      "category": "hud",
+      "format": "png",
+      "width": 1280,
+      "height": 320,
+      "bytes": 503786
+    },
+    {
+      "source": "/mnt/data/pack_hud_cosmo_kid/09_pausa.png",
+      "file": "hud/026_pack_hud_cosmo_kid_09_pausa.png",
+      "category": "hud",
+      "format": "png",
+      "width": 1280,
+      "height": 320,
+      "bytes": 463675
+    },
+    {
+      "source": "/mnt/data/pack_hud_movimientos/01_icono_corazon_vida_animacion.png",
+      "file": "hud_animated/001_pack_hud_movimientos_01_icono_corazon_vida_animacion.png",
+      "category": "hud_animated",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 309775
+    },
+    {
+      "source": "/mnt/data/pack_hud_movimientos/02_panel_mision_animacion.png",
+      "file": "hud_animated/002_pack_hud_movimientos_02_panel_mision_animacion.png",
+      "category": "hud_animated",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 495037
+    },
+    {
+      "source": "/mnt/data/pack_hud_movimientos/03_icono_cristal_animacion.png",
+      "file": "hud_animated/003_pack_hud_movimientos_03_icono_cristal_animacion.png",
+      "category": "hud_animated",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 452597
+    },
+    {
+      "source": "/mnt/data/pack_hud_movimientos/04_game_over_animacion.png",
+      "file": "hud_animated/004_pack_hud_movimientos_04_game_over_animacion.png",
+      "category": "hud_animated",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 416168
+    },
+    {
+      "source": "/mnt/data/pack_hud_movimientos/05_barra_vida_boss_animacion.png",
+      "file": "hud_animated/005_pack_hud_movimientos_05_barra_vida_boss_animacion.png",
+      "category": "hud_animated",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 315991
+    },
+    {
+      "source": "/mnt/data/pack_hud_movimientos/06_nivel_completado_animacion.png",
+      "file": "hud_animated/006_pack_hud_movimientos_06_nivel_completado_animacion.png",
+      "category": "hud_animated",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 326127
+    },
+    {
+      "source": "/mnt/data/pack_hud_movimientos/07_pausa_animacion.png",
+      "file": "hud_animated/007_pack_hud_movimientos_07_pausa_animacion.png",
+      "category": "hud_animated",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 338906
+    },
+    {
+      "source": "/mnt/data/pack_hud_movimientos/08_icono_monedas_animacion.png",
+      "file": "hud_animated/008_pack_hud_movimientos_08_icono_monedas_animacion.png",
+      "category": "hud_animated",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 309721
+    },
+    {
+      "source": "/mnt/data/pack_hud_movimientos/09_barra_vida_jugador_animacion.png",
+      "file": "hud_animated/009_pack_hud_movimientos_09_barra_vida_jugador_animacion.png",
+      "category": "hud_animated",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 335170
+    },
+    {
+      "source": "/mnt/data/pack_efectos_cosmo_kid/01_explosion_energia_azul.png",
+      "file": "vfx/001_pack_efectos_cosmo_kid_01_explosion_energia_azul.png",
+      "category": "vfx",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 322103
+    },
+    {
+      "source": "/mnt/data/pack_efectos_cosmo_kid/02_desintegracion_energetica.png",
+      "file": "vfx/002_pack_efectos_cosmo_kid_02_desintegracion_energetica.png",
+      "category": "vfx",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 377624
+    },
+    {
+      "source": "/mnt/data/pack_efectos_cosmo_kid/03_explosion_5_etapas.png",
+      "file": "vfx/003_pack_efectos_cosmo_kid_03_explosion_5_etapas.png",
+      "category": "vfx",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 306404
+    },
+    {
+      "source": "/mnt/data/pack_efectos_cosmo_kid/04_explosion_polvo.png",
+      "file": "vfx/004_pack_efectos_cosmo_kid_04_explosion_polvo.png",
+      "category": "vfx",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 259576
+    },
+    {
+      "source": "/mnt/data/pack_efectos_cosmo_kid/05_nubes_de_polvo.png",
+      "file": "vfx/005_pack_efectos_cosmo_kid_05_nubes_de_polvo.png",
+      "category": "vfx",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 296323
+    },
+    {
+      "source": "/mnt/data/pack_efectos_cosmo_kid/06_efectos_magicos_verde_cian.png",
+      "file": "vfx/006_pack_efectos_cosmo_kid_06_efectos_magicos_verde_cian.png",
+      "category": "vfx",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 327034
+    },
+    {
+      "source": "/mnt/data/pack_efectos_cosmo_kid/07_portal_energetico_activacion.png",
+      "file": "vfx/007_pack_efectos_cosmo_kid_07_portal_energetico_activacion.png",
+      "category": "vfx",
+      "format": "png",
+      "width": 1280,
+      "height": 256,
+      "bytes": 431806
+    },
+    {
+      "source": "/mnt/data/pack_final_nivel_2d_lateral/bandera_de_meta_futurista_con_luz.png",
+      "file": "objects/001_pack_final_nivel_2d_lateral_bandera_de_meta_futurista_con_luz.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 579048
+    },
+    {
+      "source": "/mnt/data/pack_final_nivel_2d_lateral/faro_futurista_con_luces_cian.png",
+      "file": "objects/002_pack_final_nivel_2d_lateral_faro_futurista_con_luces_cian.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 574902
+    },
+    {
+      "source": "/mnt/data/pack_final_nivel_2d_lateral/plataforma_de_teletransportación_futurista.png",
+      "file": "objects/003_pack_final_nivel_2d_lateral_plataforma_de_teletransportacion_futurista.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 577409
+    },
+    {
+      "source": "/mnt/data/pack_final_nivel_2d_lateral/portal_cósmico_de_energía_dinámica.png",
+      "file": "objects/004_pack_final_nivel_2d_lateral_portal_cosmico_de_energia_dinamica.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 610129
+    },
+    {
+      "source": "/mnt/data/pack_final_nivel_2d_lateral/portal_futurista_con_señal_de_salida.png",
+      "file": "objects/005_pack_final_nivel_2d_lateral_portal_futurista_con_senal_de_salida.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 566257
+    },
+    {
+      "source": "/mnt/data/pack_objetos_perspectiva/01_moneda_futurista_energia_azul.png",
+      "file": "objects/006_pack_objetos_perspectiva_01_moneda_futurista_energia_azul.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 636464
+    },
+    {
+      "source": "/mnt/data/pack_objetos_perspectiva/02_portal_mistico_energia_luminosa.png",
+      "file": "objects/007_pack_objetos_perspectiva_02_portal_mistico_energia_luminosa.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 664777
+    },
+    {
+      "source": "/mnt/data/pack_objetos_perspectiva/03_cristal_verde_brillante_flotante.png",
+      "file": "objects/008_pack_objetos_perspectiva_03_cristal_verde_brillante_flotante.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 543776
+    },
+    {
+      "source": "/mnt/data/pack_objetos_perspectiva/04_plataforma_energia_futurista.png",
+      "file": "objects/009_pack_objetos_perspectiva_04_plataforma_energia_futurista.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 535163
+    },
+    {
+      "source": "/mnt/data/pack_objetos_perspectiva/05_escudo_energetico_futurista_brillante.png",
+      "file": "objects/010_pack_objetos_perspectiva_05_escudo_energetico_futurista_brillante.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 571185
+    },
+    {
+      "source": "/mnt/data/pack_objetos_perspectiva/06_dispositivo_futurista_nucleo_brillante.png",
+      "file": "objects/011_pack_objetos_perspectiva_06_dispositivo_futurista_nucleo_brillante.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 586145
+    },
+    {
+      "source": "/mnt/data/pack_objetos_perspectiva/07_punto_de_control_futurista_brillante.png",
+      "file": "objects/012_pack_objetos_perspectiva_07_punto_de_control_futurista_brillante.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 608818
+    },
+    {
+      "source": "/mnt/data/pack_objetos_perspectiva/08_corazon_luminico_capsula_futurista.png",
+      "file": "objects/013_pack_objetos_perspectiva_08_corazon_luminico_capsula_futurista.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 599044
+    },
+    {
+      "source": "/mnt/data/pack_objetos_perspectiva/09_puerta_futurista_detalles_brillantes.png",
+      "file": "objects/014_pack_objetos_perspectiva_09_puerta_futurista_detalles_brillantes.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 644644
+    },
+    {
+      "source": "/mnt/data/pack_objetos_perspectiva/10_plataforma_trampa_industrial_luminosa.png",
+      "file": "objects/015_pack_objetos_perspectiva_10_plataforma_trampa_industrial_luminosa.png",
+      "category": "objects",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 617822
+    },
+    {
+      "source": "/mnt/data/pack_trampas_cosmo_kid/01_trampa_pinchos_futurista.png",
+      "file": "traps/001_pack_trampas_cosmo_kid_01_trampa_pinchos_futurista.png",
+      "category": "traps",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 553853
+    },
+    {
+      "source": "/mnt/data/pack_trampas_cosmo_kid/02_torreta_laser_horizontal.png",
+      "file": "traps/002_pack_trampas_cosmo_kid_02_torreta_laser_horizontal.png",
+      "category": "traps",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 505486
+    },
+    {
+      "source": "/mnt/data/pack_trampas_cosmo_kid/03_plataforma_trampa_holografica.png",
+      "file": "traps/003_pack_trampas_cosmo_kid_03_plataforma_trampa_holografica.png",
+      "category": "traps",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 499173
+    },
+    {
+      "source": "/mnt/data/pack_trampas_cosmo_kid/04_generador_electrico.png",
+      "file": "traps/004_pack_trampas_cosmo_kid_04_generador_electrico.png",
+      "category": "traps",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 549144
+    },
+    {
+      "source": "/mnt/data/pack_trampas_cosmo_kid/05_mina_flotante_morada.png",
+      "file": "traps/005_pack_trampas_cosmo_kid_05_mina_flotante_morada.png",
+      "category": "traps",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 587598
+    },
+    {
+      "source": "/mnt/data/pack_trampas_cosmo_kid/06_charco_slime_toxico.png",
+      "file": "traps/006_pack_trampas_cosmo_kid_06_charco_slime_toxico.png",
+      "category": "traps",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 544470
+    },
+    {
+      "source": "/mnt/data/pack_trampas_cosmo_kid/07_ventilacion_lava_erupcion.png",
+      "file": "traps/007_pack_trampas_cosmo_kid_07_ventilacion_lava_erupcion.png",
+      "category": "traps",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 591362
+    },
+    {
+      "source": "/mnt/data/pack_trampas_cosmo_kid/08_roca_colgante_trampa.png",
+      "file": "traps/008_pack_trampas_cosmo_kid_08_roca_colgante_trampa.png",
+      "category": "traps",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 548378
+    },
+    {
+      "source": "/mnt/data/plataformas_3d_tamanos/01_plataforma_pequena_redonda_arcana.png",
+      "file": "platforms/001_plataformas_3d_tamanos_01_plataforma_pequena_redonda_arcana.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 483538
+    },
+    {
+      "source": "/mnt/data/plataformas_3d_tamanos/02_plataforma_pequena_musgo.png",
+      "file": "platforms/002_plataformas_3d_tamanos_02_plataforma_pequena_musgo.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 577200
+    },
+    {
+      "source": "/mnt/data/plataformas_3d_tamanos/03_plataforma_mediana_hierba.png",
+      "file": "platforms/003_plataformas_3d_tamanos_03_plataforma_mediana_hierba.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 960,
+      "height": 720,
+      "bytes": 741474
+    },
+    {
+      "source": "/mnt/data/plataformas_3d_tamanos/04_plataforma_mediana_cristales_azules.png",
+      "file": "platforms/004_plataformas_3d_tamanos_04_plataforma_mediana_cristales_azules.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 1080,
+      "height": 720,
+      "bytes": 738098
+    },
+    {
+      "source": "/mnt/data/plataformas_3d_tamanos/05_plataforma_larga_hierba_roca.png",
+      "file": "platforms/005_plataformas_3d_tamanos_05_plataforma_larga_hierba_roca.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 1279,
+      "height": 720,
+      "bytes": 771683
+    },
+    {
+      "source": "/mnt/data/plataformas_3d_tamanos/06_plataforma_extra_larga_hierba.png",
+      "file": "platforms/006_plataformas_3d_tamanos_06_plataforma_extra_larga_hierba.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 1280,
+      "height": 426,
+      "bytes": 540624
+    },
+    {
+      "source": "/mnt/data/plataformas_3d_tamanos/07_plataforma_grande_alien_teal.png",
+      "file": "platforms/007_plataformas_3d_tamanos_07_plataforma_grande_alien_teal.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 1279,
+      "height": 720,
+      "bytes": 1000664
+    },
+    {
+      "source": "/mnt/data/plataformas_3d_tamanos/08_plataforma_mediana_volcanica.png",
+      "file": "platforms/008_plataformas_3d_tamanos_08_plataforma_mediana_volcanica.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 960,
+      "height": 720,
+      "bytes": 724461
+    },
+    {
+      "source": "/mnt/data/plataformas_3d_tamanos/09_plataforma_larga_scifi.png",
+      "file": "platforms/009_plataformas_3d_tamanos_09_plataforma_larga_scifi.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 1280,
+      "height": 548,
+      "bytes": 584478
+    },
+    {
+      "source": "/mnt/data/plataformas_3d_tamanos/10_plataforma_larga_desertica.png",
+      "file": "platforms/010_plataformas_3d_tamanos_10_plataforma_larga_desertica.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 1279,
+      "height": 720,
+      "bytes": 828446
+    },
+    {
+      "source": "/mnt/data/plataformas_separadas/plataforma_alien_teal_09.png",
+      "file": "platforms/011_plataformas_separadas_plataforma_alien_teal_09.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 505441
+    },
+    {
+      "source": "/mnt/data/plataformas_separadas/plataforma_corta_01.png",
+      "file": "platforms/012_plataformas_separadas_plataforma_corta_01.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 491637
+    },
+    {
+      "source": "/mnt/data/plataformas_separadas/plataforma_cristal_azul_06.png",
+      "file": "platforms/013_plataformas_separadas_plataforma_cristal_azul_06.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 523105
+    },
+    {
+      "source": "/mnt/data/plataformas_separadas/plataforma_cristal_purpura_10.png",
+      "file": "platforms/014_plataformas_separadas_plataforma_cristal_purpura_10.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 523232
+    },
+    {
+      "source": "/mnt/data/plataformas_separadas/plataforma_extra_larga_04.png",
+      "file": "platforms/015_plataformas_separadas_plataforma_extra_larga_04.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 448307
+    },
+    {
+      "source": "/mnt/data/plataformas_separadas/plataforma_larga_03.png",
+      "file": "platforms/016_plataformas_separadas_plataforma_larga_03.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 447400
+    },
+    {
+      "source": "/mnt/data/plataformas_separadas/plataforma_media_02.png",
+      "file": "platforms/017_plataformas_separadas_plataforma_media_02.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 478914
+    },
+    {
+      "source": "/mnt/data/plataformas_separadas/plataforma_musgo_05.png",
+      "file": "platforms/018_plataformas_separadas_plataforma_musgo_05.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 490354
+    },
+    {
+      "source": "/mnt/data/plataformas_separadas/plataforma_ovalada_07.png",
+      "file": "platforms/019_plataformas_separadas_plataforma_ovalada_07.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 504888
+    },
+    {
+      "source": "/mnt/data/plataformas_separadas/plataforma_volcanica_08.png",
+      "file": "platforms/020_plataformas_separadas_plataforma_volcanica_08.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 720,
+      "height": 720,
+      "bytes": 472603
+    },
+    {
+      "source": "/mnt/data/suelos_perspectiva_pack/01_plataforma_futurista_cibernética_iluminada.png",
+      "file": "platforms/021_suelos_perspectiva_pack_01_plataforma_futurista_cibernetica_iluminada.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 1280,
+      "height": 426,
+      "bytes": 476425
+    },
+    {
+      "source": "/mnt/data/suelos_perspectiva_pack/02_plataforma_mágica_futurista_en_perspectiva.png",
+      "file": "platforms/022_suelos_perspectiva_pack_02_plataforma_magica_futurista_en_perspectiva.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 1280,
+      "height": 426,
+      "bytes": 538698
+    },
+    {
+      "source": "/mnt/data/suelos_perspectiva_pack/03_plataforma_de_hierba_detallada_con_rocas.png",
+      "file": "platforms/023_suelos_perspectiva_pack_03_plataforma_de_hierba_detallada_con_rocas.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 1280,
+      "height": 426,
+      "bytes": 586778
+    },
+    {
+      "source": "/mnt/data/suelos_perspectiva_pack/04_plataforma_alienígena_con_slime_tóxico.png",
+      "file": "platforms/024_suelos_perspectiva_pack_04_plataforma_alienigena_con_slime_toxico.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 1280,
+      "height": 426,
+      "bytes": 550013
+    },
+    {
+      "source": "/mnt/data/suelos_perspectiva_pack/05_plataforma_rocosa_en_un_desierto.png",
+      "file": "platforms/025_suelos_perspectiva_pack_05_plataforma_rocosa_en_un_desierto.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 1280,
+      "height": 426,
+      "bytes": 494486
+    },
+    {
+      "source": "/mnt/data/suelos_perspectiva_pack/06_plataforma_volcánica_iluminada_en_lava.png",
+      "file": "platforms/026_suelos_perspectiva_pack_06_plataforma_volcanica_iluminada_en_lava.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 1280,
+      "height": 426,
+      "bytes": 513814
+    },
+    {
+      "source": "/mnt/data/suelos_perspectiva_pack/07_plataforma_de_hielo_con_cristales.png",
+      "file": "platforms/027_suelos_perspectiva_pack_07_plataforma_de_hielo_con_cristales.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 1280,
+      "height": 426,
+      "bytes": 519837
+    },
+    {
+      "source": "/mnt/data/suelos_perspectiva_pack/08_plataforma_futurista_con_luces_neón.png",
+      "file": "platforms/028_suelos_perspectiva_pack_08_plataforma_futurista_con_luces_neon.png",
+      "category": "platforms",
+      "format": "png",
+      "width": 1280,
+      "height": 426,
+      "bytes": 484889
+    },
+    {
+      "source": "/mnt/data/crateres_separados/crater_01.png",
+      "file": "craters/001_crateres_separados_crater_01.png",
+      "category": "craters",
+      "format": "png_alpha",
+      "width": 240,
+      "height": 158,
+      "bytes": 69725
+    },
+    {
+      "source": "/mnt/data/crateres_separados/crater_02.png",
+      "file": "craters/002_crateres_separados_crater_02.png",
+      "category": "craters",
+      "format": "png_alpha",
+      "width": 289,
+      "height": 215,
+      "bytes": 118460
+    },
+    {
+      "source": "/mnt/data/crateres_separados/crater_03.png",
+      "file": "craters/003_crateres_separados_crater_03.png",
+      "category": "craters",
+      "format": "png_alpha",
+      "width": 318,
+      "height": 228,
+      "bytes": 139690
+    },
+    {
+      "source": "/mnt/data/crateres_separados/crater_04.png",
+      "file": "craters/004_crateres_separados_crater_04.png",
+      "category": "craters",
+      "format": "png_alpha",
+      "width": 275,
+      "height": 156,
+      "bytes": 82333
+    },
+    {
+      "source": "/mnt/data/crateres_separados/crater_05.png",
+      "file": "craters/005_crateres_separados_crater_05.png",
+      "category": "craters",
+      "format": "png_alpha",
+      "width": 269,
+      "height": 215,
+      "bytes": 106993
+    },
+    {
+      "source": "/mnt/data/crateres_separados/crater_06.png",
+      "file": "craters/006_crateres_separados_crater_06.png",
+      "category": "craters",
+      "format": "png_alpha",
+      "width": 285,
+      "height": 222,
+      "bytes": 125683
+    },
+    {
+      "source": "/mnt/data/crateres_separados/crater_07.png",
+      "file": "craters/007_crateres_separados_crater_07.png",
+      "category": "craters",
+      "format": "png_alpha",
+      "width": 314,
+      "height": 242,
+      "bytes": 161796
+    },
+    {
+      "source": "/mnt/data/crateres_separados/crater_08.png",
+      "file": "craters/008_crateres_separados_crater_08.png",
+      "category": "craters",
+      "format": "png_alpha",
+      "width": 279,
+      "height": 183,
+      "bytes": 102889
+    },
+    {
+      "source": "/mnt/data/crateres_separados/crater_09.png",
+      "file": "craters/009_crateres_separados_crater_09.png",
+      "category": "craters",
+      "format": "png_alpha",
+      "width": 258,
+      "height": 196,
+      "bytes": 105017
+    },
+    {
+      "source": "/mnt/data/crateres_separados/crater_10.png",
+      "file": "craters/010_crateres_separados_crater_10.png",
+      "category": "craters",
+      "format": "png_alpha",
+      "width": 299,
+      "height": 247,
+      "bytes": 149966
+    },
+    {
+      "source": "/mnt/data/crateres_separados/crater_11.png",
+      "file": "craters/011_crateres_separados_crater_11.png",
+      "category": "craters",
+      "format": "png_alpha",
+      "width": 300,
+      "height": 228,
+      "bytes": 143859
+    },
+    {
+      "source": "/mnt/data/crateres_separados/crater_12.png",
+      "file": "craters/012_crateres_separados_crater_12.png",
+      "category": "craters",
+      "format": "png_alpha",
+      "width": 302,
+      "height": 221,
+      "bytes": 140753
+    },
+    {
+      "source": "/mnt/data/boss_tentaculos_movimientos/attack_1.png",
+      "file": "bosses/001_boss_tentaculos_movimientos_attack_1.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 231,
+      "bytes": 345734
+    },
+    {
+      "source": "/mnt/data/boss_tentaculos_movimientos/attack_2.png",
+      "file": "bosses/002_boss_tentaculos_movimientos_attack_2.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 227,
+      "bytes": 374105
+    },
+    {
+      "source": "/mnt/data/boss_tentaculos_movimientos/death.png",
+      "file": "bosses/003_boss_tentaculos_movimientos_death.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 202,
+      "bytes": 248167
+    },
+    {
+      "source": "/mnt/data/boss_tentaculos_movimientos/float_move.png",
+      "file": "bosses/004_boss_tentaculos_movimientos_float_move.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 240,
+      "bytes": 407138
+    },
+    {
+      "source": "/mnt/data/boss_tentaculos_movimientos/hurt.png",
+      "file": "bosses/005_boss_tentaculos_movimientos_hurt.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 638,
+      "height": 194,
+      "bytes": 250402
+    },
+    {
+      "source": "/mnt/data/boss_tentaculos_movimientos/idle.png",
+      "file": "bosses/006_boss_tentaculos_movimientos_idle.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1019,
+      "height": 264,
+      "bytes": 550721
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/attack/attack_01.png",
+      "file": "player/029_astronauta_3d_frames_todos_attack_01.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 190,
+      "height": 175,
+      "bytes": 56291
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/attack/attack_02.png",
+      "file": "player/030_astronauta_3d_frames_todos_attack_02.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 190,
+      "height": 175,
+      "bytes": 58613
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/attack/attack_03.png",
+      "file": "player/031_astronauta_3d_frames_todos_attack_03.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 210,
+      "height": 175,
+      "bytes": 61840
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/attack/attack_04.png",
+      "file": "player/032_astronauta_3d_frames_todos_attack_04.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 210,
+      "height": 175,
+      "bytes": 60969
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/attack/attack_05.png",
+      "file": "player/033_astronauta_3d_frames_todos_attack_05.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 210,
+      "height": 175,
+      "bytes": 64005
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/attack/attack_06.png",
+      "file": "player/034_astronauta_3d_frames_todos_attack_06.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 215,
+      "height": 175,
+      "bytes": 62833
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/fall/fall_01.png",
+      "file": "player/035_astronauta_3d_frames_todos_fall_01.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 121,
+      "height": 142,
+      "bytes": 37978
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/fall/fall_02.png",
+      "file": "player/036_astronauta_3d_frames_todos_fall_02.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 122,
+      "height": 143,
+      "bytes": 38668
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/fall/fall_03.png",
+      "file": "player/037_astronauta_3d_frames_todos_fall_03.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 120,
+      "height": 143,
+      "bytes": 38237
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/fall/fall_04.png",
+      "file": "player/038_astronauta_3d_frames_todos_fall_04.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 120,
+      "height": 143,
+      "bytes": 38077
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/hurt/hurt_01.png",
+      "file": "player/039_astronauta_3d_frames_todos_hurt_01.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 150,
+      "height": 163,
+      "bytes": 54305
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/hurt/hurt_02.png",
+      "file": "player/040_astronauta_3d_frames_todos_hurt_02.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 164,
+      "height": 166,
+      "bytes": 53777
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/hurt/hurt_03.png",
+      "file": "player/041_astronauta_3d_frames_todos_hurt_03.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 153,
+      "height": 130,
+      "bytes": 39192
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/idle/idle_01.png",
+      "file": "player/042_astronauta_3d_frames_todos_idle_01.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 131,
+      "height": 211,
+      "bytes": 63101
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/idle/idle_02.png",
+      "file": "player/043_astronauta_3d_frames_todos_idle_02.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 124,
+      "height": 210,
+      "bytes": 58833
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/idle/idle_03.png",
+      "file": "player/044_astronauta_3d_frames_todos_idle_03.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 127,
+      "height": 209,
+      "bytes": 59773
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/idle/idle_04.png",
+      "file": "player/045_astronauta_3d_frames_todos_idle_04.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 122,
+      "height": 209,
+      "bytes": 55514
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/jump/jump_01.png",
+      "file": "player/046_astronauta_3d_frames_todos_jump_01.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 135,
+      "height": 204,
+      "bytes": 50842
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/jump/jump_02.png",
+      "file": "player/047_astronauta_3d_frames_todos_jump_02.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 175,
+      "height": 204,
+      "bytes": 62369
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/jump/jump_03.png",
+      "file": "player/048_astronauta_3d_frames_todos_jump_03.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 140,
+      "height": 170,
+      "bytes": 47551
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/jump/jump_04.png",
+      "file": "player/049_astronauta_3d_frames_todos_jump_04.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 140,
+      "height": 170,
+      "bytes": 47917
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/jump/jump_05.png",
+      "file": "player/050_astronauta_3d_frames_todos_jump_05.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 160,
+      "height": 204,
+      "bytes": 54330
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/run/run_01.png",
+      "file": "player/051_astronauta_3d_frames_todos_run_01.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 125,
+      "height": 184,
+      "bytes": 49598
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/run/run_02.png",
+      "file": "player/052_astronauta_3d_frames_todos_run_02.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 125,
+      "height": 181,
+      "bytes": 48608
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/run/run_03.png",
+      "file": "player/053_astronauta_3d_frames_todos_run_03.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 125,
+      "height": 181,
+      "bytes": 49187
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/run/run_04.png",
+      "file": "player/054_astronauta_3d_frames_todos_run_04.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 126,
+      "height": 181,
+      "bytes": 49538
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/run/run_05.png",
+      "file": "player/055_astronauta_3d_frames_todos_run_05.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 122,
+      "height": 182,
+      "bytes": 48023
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/run/run_06.png",
+      "file": "player/056_astronauta_3d_frames_todos_run_06.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 124,
+      "height": 183,
+      "bytes": 48575
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/run/run_07.png",
+      "file": "player/057_astronauta_3d_frames_todos_run_07.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 124,
+      "height": 182,
+      "bytes": 48635
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/astronauta_3d_frames_todos/run/run_08.png",
+      "file": "player/058_astronauta_3d_frames_todos_run_08.png",
+      "category": "player",
+      "format": "png_alpha",
+      "width": 117,
+      "height": 176,
+      "bytes": 44770
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_insecto_3d/attack.png",
+      "file": "aliens/001_aliens_3d_movimientos_todos_attack.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 768,
+      "height": 199,
+      "bytes": 149282
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_insecto_3d/death.png",
+      "file": "aliens/002_aliens_3d_movimientos_todos_death.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 768,
+      "height": 219,
+      "bytes": 146334
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_insecto_3d/fly_move.png",
+      "file": "aliens/003_aliens_3d_movimientos_todos_fly_move.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 768,
+      "height": 204,
+      "bytes": 161987
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_insecto_3d/hurt.png",
+      "file": "aliens/004_aliens_3d_movimientos_todos_hurt.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 768,
+      "height": 172,
+      "bytes": 84696
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_insecto_3d/idle.png",
+      "file": "aliens/005_aliens_3d_movimientos_todos_idle.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 752,
+      "height": 161,
+      "bytes": 247450
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_medusa_3d/attack_1.png",
+      "file": "aliens/006_aliens_3d_movimientos_todos_attack_1.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 768,
+      "height": 174,
+      "bytes": 138878
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_medusa_3d/attack_2.png",
+      "file": "aliens/007_aliens_3d_movimientos_todos_attack_2.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 768,
+      "height": 183,
+      "bytes": 129390
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_medusa_3d/death.png",
+      "file": "aliens/008_aliens_3d_movimientos_todos_death.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 768,
+      "height": 125,
+      "bytes": 104101
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_medusa_3d/float_move.png",
+      "file": "aliens/009_aliens_3d_movimientos_todos_float_move.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 768,
+      "height": 185,
+      "bytes": 152374
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_medusa_3d/hurt.png",
+      "file": "aliens/010_aliens_3d_movimientos_todos_hurt.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 561,
+      "height": 170,
+      "bytes": 181527
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_medusa_3d/idle.png",
+      "file": "aliens/011_aliens_3d_movimientos_todos_idle.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 699,
+      "height": 200,
+      "bytes": 270603
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_reptil_3d/attack.png",
+      "file": "aliens/012_aliens_3d_movimientos_todos_attack.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 768,
+      "height": 181,
+      "bytes": 159469
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_reptil_3d/death.png",
+      "file": "aliens/013_aliens_3d_movimientos_todos_death.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 768,
+      "height": 114,
+      "bytes": 120287
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_reptil_3d/hurt.png",
+      "file": "aliens/014_aliens_3d_movimientos_todos_hurt.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 583,
+      "height": 165,
+      "bytes": 194523
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_reptil_3d/idle.png",
+      "file": "aliens/015_aliens_3d_movimientos_todos_idle.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 768,
+      "height": 173,
+      "bytes": 216536
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_3d_movimientos_todos/alien_reptil_3d/walk.png",
+      "file": "aliens/016_aliens_3d_movimientos_todos_walk.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 768,
+      "height": 133,
+      "bytes": 176779
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/attack/attack_01.png",
+      "file": "aliens/017_aliens_nuevos_3d_frames_todos_attack_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 215,
+      "height": 231,
+      "bytes": 97618
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/attack/attack_02.png",
+      "file": "aliens/018_aliens_nuevos_3d_frames_todos_attack_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 227,
+      "height": 181,
+      "bytes": 79864
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/attack/attack_03.png",
+      "file": "aliens/019_aliens_nuevos_3d_frames_todos_attack_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 226,
+      "height": 214,
+      "bytes": 96866
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/attack/attack_04.png",
+      "file": "aliens/020_aliens_nuevos_3d_frames_todos_attack_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 227,
+      "height": 203,
+      "bytes": 102936
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/attack/attack_05.png",
+      "file": "aliens/021_aliens_nuevos_3d_frames_todos_attack_05.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 216,
+      "height": 194,
+      "bytes": 83640
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/death/death_01.png",
+      "file": "aliens/022_aliens_nuevos_3d_frames_todos_death_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 288,
+      "height": 196,
+      "bytes": 89219
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/death/death_02.png",
+      "file": "aliens/023_aliens_nuevos_3d_frames_todos_death_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 197,
+      "height": 145,
+      "bytes": 58702
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/death/death_03.png",
+      "file": "aliens/024_aliens_nuevos_3d_frames_todos_death_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 167,
+      "height": 160,
+      "bytes": 48338
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/death/death_04.png",
+      "file": "aliens/025_aliens_nuevos_3d_frames_todos_death_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 131,
+      "height": 92,
+      "bytes": 23373
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/death/death_05.png",
+      "file": "aliens/026_aliens_nuevos_3d_frames_todos_death_05.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 115,
+      "height": 147,
+      "bytes": 28254
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/hurt/hurt_01.png",
+      "file": "aliens/027_aliens_nuevos_3d_frames_todos_hurt_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 113,
+      "height": 49,
+      "bytes": 8779
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/hurt/hurt_02.png",
+      "file": "aliens/028_aliens_nuevos_3d_frames_todos_hurt_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 348,
+      "height": 173,
+      "bytes": 133265
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/hurt/hurt_03.png",
+      "file": "aliens/029_aliens_nuevos_3d_frames_todos_hurt_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 164,
+      "height": 170,
+      "bytes": 62190
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/idle/idle_01.png",
+      "file": "aliens/030_aliens_nuevos_3d_frames_todos_idle_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 53,
+      "height": 48,
+      "bytes": 4284
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/idle/idle_02.png",
+      "file": "aliens/031_aliens_nuevos_3d_frames_todos_idle_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 256,
+      "height": 260,
+      "bytes": 128294
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/idle/idle_03.png",
+      "file": "aliens/032_aliens_nuevos_3d_frames_todos_idle_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 205,
+      "height": 223,
+      "bytes": 98738
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/idle/idle_04.png",
+      "file": "aliens/033_aliens_nuevos_3d_frames_todos_idle_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 184,
+      "height": 224,
+      "bytes": 90608
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/walk/walk_01.png",
+      "file": "aliens/034_aliens_nuevos_3d_frames_todos_walk_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 244,
+      "height": 222,
+      "bytes": 100617
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/walk/walk_02.png",
+      "file": "aliens/035_aliens_nuevos_3d_frames_todos_walk_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 130,
+      "height": 190,
+      "bytes": 56077
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/walk/walk_03.png",
+      "file": "aliens/036_aliens_nuevos_3d_frames_todos_walk_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 163,
+      "height": 185,
+      "bytes": 66129
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/walk/walk_04.png",
+      "file": "aliens/037_aliens_nuevos_3d_frames_todos_walk_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 133,
+      "height": 184,
+      "bytes": 56931
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/walk/walk_05.png",
+      "file": "aliens/038_aliens_nuevos_3d_frames_todos_walk_05.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 142,
+      "height": 185,
+      "bytes": 58597
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_cristal_3d_nuevo/walk/walk_06.png",
+      "file": "aliens/039_aliens_nuevos_3d_frames_todos_walk_06.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 134,
+      "height": 181,
+      "bytes": 54541
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/attack/attack_01.png",
+      "file": "aliens/040_aliens_nuevos_3d_frames_todos_attack_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 208,
+      "height": 148,
+      "bytes": 67587
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/attack/attack_02.png",
+      "file": "aliens/041_aliens_nuevos_3d_frames_todos_attack_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 219,
+      "height": 140,
+      "bytes": 64872
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/attack/attack_03.png",
+      "file": "aliens/042_aliens_nuevos_3d_frames_todos_attack_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 224,
+      "height": 162,
+      "bytes": 76169
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/attack/attack_04.png",
+      "file": "aliens/043_aliens_nuevos_3d_frames_todos_attack_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 228,
+      "height": 155,
+      "bytes": 82370
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/attack/attack_05.png",
+      "file": "aliens/044_aliens_nuevos_3d_frames_todos_attack_05.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 218,
+      "height": 132,
+      "bytes": 60148
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/crawl_move/crawl_move_01.png",
+      "file": "aliens/045_aliens_nuevos_3d_frames_todos_crawl_move_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 196,
+      "height": 138,
+      "bytes": 60538
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/crawl_move/crawl_move_02.png",
+      "file": "aliens/046_aliens_nuevos_3d_frames_todos_crawl_move_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 188,
+      "height": 131,
+      "bytes": 55185
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/crawl_move/crawl_move_03.png",
+      "file": "aliens/047_aliens_nuevos_3d_frames_todos_crawl_move_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 174,
+      "height": 130,
+      "bytes": 50197
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/crawl_move/crawl_move_04.png",
+      "file": "aliens/048_aliens_nuevos_3d_frames_todos_crawl_move_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 173,
+      "height": 131,
+      "bytes": 49982
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/crawl_move/crawl_move_05.png",
+      "file": "aliens/049_aliens_nuevos_3d_frames_todos_crawl_move_05.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 171,
+      "height": 128,
+      "bytes": 48650
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/crawl_move/crawl_move_06.png",
+      "file": "aliens/050_aliens_nuevos_3d_frames_todos_crawl_move_06.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 174,
+      "height": 128,
+      "bytes": 49061
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/death/death_01.png",
+      "file": "aliens/051_aliens_nuevos_3d_frames_todos_death_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 199,
+      "height": 164,
+      "bytes": 71864
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/death/death_02.png",
+      "file": "aliens/052_aliens_nuevos_3d_frames_todos_death_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 188,
+      "height": 162,
+      "bytes": 68800
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/death/death_03.png",
+      "file": "aliens/053_aliens_nuevos_3d_frames_todos_death_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 197,
+      "height": 162,
+      "bytes": 66547
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/death/death_04.png",
+      "file": "aliens/054_aliens_nuevos_3d_frames_todos_death_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 213,
+      "height": 161,
+      "bytes": 65158
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/death/death_05.png",
+      "file": "aliens/055_aliens_nuevos_3d_frames_todos_death_05.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 199,
+      "height": 131,
+      "bytes": 46920
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/hurt/hurt_01.png",
+      "file": "aliens/056_aliens_nuevos_3d_frames_todos_hurt_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 246,
+      "height": 202,
+      "bytes": 92061
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/hurt/hurt_02.png",
+      "file": "aliens/057_aliens_nuevos_3d_frames_todos_hurt_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 201,
+      "height": 158,
+      "bytes": 70127
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/hurt/hurt_03.png",
+      "file": "aliens/058_aliens_nuevos_3d_frames_todos_hurt_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 186,
+      "height": 164,
+      "bytes": 67576
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/idle/idle_01.png",
+      "file": "aliens/059_aliens_nuevos_3d_frames_todos_idle_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 257,
+      "height": 168,
+      "bytes": 93149
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/idle/idle_02.png",
+      "file": "aliens/060_aliens_nuevos_3d_frames_todos_idle_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 244,
+      "height": 169,
+      "bytes": 88540
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/idle/idle_03.png",
+      "file": "aliens/061_aliens_nuevos_3d_frames_todos_idle_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 224,
+      "height": 162,
+      "bytes": 79164
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_lava_3d_nuevo/idle/idle_04.png",
+      "file": "aliens/062_aliens_nuevos_3d_frames_todos_idle_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 221,
+      "height": 160,
+      "bytes": 76831
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/attack/attack_01.png",
+      "file": "aliens/063_aliens_nuevos_3d_frames_todos_attack_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 221,
+      "height": 244,
+      "bytes": 98495
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/attack/attack_02.png",
+      "file": "aliens/064_aliens_nuevos_3d_frames_todos_attack_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 232,
+      "height": 200,
+      "bytes": 92559
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/attack/attack_03.png",
+      "file": "aliens/065_aliens_nuevos_3d_frames_todos_attack_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 232,
+      "height": 194,
+      "bytes": 91078
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/attack/attack_04.png",
+      "file": "aliens/066_aliens_nuevos_3d_frames_todos_attack_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 233,
+      "height": 193,
+      "bytes": 91987
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/attack/attack_05.png",
+      "file": "aliens/067_aliens_nuevos_3d_frames_todos_attack_05.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 222,
+      "height": 190,
+      "bytes": 83214
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/death/death_01.png",
+      "file": "aliens/068_aliens_nuevos_3d_frames_todos_death_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 183,
+      "height": 203,
+      "bytes": 72868
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/death/death_02.png",
+      "file": "aliens/069_aliens_nuevos_3d_frames_todos_death_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 195,
+      "height": 156,
+      "bytes": 61185
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/death/death_03.png",
+      "file": "aliens/070_aliens_nuevos_3d_frames_todos_death_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 201,
+      "height": 149,
+      "bytes": 56617
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/death/death_04.png",
+      "file": "aliens/071_aliens_nuevos_3d_frames_todos_death_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 210,
+      "height": 145,
+      "bytes": 53908
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/death/death_05.png",
+      "file": "aliens/072_aliens_nuevos_3d_frames_todos_death_05.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 221,
+      "height": 108,
+      "bytes": 43541
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/float_move/float_move_01.png",
+      "file": "aliens/073_aliens_nuevos_3d_frames_todos_float_move_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 382,
+      "height": 250,
+      "bytes": 182333
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/float_move/float_move_02.png",
+      "file": "aliens/074_aliens_nuevos_3d_frames_todos_float_move_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 177,
+      "height": 191,
+      "bytes": 72026
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/float_move/float_move_03.png",
+      "file": "aliens/075_aliens_nuevos_3d_frames_todos_float_move_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 182,
+      "height": 204,
+      "bytes": 77556
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/float_move/float_move_04.png",
+      "file": "aliens/076_aliens_nuevos_3d_frames_todos_float_move_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 157,
+      "height": 204,
+      "bytes": 70064
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/float_move/float_move_05.png",
+      "file": "aliens/077_aliens_nuevos_3d_frames_todos_float_move_05.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 177,
+      "height": 189,
+      "bytes": 70077
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/float_move/float_move_06.png",
+      "file": "aliens/078_aliens_nuevos_3d_frames_todos_float_move_06.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 32,
+      "height": 91,
+      "bytes": 5763
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/hurt/hurt_01.png",
+      "file": "aliens/079_aliens_nuevos_3d_frames_todos_hurt_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 217,
+      "height": 217,
+      "bytes": 87923
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/hurt/hurt_02.png",
+      "file": "aliens/080_aliens_nuevos_3d_frames_todos_hurt_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 168,
+      "height": 188,
+      "bytes": 69455
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/hurt/hurt_03.png",
+      "file": "aliens/081_aliens_nuevos_3d_frames_todos_hurt_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 182,
+      "height": 191,
+      "bytes": 70416
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/idle/idle_01.png",
+      "file": "aliens/082_aliens_nuevos_3d_frames_todos_idle_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 65,
+      "height": 39,
+      "bytes": 4158
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/idle/idle_02.png",
+      "file": "aliens/083_aliens_nuevos_3d_frames_todos_idle_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 216,
+      "height": 238,
+      "bytes": 102931
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/idle/idle_03.png",
+      "file": "aliens/084_aliens_nuevos_3d_frames_todos_idle_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 211,
+      "height": 233,
+      "bytes": 96972
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_slime_3d_nuevo/idle/idle_04.png",
+      "file": "aliens/085_aliens_nuevos_3d_frames_todos_idle_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 209,
+      "height": 231,
+      "bytes": 99141
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/attack/attack_01.png",
+      "file": "aliens/086_aliens_nuevos_3d_frames_todos_attack_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 194,
+      "height": 230,
+      "bytes": 79413
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/attack/attack_02.png",
+      "file": "aliens/087_aliens_nuevos_3d_frames_todos_attack_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 202,
+      "height": 161,
+      "bytes": 60561
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/attack/attack_03.png",
+      "file": "aliens/088_aliens_nuevos_3d_frames_todos_attack_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 216,
+      "height": 148,
+      "bytes": 61808
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/attack/attack_04.png",
+      "file": "aliens/089_aliens_nuevos_3d_frames_todos_attack_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 225,
+      "height": 93,
+      "bytes": 35776
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/attack/attack_05.png",
+      "file": "aliens/090_aliens_nuevos_3d_frames_todos_attack_05.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 214,
+      "height": 140,
+      "bytes": 58059
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/death/death_01.png",
+      "file": "aliens/091_aliens_nuevos_3d_frames_todos_death_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 182,
+      "height": 221,
+      "bytes": 73022
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/death/death_02.png",
+      "file": "aliens/092_aliens_nuevos_3d_frames_todos_death_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 177,
+      "height": 166,
+      "bytes": 57611
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/death/death_03.png",
+      "file": "aliens/093_aliens_nuevos_3d_frames_todos_death_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 162,
+      "height": 168,
+      "bytes": 47883
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/death/death_04.png",
+      "file": "aliens/094_aliens_nuevos_3d_frames_todos_death_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 131,
+      "height": 191,
+      "bytes": 41674
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/death/death_05.png",
+      "file": "aliens/095_aliens_nuevos_3d_frames_todos_death_05.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 126,
+      "height": 190,
+      "bytes": 39071
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/fly_move/fly_move_01.png",
+      "file": "aliens/096_aliens_nuevos_3d_frames_todos_fly_move_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 176,
+      "height": 227,
+      "bytes": 77627
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/fly_move/fly_move_02.png",
+      "file": "aliens/097_aliens_nuevos_3d_frames_todos_fly_move_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 189,
+      "height": 166,
+      "bytes": 62535
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/fly_move/fly_move_03.png",
+      "file": "aliens/098_aliens_nuevos_3d_frames_todos_fly_move_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 189,
+      "height": 164,
+      "bytes": 59194
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/fly_move/fly_move_04.png",
+      "file": "aliens/099_aliens_nuevos_3d_frames_todos_fly_move_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 188,
+      "height": 160,
+      "bytes": 60447
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/fly_move/fly_move_05.png",
+      "file": "aliens/100_aliens_nuevos_3d_frames_todos_fly_move_05.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 188,
+      "height": 163,
+      "bytes": 59049
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/fly_move/fly_move_06.png",
+      "file": "aliens/101_aliens_nuevos_3d_frames_todos_fly_move_06.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 178,
+      "height": 166,
+      "bytes": 57207
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/hurt/hurt_01.png",
+      "file": "aliens/102_aliens_nuevos_3d_frames_todos_hurt_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 190,
+      "height": 211,
+      "bytes": 70306
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/hurt/hurt_02.png",
+      "file": "aliens/103_aliens_nuevos_3d_frames_todos_hurt_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 146,
+      "height": 149,
+      "bytes": 46619
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/hurt/hurt_03.png",
+      "file": "aliens/104_aliens_nuevos_3d_frames_todos_hurt_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 171,
+      "height": 181,
+      "bytes": 58740
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/idle/idle_01.png",
+      "file": "aliens/105_aliens_nuevos_3d_frames_todos_idle_01.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 281,
+      "height": 223,
+      "bytes": 98199
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/idle/idle_02.png",
+      "file": "aliens/106_aliens_nuevos_3d_frames_todos_idle_02.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 238,
+      "height": 175,
+      "bytes": 75468
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/idle/idle_03.png",
+      "file": "aliens/107_aliens_nuevos_3d_frames_todos_idle_03.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 235,
+      "height": 179,
+      "bytes": 75660
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/aliens_nuevos_3d_frames_todos/alien_volador_purpura_3d_nuevo/idle/idle_04.png",
+      "file": "aliens/108_aliens_nuevos_3d_frames_todos_idle_04.png",
+      "category": "aliens",
+      "format": "png_alpha",
+      "width": 222,
+      "height": 174,
+      "bytes": 69150
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_arana/attack_1.png",
+      "file": "bosses/007_bosses_movimientos_todos_attack_1.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 242,
+      "bytes": 342406
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_arana/attack_2.png",
+      "file": "bosses/008_bosses_movimientos_todos_attack_2.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 228,
+      "bytes": 351368
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_arana/death.png",
+      "file": "bosses/009_bosses_movimientos_todos_death.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 213,
+      "bytes": 241036
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_arana/hurt.png",
+      "file": "bosses/010_bosses_movimientos_todos_hurt.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 149,
+      "bytes": 210106
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_arana/idle.png",
+      "file": "bosses/011_bosses_movimientos_todos_idle.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 235,
+      "bytes": 370975
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_arana/walk.png",
+      "file": "bosses/012_bosses_movimientos_todos_walk.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 228,
+      "bytes": 329733
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_bestia/attack_1.png",
+      "file": "bosses/013_bosses_movimientos_todos_attack_1.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 235,
+      "bytes": 313072
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_bestia/attack_2.png",
+      "file": "bosses/014_bosses_movimientos_todos_attack_2.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 229,
+      "bytes": 350037
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_bestia/death.png",
+      "file": "bosses/015_bosses_movimientos_todos_death.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 187,
+      "bytes": 302347
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_bestia/hurt.png",
+      "file": "bosses/016_bosses_movimientos_todos_hurt.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 975,
+      "height": 165,
+      "bytes": 265030
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_bestia/idle.png",
+      "file": "bosses/017_bosses_movimientos_todos_idle.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 959,
+      "height": 223,
+      "bytes": 462255
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_bestia/walk.png",
+      "file": "bosses/018_bosses_movimientos_todos_walk.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 233,
+      "bytes": 343756
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_tentaculos/attack_1.png",
+      "file": "bosses/019_bosses_movimientos_todos_attack_1.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 248,
+      "bytes": 360153
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_tentaculos/attack_2.png",
+      "file": "bosses/020_bosses_movimientos_todos_attack_2.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 243,
+      "bytes": 374759
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_tentaculos/death.png",
+      "file": "bosses/021_bosses_movimientos_todos_death.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 160,
+      "bytes": 234644
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_tentaculos/float_move.png",
+      "file": "bosses/022_bosses_movimientos_todos_float_move.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1024,
+      "height": 236,
+      "bytes": 406765
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_tentaculos/hurt.png",
+      "file": "bosses/023_bosses_movimientos_todos_hurt.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 968,
+      "height": 170,
+      "bytes": 274898
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/bosses_movimientos_todos/boss_tentaculos/idle.png",
+      "file": "bosses/024_bosses_movimientos_todos_idle.png",
+      "category": "bosses",
+      "format": "png_alpha",
+      "width": 1008,
+      "height": 227,
+      "bytes": 517406
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/01_trampa_pinchos/01_trampa_pinchos_frame_01.png",
+      "file": "traps_animated/001_pack_trampas_animadas_frames_01_trampa_pinchos_frame_01.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 172933
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/01_trampa_pinchos/01_trampa_pinchos_frame_02.png",
+      "file": "traps_animated/002_pack_trampas_animadas_frames_01_trampa_pinchos_frame_02.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 177197
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/01_trampa_pinchos/01_trampa_pinchos_frame_03.png",
+      "file": "traps_animated/003_pack_trampas_animadas_frames_01_trampa_pinchos_frame_03.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 189293
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/01_trampa_pinchos/01_trampa_pinchos_frame_04.png",
+      "file": "traps_animated/004_pack_trampas_animadas_frames_01_trampa_pinchos_frame_04.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 202808
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/01_trampa_pinchos/01_trampa_pinchos_frame_05.png",
+      "file": "traps_animated/005_pack_trampas_animadas_frames_01_trampa_pinchos_frame_05.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 186648
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/01_trampa_pinchos/01_trampa_pinchos_frame_06.png",
+      "file": "traps_animated/006_pack_trampas_animadas_frames_01_trampa_pinchos_frame_06.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 172557
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/02_torreta_laser_horizontal/02_torreta_laser_horizontal_frame_01.png",
+      "file": "traps_animated/007_pack_trampas_animadas_frames_02_torreta_laser_horizontal_frame_01.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 264923
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/02_torreta_laser_horizontal/02_torreta_laser_horizontal_frame_02.png",
+      "file": "traps_animated/008_pack_trampas_animadas_frames_02_torreta_laser_horizontal_frame_02.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 263492
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/02_torreta_laser_horizontal/02_torreta_laser_horizontal_frame_03.png",
+      "file": "traps_animated/009_pack_trampas_animadas_frames_02_torreta_laser_horizontal_frame_03.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 261842
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/02_torreta_laser_horizontal/02_torreta_laser_horizontal_frame_04.png",
+      "file": "traps_animated/010_pack_trampas_animadas_frames_02_torreta_laser_horizontal_frame_04.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 264603
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/02_torreta_laser_horizontal/02_torreta_laser_horizontal_frame_05.png",
+      "file": "traps_animated/011_pack_trampas_animadas_frames_02_torreta_laser_horizontal_frame_05.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 266716
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/02_torreta_laser_horizontal/02_torreta_laser_horizontal_frame_06.png",
+      "file": "traps_animated/012_pack_trampas_animadas_frames_02_torreta_laser_horizontal_frame_06.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 263731
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/03_plataforma_trampa_holografica/03_plataforma_trampa_holografica_frame_01.png",
+      "file": "traps_animated/013_pack_trampas_animadas_frames_03_plataforma_trampa_holografica_frame_01.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 217833
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/03_plataforma_trampa_holografica/03_plataforma_trampa_holografica_frame_02.png",
+      "file": "traps_animated/014_pack_trampas_animadas_frames_03_plataforma_trampa_holografica_frame_02.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 213114
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/03_plataforma_trampa_holografica/03_plataforma_trampa_holografica_frame_03.png",
+      "file": "traps_animated/015_pack_trampas_animadas_frames_03_plataforma_trampa_holografica_frame_03.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 209363
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/03_plataforma_trampa_holografica/03_plataforma_trampa_holografica_frame_04.png",
+      "file": "traps_animated/016_pack_trampas_animadas_frames_03_plataforma_trampa_holografica_frame_04.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 181765
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/03_plataforma_trampa_holografica/03_plataforma_trampa_holografica_frame_05.png",
+      "file": "traps_animated/017_pack_trampas_animadas_frames_03_plataforma_trampa_holografica_frame_05.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 217075
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/03_plataforma_trampa_holografica/03_plataforma_trampa_holografica_frame_06.png",
+      "file": "traps_animated/018_pack_trampas_animadas_frames_03_plataforma_trampa_holografica_frame_06.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 213602
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/04_generador_electrico/04_generador_electrico_frame_01.png",
+      "file": "traps_animated/019_pack_trampas_animadas_frames_04_generador_electrico_frame_01.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 197064
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/04_generador_electrico/04_generador_electrico_frame_02.png",
+      "file": "traps_animated/020_pack_trampas_animadas_frames_04_generador_electrico_frame_02.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 208656
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/04_generador_electrico/04_generador_electrico_frame_03.png",
+      "file": "traps_animated/021_pack_trampas_animadas_frames_04_generador_electrico_frame_03.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 230597
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/04_generador_electrico/04_generador_electrico_frame_04.png",
+      "file": "traps_animated/022_pack_trampas_animadas_frames_04_generador_electrico_frame_04.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 237255
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/04_generador_electrico/04_generador_electrico_frame_05.png",
+      "file": "traps_animated/023_pack_trampas_animadas_frames_04_generador_electrico_frame_05.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 217744
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/04_generador_electrico/04_generador_electrico_frame_06.png",
+      "file": "traps_animated/024_pack_trampas_animadas_frames_04_generador_electrico_frame_06.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 203841
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/05_mina_flotante_morada/05_mina_flotante_morada_frame_01.png",
+      "file": "traps_animated/025_pack_trampas_animadas_frames_05_mina_flotante_morada_frame_01.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 264980
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/05_mina_flotante_morada/05_mina_flotante_morada_frame_02.png",
+      "file": "traps_animated/026_pack_trampas_animadas_frames_05_mina_flotante_morada_frame_02.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 263741
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/05_mina_flotante_morada/05_mina_flotante_morada_frame_03.png",
+      "file": "traps_animated/027_pack_trampas_animadas_frames_05_mina_flotante_morada_frame_03.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 262591
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/05_mina_flotante_morada/05_mina_flotante_morada_frame_04.png",
+      "file": "traps_animated/028_pack_trampas_animadas_frames_05_mina_flotante_morada_frame_04.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 264707
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/05_mina_flotante_morada/05_mina_flotante_morada_frame_05.png",
+      "file": "traps_animated/029_pack_trampas_animadas_frames_05_mina_flotante_morada_frame_05.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 264549
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/05_mina_flotante_morada/05_mina_flotante_morada_frame_06.png",
+      "file": "traps_animated/030_pack_trampas_animadas_frames_05_mina_flotante_morada_frame_06.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 263820
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/06_charco_slime_toxico/06_charco_slime_toxico_frame_01.png",
+      "file": "traps_animated/031_pack_trampas_animadas_frames_06_charco_slime_toxico_frame_01.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 228087
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/06_charco_slime_toxico/06_charco_slime_toxico_frame_02.png",
+      "file": "traps_animated/032_pack_trampas_animadas_frames_06_charco_slime_toxico_frame_02.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 229346
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/06_charco_slime_toxico/06_charco_slime_toxico_frame_03.png",
+      "file": "traps_animated/033_pack_trampas_animadas_frames_06_charco_slime_toxico_frame_03.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 239261
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/06_charco_slime_toxico/06_charco_slime_toxico_frame_04.png",
+      "file": "traps_animated/034_pack_trampas_animadas_frames_06_charco_slime_toxico_frame_04.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 250500
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/06_charco_slime_toxico/06_charco_slime_toxico_frame_05.png",
+      "file": "traps_animated/035_pack_trampas_animadas_frames_06_charco_slime_toxico_frame_05.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 231147
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/06_charco_slime_toxico/06_charco_slime_toxico_frame_06.png",
+      "file": "traps_animated/036_pack_trampas_animadas_frames_06_charco_slime_toxico_frame_06.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 228951
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/07_ventilacion_lava_erupcion/07_ventilacion_lava_erupcion_frame_01.png",
+      "file": "traps_animated/037_pack_trampas_animadas_frames_07_ventilacion_lava_erupcion_frame_01.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 265734
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/07_ventilacion_lava_erupcion/07_ventilacion_lava_erupcion_frame_02.png",
+      "file": "traps_animated/038_pack_trampas_animadas_frames_07_ventilacion_lava_erupcion_frame_02.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 273743
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/07_ventilacion_lava_erupcion/07_ventilacion_lava_erupcion_frame_03.png",
+      "file": "traps_animated/039_pack_trampas_animadas_frames_07_ventilacion_lava_erupcion_frame_03.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 289864
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/07_ventilacion_lava_erupcion/07_ventilacion_lava_erupcion_frame_04.png",
+      "file": "traps_animated/040_pack_trampas_animadas_frames_07_ventilacion_lava_erupcion_frame_04.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 320808
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/07_ventilacion_lava_erupcion/07_ventilacion_lava_erupcion_frame_05.png",
+      "file": "traps_animated/041_pack_trampas_animadas_frames_07_ventilacion_lava_erupcion_frame_05.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 276576
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/07_ventilacion_lava_erupcion/07_ventilacion_lava_erupcion_frame_06.png",
+      "file": "traps_animated/042_pack_trampas_animadas_frames_07_ventilacion_lava_erupcion_frame_06.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 266687
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/08_roca_colgante_trampa/08_roca_colgante_trampa_frame_01.png",
+      "file": "traps_animated/043_pack_trampas_animadas_frames_08_roca_colgante_trampa_frame_01.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 270050
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/08_roca_colgante_trampa/08_roca_colgante_trampa_frame_02.png",
+      "file": "traps_animated/044_pack_trampas_animadas_frames_08_roca_colgante_trampa_frame_02.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 272090
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/08_roca_colgante_trampa/08_roca_colgante_trampa_frame_03.png",
+      "file": "traps_animated/045_pack_trampas_animadas_frames_08_roca_colgante_trampa_frame_03.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 281360
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/08_roca_colgante_trampa/08_roca_colgante_trampa_frame_04.png",
+      "file": "traps_animated/046_pack_trampas_animadas_frames_08_roca_colgante_trampa_frame_04.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 294836
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/08_roca_colgante_trampa/08_roca_colgante_trampa_frame_05.png",
+      "file": "traps_animated/047_pack_trampas_animadas_frames_08_roca_colgante_trampa_frame_05.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 260631
+    },
+    {
+      "source": "/tmp/cosmo_mobile_extract_t921mxn1/pack_trampas_animadas_frames/08_roca_colgante_trampa/08_roca_colgante_trampa_frame_06.png",
+      "file": "traps_animated/048_pack_trampas_animadas_frames_08_roca_colgante_trampa_frame_06.png",
+      "category": "traps_animated",
+      "format": "png",
+      "width": 360,
+      "height": 720,
+      "bytes": 268142
+    },
+    {
+      "source": "/mnt/data/paisaje_alienígena_luminoso_y_cristalino.png",
+      "file": "worlds/001_paisaje_alienigena_luminoso_y_cristalino.jpg",
+      "category": "worlds",
+      "format": "jpg",
+      "width": 1600,
+      "height": 533,
+      "bytes": 121276
+    },
+    {
+      "source": "/mnt/data/mundo_volcánico_alienígena_al_amanecer.png",
+      "file": "worlds/002_mundo_volcanico_alienigena_al_amanecer.jpg",
+      "category": "worlds",
+      "format": "jpg",
+      "width": 1600,
+      "height": 533,
+      "bytes": 122724
+    },
+    {
+      "source": "/mnt/data/cueva_cristalina_iluminada_en_tonos_neón.png",
+      "file": "worlds/003_cueva_cristalina_iluminada_en_tonos_neon.jpg",
+      "category": "worlds",
+      "format": "jpg",
+      "width": 1600,
+      "height": 533,
+      "bytes": 139890
+    },
+    {
+      "source": "/mnt/data/ruinas_industriales_en_un_paisaje_alienígena.png",
+      "file": "worlds/004_ruinas_industriales_en_un_paisaje_alienigena.jpg",
+      "category": "worlds",
+      "format": "jpg",
+      "width": 1600,
+      "height": 533,
+      "bytes": 135594
+    },
+    {
+      "source": "/mnt/data/ruinas_alienígenas_al_atardecer.png",
+      "file": "worlds/005_ruinas_alienigenas_al_atardecer.jpg",
+      "category": "worlds",
+      "format": "jpg",
+      "width": 1600,
+      "height": 533,
+      "bytes": 127285
+    },
+    {
+      "source": "/mnt/data/paisaje_helado_de_un_mundo_alienígena.png",
+      "file": "worlds/006_paisaje_helado_de_un_mundo_alienigena.jpg",
+      "category": "worlds",
+      "format": "jpg",
+      "width": 1600,
+      "height": 533,
+      "bytes": 152378
+    },
+    {
+      "source": "/mnt/data/paisaje_alienígena_luminoso_y_flotante.png",
+      "file": "worlds/007_paisaje_alienigena_luminoso_y_flotante.jpg",
+      "category": "worlds",
+      "format": "jpg",
+      "width": 1600,
+      "height": 533,
+      "bytes": 164408
+    },
+    {
+      "source": "/mnt/data/pantano_alienígena_iluminado_por_neón.png",
+      "file": "worlds/008_pantano_alienigena_iluminado_por_neon.jpg",
+      "category": "worlds",
+      "format": "jpg",
+      "width": 1600,
+      "height": 533,
+      "bytes": 152171
+    },
+    {
+      "source": "/mnt/data/mundo_industrial_volcánico_al_anochecer.png",
+      "file": "worlds/009_mundo_industrial_volcanico_al_anochecer.jpg",
+      "category": "worlds",
+      "format": "jpg",
+      "width": 1600,
+      "height": 533,
+      "bytes": 95693
+    },
+    {
+      "source": "/mnt/data/paisaje_helado_alienígena_bajo_auroras.png",
+      "file": "worlds/010_paisaje_helado_alienigena_bajo_auroras.jpg",
+      "category": "worlds",
+      "format": "jpg",
+      "width": 1600,
+      "height": 533,
+      "bytes": 95863
+    },
+    {
+      "source": "/mnt/data/ruinas_alienígenas_en_el_desierto_cósmico.png",
+      "file": "worlds/011_ruinas_alienigenas_en_el_desierto_cosmico.jpg",
+      "category": "worlds",
+      "format": "jpg",
+      "width": 1600,
+      "height": 533,
+      "bytes": 89932
+    },
+    {
+      "source": "/mnt/data/bosque_alienígena_bioluminiscente_en_el_crepúsculo.png",
+      "file": "worlds/012_bosque_alienigena_bioluminiscente_en_el_crepusculo.jpg",
+      "category": "worlds",
+      "format": "jpg",
+      "width": 1600,
+      "height": 533,
+      "bytes": 98901
+    },
+    {
+      "source": "/mnt/data/terreno_alienígena_cristalino_y_luminoso.png",
+      "file": "parallax_foregrounds/001_terreno_alienigena_cristalino_y_luminoso.png",
+      "category": "parallax_foregrounds",
+      "format": "png",
+      "width": 1600,
+      "height": 533,
+      "bytes": 911017
+    },
+    {
+      "source": "/mnt/data/paisaje_volcánico_con_flujos_de_lava.png",
+      "file": "parallax_foregrounds/002_paisaje_volcanico_con_flujos_de_lava.png",
+      "category": "parallax_foregrounds",
+      "format": "png",
+      "width": 1600,
+      "height": 533,
+      "bytes": 855054
+    },
+    {
+      "source": "/mnt/data/paisaje_helado_y_cristalino_alienígena.png",
+      "file": "parallax_foregrounds/003_paisaje_helado_y_cristalino_alienigena.png",
+      "category": "parallax_foregrounds",
+      "format": "png",
+      "width": 1600,
+      "height": 533,
+      "bytes": 974012
+    },
+    {
+      "source": "/mnt/data/pantano_alienígena_tóxico_iluminado.png",
+      "file": "parallax_foregrounds/004_pantano_alienigena_toxico_iluminado.png",
+      "category": "parallax_foregrounds",
+      "format": "png",
+      "width": 1600,
+      "height": 533,
+      "bytes": 1010934
+    },
+    {
+      "source": "/mnt/data/ruinas_desérticas_al_atardecer.png",
+      "file": "parallax_foregrounds/005_ruinas_deserticas_al_atardecer.png",
+      "category": "parallax_foregrounds",
+      "format": "png",
+      "width": 1600,
+      "height": 533,
+      "bytes": 860062
+    },
+    {
+      "source": "/mnt/data/bosque_alienígena_bioluminiscente_flotante.png",
+      "file": "parallax_foregrounds/006_bosque_alienigena_bioluminiscente_flotante.png",
+      "category": "parallax_foregrounds",
+      "format": "png",
+      "width": 1600,
+      "height": 533,
+      "bytes": 957809
+    },
+    {
+      "source": "/mnt/data/ruinas_industriales_alienígenas_iluminadas.png",
+      "file": "parallax_foregrounds/007_ruinas_industriales_alienigenas_iluminadas.png",
+      "category": "parallax_foregrounds",
+      "format": "png",
+      "width": 1600,
+      "height": 533,
+      "bytes": 911140
+    },
+    {
+      "source": "/mnt/data/cueva_de_cristal_luminosa_y_vibrante.png",
+      "file": "parallax_foregrounds/008_cueva_de_cristal_luminosa_y_vibrante.png",
+      "category": "parallax_foregrounds",
+      "format": "png",
+      "width": 1600,
+      "height": 533,
+      "bytes": 916997
+    }
+  ]
+}

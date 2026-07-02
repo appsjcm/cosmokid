@@ -1,0 +1,42 @@
+{
+  "boss": "boss_arana",
+  "source_sheet": "/mnt/data/hoja_de_sprites_del_jefe_araña.png",
+  "movements": [
+    {
+      "name": "idle",
+      "file": "idle.png",
+      "width": 1096,
+      "height": 252
+    },
+    {
+      "name": "walk",
+      "file": "walk.png",
+      "width": 1096,
+      "height": 245
+    },
+    {
+      "name": "attack_1",
+      "file": "attack_1.png",
+      "width": 1096,
+      "height": 260
+    },
+    {
+      "name": "attack_2",
+      "file": "attack_2.png",
+      "width": 1096,
+      "height": 245
+    },
+    {
+      "name": "hurt",
+      "file": "hurt.png",
+      "width": 1096,
+      "height": 160
+    },
+    {
+      "name": "death",
+      "file": "death.png",
+      "width": 1096,
+      "height": 228
+    }
+  ]
+}

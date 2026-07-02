@@ -1,0 +1,42 @@
+{
+  "boss": "boss_tentaculos",
+  "source_sheet": "/mnt/data/hoja_de_sprites_monstruo_tentacular.png",
+  "movements": [
+    {
+      "name": "idle",
+      "file": "idle.png",
+      "width": 1008,
+      "height": 227
+    },
+    {
+      "name": "float_move",
+      "file": "float_move.png",
+      "width": 1084,
+      "height": 250
+    },
+    {
+      "name": "attack_1",
+      "file": "attack_1.png",
+      "width": 1094,
+      "height": 265
+    },
+    {
+      "name": "attack_2",
+      "file": "attack_2.png",
+      "width": 1073,
+      "height": 255
+    },
+    {
+      "name": "hurt",
+      "file": "hurt.png",
+      "width": 968,
+      "height": 170
+    },
+    {
+      "name": "death",
+      "file": "death.png",
+      "width": 1086,
+      "height": 170
+    }
+  ]
+}
