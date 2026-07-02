@@ -2636,18 +2636,19 @@ function drawBG(){
 
 // ── PLATFORMS ───────────────────────────────────────────────
 function groundImgFor(li){
-  if(li===0)return PLATFORM_ASSETS.premiumGrass||PLATFORM_ASSETS.grassPremium;
-  if(li===1)return PLATFORM_ASSETS.premiumCyber||PLATFORM_ASSETS.premiumNeon;
-  if(li===2)return PLATFORM_ASSETS.premiumArcane||PLATFORM_ASSETS.crystalBlue;
-  if(li===3)return PLATFORM_ASSETS.premiumDesert||PLATFORM_ASSETS.desertClean;
-  if(li===4)return PLATFORM_ASSETS.jungleDecor||PLATFORM_ASSETS.grassVines;
-  if(li===5)return PLATFORM_ASSETS.premiumLava||PLATFORM_ASSETS.lavaFlat;
-  if(li===6)return PLATFORM_ASSETS.premiumIce||PLATFORM_ASSETS.iceBlue;
-  return PLATFORM_ASSETS.premiumToxic||PLATFORM_ASSETS.grassUltra;
+  const pick=(...imgs)=>imgs.find(img=>img&&img.naturalWidth)||imgs.find(Boolean);
+  if(li===0)return pick(PLATFORM_ASSETS.premiumGrass,PLATFORM_ASSETS.grassPremium,PLATFORM_ASSETS.grassClean);
+  if(li===1)return pick(PLATFORM_ASSETS.premiumCyber,PLATFORM_ASSETS.premiumNeon,PLATFORM_ASSETS.techLong);
+  if(li===2)return pick(PLATFORM_ASSETS.premiumArcane,PLATFORM_ASSETS.crystalBlue,PLATFORM_ASSETS.techCrystal);
+  if(li===3)return pick(PLATFORM_ASSETS.premiumDesert,PLATFORM_ASSETS.desertClean,PLATFORM_ASSETS.desertProps);
+  if(li===4)return pick(PLATFORM_ASSETS.jungleDecor,PLATFORM_ASSETS.grassVines,PLATFORM_ASSETS.grassUltra);
+  if(li===5)return pick(PLATFORM_ASSETS.premiumLava,PLATFORM_ASSETS.lavaFlat,PLATFORM_ASSETS.lavaSquare);
+  if(li===6)return pick(PLATFORM_ASSETS.premiumIce,PLATFORM_ASSETS.iceBlue,PLATFORM_ASSETS.crystalBlue);
+  return pick(PLATFORM_ASSETS.premiumToxic,PLATFORM_ASSETS.grassUltra,PLATFORM_ASSETS.grassPremium);
 }
 function drawPremiumGround(li,bgt){
   const raw=groundImgFor(li);
-  if(!raw||!raw.naturalWidth)return false;
+  if(!raw||!raw.naturalWidth)return drawProceduralPremiumGround(li,bgt);
   const img=cleanLightMatteAsset(raw);
   const edge=bgt===2?'#ff6a22':bgt===3||bgt===7?'#d35cff':bgt===5?'#61ff38':bgt===6?'#82e8ff':bgt===1?'#ffd36a':'#7cf3ff';
   const tileW=210,tileH=92,groundY=GY-22,scroll=((camX*.92)%tileW+tileW)%tileW;
@@ -2670,6 +2671,30 @@ function drawPremiumGround(li,bgt){
   ct.fillStyle=shine;ct.fillRect(0,GY-18,CW,44);
   ct.globalCompositeOperation='source-over';
   ct.shadowBlur=0;
+  ct.restore();
+  return true;
+}
+function drawProceduralPremiumGround(li,bgt){
+  const edge=bgt===2?'#ff6a22':bgt===3||bgt===7?'#d35cff':bgt===5?'#61ff38':bgt===6?'#82e8ff':bgt===1?'#ffd36a':'#7cf3ff';
+  const top=bgt===2?'#332018':bgt===5?'#203a16':bgt===6?'#bfeaff':bgt===1?'#c5904f':'#58c83f';
+  const mid=bgt===2?'#21100d':bgt===5?'#14200c':bgt===6?'#35546e':bgt===1?'#6e4a25':'#31454a';
+  const dark=bgt===2?'#090405':bgt===5?'#081004':bgt===6?'#152334':bgt===1?'#24170c':'#101a22';
+  const tile=74,scroll=((camX*.92)%tile+tile)%tile;
+  ct.save();
+  ct.fillStyle=lg(0,GY+8,0,CH,'rgba(4,8,18,.84)','rgba(1,3,9,.96)');
+  ct.fillRect(0,GY+8,CW,CH-GY-8);
+  for(let x=-tile-scroll;x<CW+tile;x+=tile){
+    ct.fillStyle=top;ct.beginPath();ct.moveTo(x,GY);ct.lineTo(x+tile,GY);ct.lineTo(x+tile+18,GY-9);ct.lineTo(x+18,GY-9);ct.closePath();ct.fill();
+    ct.fillStyle=lg(x,GY,x,GY+42,mid,dark);ct.beginPath();ct.moveTo(x,GY);ct.lineTo(x+tile,GY);ct.lineTo(x+tile-8,GY+44);ct.lineTo(x+10,GY+48);ct.closePath();ct.fill();
+    ct.strokeStyle='rgba(0,0,0,.28)';ct.lineWidth=1;ct.beginPath();ct.moveTo(x+18,GY-8);ct.lineTo(x+tile+16,GY-8);ct.stroke();
+    ct.fillStyle='rgba(255,255,255,.10)';ct.fillRect(x+8,GY-8,tile-10,3);
+    ct.fillStyle=edge;ct.globalAlpha=.42;ct.fillRect(x+18,GY+24,14,2);ct.fillRect(x+tile-26,GY+32,18,2);ct.globalAlpha=1;
+    if(bgt===0||bgt===4||bgt===7){ct.strokeStyle='rgba(150,255,130,.68)';for(let i=0;i<5;i++){const gx=x+8+i*13;ct.beginPath();ct.moveTo(gx,GY-8);ct.lineTo(gx+2,GY-15-(i%2)*3);ct.stroke();}}
+  }
+  ct.globalCompositeOperation='screen';
+  ct.shadowColor=edge;ct.shadowBlur=14;ct.strokeStyle=edge;ct.lineWidth=2.2;
+  ct.beginPath();ct.moveTo(0,GY-8.5);ct.lineTo(CW,GY-8.5);ct.stroke();
+  ct.globalCompositeOperation='source-over';ct.shadowBlur=0;
   ct.restore();
   return true;
 }
