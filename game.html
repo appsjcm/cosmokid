@@ -572,7 +572,14 @@ const PLATFORM_ASSET_FILES={
   premiumDesert:'assets/platforms/premium_desert_floor.png',
   premiumLava:'assets/platforms/premium_lava_floor.png',
   premiumIce:'assets/platforms/premium_ice_floor.png',
-  premiumNeon:'assets/platforms/premium_neon_floor.png'
+  premiumNeon:'assets/platforms/premium_neon_floor.png',
+  groundGrassCrystal:'assets/platforms/ground_world_01_grass_crystal.png',
+  groundBlueBiolume:'assets/platforms/ground_world_02_blue_biolume.png',
+  groundScifi:'assets/platforms/ground_world_03_scifi.png',
+  groundDesertRuins:'assets/platforms/ground_world_04_desert_ruins.png',
+  groundToxic:'assets/platforms/ground_world_05_toxic.png',
+  groundLava:'assets/platforms/ground_world_06_lava.png',
+  groundIce:'assets/platforms/ground_world_07_ice.png'
 };
 const PLATFORM_ASSETS=Object.fromEntries(Object.entries(PLATFORM_ASSET_FILES).map(([k,src])=>[k,(()=>{const img=new Image();img.src=src;return img;})()]));
 const CLEAN_ASSET_CACHE=new WeakMap();
@@ -2637,29 +2644,28 @@ function drawBG(){
 // ── PLATFORMS ───────────────────────────────────────────────
 function groundImgFor(li){
   const pick=(...imgs)=>imgs.find(img=>img&&img.naturalWidth)||imgs.find(Boolean);
-  if(li===0)return pick(PLATFORM_ASSETS.premiumGrass,PLATFORM_ASSETS.grassPremium,PLATFORM_ASSETS.grassClean);
-  if(li===1)return pick(PLATFORM_ASSETS.premiumCyber,PLATFORM_ASSETS.premiumNeon,PLATFORM_ASSETS.techLong);
-  if(li===2)return pick(PLATFORM_ASSETS.premiumArcane,PLATFORM_ASSETS.crystalBlue,PLATFORM_ASSETS.techCrystal);
-  if(li===3)return pick(PLATFORM_ASSETS.premiumDesert,PLATFORM_ASSETS.desertClean,PLATFORM_ASSETS.desertProps);
-  if(li===4)return pick(PLATFORM_ASSETS.jungleDecor,PLATFORM_ASSETS.grassVines,PLATFORM_ASSETS.grassUltra);
-  if(li===5)return pick(PLATFORM_ASSETS.premiumLava,PLATFORM_ASSETS.lavaFlat,PLATFORM_ASSETS.lavaSquare);
-  if(li===6)return pick(PLATFORM_ASSETS.premiumIce,PLATFORM_ASSETS.iceBlue,PLATFORM_ASSETS.crystalBlue);
-  return pick(PLATFORM_ASSETS.premiumToxic,PLATFORM_ASSETS.grassUltra,PLATFORM_ASSETS.grassPremium);
+  if(li===0)return pick(PLATFORM_ASSETS.groundGrassCrystal,PLATFORM_ASSETS.premiumGrass,PLATFORM_ASSETS.grassPremium);
+  if(li===1)return pick(PLATFORM_ASSETS.groundScifi,PLATFORM_ASSETS.premiumCyber,PLATFORM_ASSETS.premiumNeon);
+  if(li===2)return pick(PLATFORM_ASSETS.groundBlueBiolume,PLATFORM_ASSETS.premiumArcane,PLATFORM_ASSETS.crystalBlue);
+  if(li===3)return pick(PLATFORM_ASSETS.groundDesertRuins,PLATFORM_ASSETS.premiumDesert,PLATFORM_ASSETS.desertClean);
+  if(li===4)return pick(PLATFORM_ASSETS.groundToxic,PLATFORM_ASSETS.premiumToxic,PLATFORM_ASSETS.grassVines);
+  if(li===5)return pick(PLATFORM_ASSETS.groundLava,PLATFORM_ASSETS.premiumLava,PLATFORM_ASSETS.lavaFlat);
+  if(li===6)return pick(PLATFORM_ASSETS.groundIce,PLATFORM_ASSETS.premiumIce,PLATFORM_ASSETS.iceBlue);
+  return pick(PLATFORM_ASSETS.groundGrassCrystal,PLATFORM_ASSETS.groundBlueBiolume,PLATFORM_ASSETS.premiumToxic);
 }
 function drawPremiumGround(li,bgt){
   const raw=groundImgFor(li);
   if(!raw||!raw.naturalWidth)return drawProceduralPremiumGround(li,bgt);
   const img=cleanLightMatteAsset(raw);
   const edge=bgt===2?'#ff6a22':bgt===3||bgt===7?'#d35cff':bgt===5?'#61ff38':bgt===6?'#82e8ff':bgt===1?'#ffd36a':'#7cf3ff';
-  const tileW=210,tileH=92,groundY=GY-22,scroll=((camX*.92)%tileW+tileW)%tileW;
+  const tileW=360,tileH=102,groundY=GY-48,step=tileW-24,scroll=((camX*.88)%step+step)%step;
   ct.save();
   ct.fillStyle=lg(0,GY+8,0,CH,'rgba(4,8,18,.78)','rgba(1,3,9,.96)');
   ct.fillRect(0,GY+8,CW,CH-GY-8);
   ct.globalAlpha=.42;ct.fillStyle='#000';ct.beginPath();ct.ellipse(CW/2,GY+18,CW*.66,19,0,0,Math.PI*2);ct.fill();
   ct.globalAlpha=1;
-  for(let x=-tileW-scroll;x<CW+tileW;x+=tileW-10){
+  for(let x=-tileW-scroll;x<CW+tileW;x+=step){
     ct.drawImage(img,x,groundY,tileW,tileH);
-    ct.globalAlpha=.22;ct.drawImage(img,x+tileW*.48,groundY+18,tileW*.66,tileH*.62);ct.globalAlpha=1;
   }
   ct.globalCompositeOperation='screen';
   ct.shadowColor=edge;ct.shadowBlur=12;ct.strokeStyle=edge;ct.lineWidth=2;
