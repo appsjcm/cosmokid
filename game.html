@@ -2598,6 +2598,7 @@ function drawBG(){
   // Atmospheric depth haze near the horizon
   const hazeC=bgt===2?'rgba(255,120,50,.07)':bgt===3?'rgba(160,40,255,.06)':bgt===4?'rgba(20,200,120,.06)':bgt===5?'rgba(30,200,10,.07)':bgt===6?'rgba(80,180,255,.08)':bgt===7?'rgba(140,40,255,.08)':bgt===1?'rgba(255,150,80,.08)':'rgba(80,220,255,.08)';
   ct.fillStyle=lg(0,GY-50,0,GY,'rgba(255,255,255,0)',hazeC);ct.fillRect(0,GY-50,CW,50);
+  if(drawPremiumGround(li,bgt))return;
   const [[gt1,gt2],[gd1,gd2]]=GROUND_COLS[li];
   const gx0=Math.floor(camX/32)*32-Math.round(camX);
   for(let gx=gx0;gx<CW+32;gx+=32){
@@ -2634,6 +2635,45 @@ function drawBG(){
 }
 
 // ── PLATFORMS ───────────────────────────────────────────────
+function groundImgFor(li){
+  if(li===0)return PLATFORM_ASSETS.premiumGrass||PLATFORM_ASSETS.grassPremium;
+  if(li===1)return PLATFORM_ASSETS.premiumCyber||PLATFORM_ASSETS.premiumNeon;
+  if(li===2)return PLATFORM_ASSETS.premiumArcane||PLATFORM_ASSETS.crystalBlue;
+  if(li===3)return PLATFORM_ASSETS.premiumDesert||PLATFORM_ASSETS.desertClean;
+  if(li===4)return PLATFORM_ASSETS.jungleDecor||PLATFORM_ASSETS.grassVines;
+  if(li===5)return PLATFORM_ASSETS.premiumLava||PLATFORM_ASSETS.lavaFlat;
+  if(li===6)return PLATFORM_ASSETS.premiumIce||PLATFORM_ASSETS.iceBlue;
+  return PLATFORM_ASSETS.premiumToxic||PLATFORM_ASSETS.grassUltra;
+}
+function drawPremiumGround(li,bgt){
+  const raw=groundImgFor(li);
+  if(!raw||!raw.naturalWidth)return false;
+  const img=cleanLightMatteAsset(raw);
+  const edge=bgt===2?'#ff6a22':bgt===3||bgt===7?'#d35cff':bgt===5?'#61ff38':bgt===6?'#82e8ff':bgt===1?'#ffd36a':'#7cf3ff';
+  const tileW=210,tileH=92,groundY=GY-22,scroll=((camX*.92)%tileW+tileW)%tileW;
+  ct.save();
+  ct.fillStyle=lg(0,GY+8,0,CH,'rgba(4,8,18,.78)','rgba(1,3,9,.96)');
+  ct.fillRect(0,GY+8,CW,CH-GY-8);
+  ct.globalAlpha=.42;ct.fillStyle='#000';ct.beginPath();ct.ellipse(CW/2,GY+18,CW*.66,19,0,0,Math.PI*2);ct.fill();
+  ct.globalAlpha=1;
+  for(let x=-tileW-scroll;x<CW+tileW;x+=tileW-10){
+    ct.drawImage(img,x,groundY,tileW,tileH);
+    ct.globalAlpha=.22;ct.drawImage(img,x+tileW*.48,groundY+18,tileW*.66,tileH*.62);ct.globalAlpha=1;
+  }
+  ct.globalCompositeOperation='screen';
+  ct.shadowColor=edge;ct.shadowBlur=12;ct.strokeStyle=edge;ct.lineWidth=2;
+  ct.beginPath();ct.moveTo(0,GY-1.5);ct.lineTo(CW,GY-1.5);ct.stroke();
+  const shine=ct.createLinearGradient(0,GY-18,0,GY+26);
+  shine.addColorStop(0,'rgba(255,255,255,0)');
+  shine.addColorStop(.45,'rgba(255,255,255,.10)');
+  shine.addColorStop(1,'rgba(255,255,255,0)');
+  ct.fillStyle=shine;ct.fillRect(0,GY-18,CW,44);
+  ct.globalCompositeOperation='source-over';
+  ct.shadowBlur=0;
+  ct.restore();
+  return true;
+}
+
 // Stone base palette per world [top, front, dark, accent]
 const PLAT_COLS=[
   ['#7abec8','#4e8ea8','#28485a','#20d8f0'],  // 0 aquatic teal stone
