@@ -518,6 +518,33 @@ const PLATFORM_ASSET_FILES={
   stoneTall:PC_ASSET_ROOT+'platforms/017_plataformas_separadas_plataforma_media_02.png'
 };
 const PLATFORM_ASSETS=Object.fromEntries(Object.entries(PLATFORM_ASSET_FILES).map(([k,src])=>[k,(()=>{const img=new Image();img.src=src;return img;})()]));
+const CLEAN_ASSET_CACHE=new WeakMap();
+function cleanLightMatteAsset(img){
+  if(!img||!img.complete||!img.naturalWidth)return img;
+  const cached=CLEAN_ASSET_CACHE.get(img);if(cached)return cached;
+  try{
+    const w=img.naturalWidth,h=img.naturalHeight,cv2=document.createElement('canvas');
+    cv2.width=w;cv2.height=h;
+    const cx2=cv2.getContext('2d',{willReadFrequently:true});
+    cx2.drawImage(img,0,0);
+    const id=cx2.getImageData(0,0,w,h),d=id.data,seen=new Uint8Array(w*h),q=[];
+    const isMatte=i=>{
+      const p=i*4,r=d[p],g=d[p+1],b=d[p+2],a=d[p+3],mx=Math.max(r,g,b),mn=Math.min(r,g,b);
+      return a>0&&mn>184&&mx>204&&mx-mn<44;
+    };
+    const push=i=>{if(i>=0&&i<w*h&&!seen[i]&&isMatte(i)){seen[i]=1;q.push(i);}};
+    for(let x=0;x<w;x++){push(x);push((h-1)*w+x);}
+    for(let y=0;y<h;y++){push(y*w);push(y*w+w-1);}
+    for(let qi=0;qi<q.length;qi++){
+      const i=q[qi],p=i*4,x=i%w,y=(i/w)|0;
+      d[p+3]=0;
+      if(x>0)push(i-1);if(x<w-1)push(i+1);if(y>0)push(i-w);if(y<h-1)push(i+w);
+    }
+    cx2.putImageData(id,0,0);
+    CLEAN_ASSET_CACHE.set(img,cv2);
+    return cv2;
+  }catch(e){CLEAN_ASSET_CACHE.set(img,img);return img;}
+}
 const TRAP_ASSET_FILES=[
   '001_pack_trampas_cosmo_kid_01_trampa_pinchos_futurista.png',
   '002_pack_trampas_cosmo_kid_02_torreta_laser_horizontal.png',
@@ -1984,14 +2011,16 @@ function pickCraterAsset(p){
   return CRATER_ASSETS[Math.abs(((p.x*19+p.y*23)|0))%CRATER_ASSETS.length];
 }
 function drawRealCraterAsset(p,x,y,w,h){
-  const img=pickCraterAsset(p);
-  if(!img||!img.complete||!img.naturalWidth)return false;
+  const rawImg=pickCraterAsset(p);
+  if(!rawImg||!rawImg.complete||!rawImg.naturalWidth)return false;
+  const img=cleanLightMatteAsset(rawImg);
   const bonus=p.bonus&&!p.used,pulse=.5+.5*Math.sin(NOW*.008+p.x*.02);
-  const isFlat=img.src&&img.src.includes('/craters_flat/');
+  const isFlat=rawImg.src&&rawImg.src.includes('/craters_flat/');
   const dw=isFlat?w*2.18:w*1.62;
-  const dh=isFlat?Math.max(28,w*.72):Math.min(h*1.08,dw*(img.naturalHeight/img.naturalWidth));
+  const iw=img.naturalWidth||img.width,ih=img.naturalHeight||img.height;
+  const dh=isFlat?Math.max(28,w*.72):Math.min(h*1.08,dw*(ih/iw));
   const dx=x+w/2-dw/2,dy=isFlat?y+h-dh+2:y+h-dh+2;
-  const sx=isFlat?0:0,sy=isFlat?360:0,sw=img.naturalWidth,sh=isFlat?560:img.naturalHeight;
+  const sx=isFlat?0:0,sy=isFlat?360:0,sw=iw,sh=isFlat?560:ih;
   ct.save();
   ct.globalAlpha=.32;ct.fillStyle='#000';ct.beginPath();ct.ellipse(x+w/2,y+h+4,w*.98,7,0,0,Math.PI*2);ct.fill();ct.globalAlpha=1;
   if(bonus){
@@ -2536,11 +2565,13 @@ function platformImgFor(p,seed){
   return wide?(alt?PLATFORM_ASSETS.grassUltra:PLATFORM_ASSETS.grassPremium):PLATFORM_ASSETS.grassRound;
 }
 function drawRealPlatformAsset(p,ox,shx,seed,bgt2){
-  const img=platformImgFor(p,seed);
-  if(!img||!img.naturalWidth)return false;
+  const rawImg=platformImgFor(p,seed);
+  if(!rawImg||!rawImg.naturalWidth)return false;
+  const img=cleanLightMatteAsset(rawImg);
+  const iw=img.naturalWidth||img.width,ih=img.naturalHeight||img.height;
   const x=Math.round(p.x-ox)+shx,py=p.y,pw=p.w;
   const wide=pw>=112;
-  const ratio=img.naturalHeight/img.naturalWidth;
+  const ratio=ih/iw;
   const dw=wide?Math.max(74,pw+28):Math.max(74,pw+42);
   const minH=wide?30:48,maxH=wide?82:122;
   const dh=Math.max(minH,Math.min(maxH,dw*ratio));
