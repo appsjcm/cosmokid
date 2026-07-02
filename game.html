@@ -2207,45 +2207,8 @@ function drawPremiumWorldBG(){
   ct.fillStyle=lg(0,GY-72,0,GY+10,'rgba(0,0,0,0)',hazeByWorld[li]);
   ct.fillRect(0,GY-72,CW,92);
 
-  // Foreground floor keeps collisions visually grounded even over painted backgrounds.
-  const floorTop=['#2d194b','#2b193d','#1c1838','#3a2112','#16250a','#2b0806','#0b2442','#12311c'][li];
-  const floorDeep=['#090411','#07030c','#05030a','#110803','#080d04','#080100','#030915','#040b06'][li];
-  const edge=['#c060ff','#ff55d8','#7cf3ff','#ffb14a','#a7ff28','#ff5a22','#8de7ff','#55ffb0'][li];
-  const gx0=Math.floor(camX/32)*32-Math.round(camX);
-  for(let gx=gx0;gx<CW+32;gx+=32){
-    ct.fillStyle=lg(gx,GY,gx,GY+12,floorTop,'#111827');ct.fillRect(gx,GY,32,12);
-    ct.fillStyle=lg(gx,GY+12,gx,CH,'#111827',floorDeep);ct.fillRect(gx,GY+12,32,CH-GY-12);
-    ct.globalAlpha=.18;ct.strokeStyle='#000';ct.strokeRect(gx+.5,GY+.5,31,CH-GY-1);ct.globalAlpha=1;
-    if(gx%64===0){ct.shadowColor=edge;ct.shadowBlur=6;ct.fillStyle=edge;ct.globalAlpha=.5;ct.fillRect(gx+6,GY-3,3,4);ct.fillRect(gx+21,GY-4,2,5);ct.globalAlpha=1;ct.shadowBlur=0;}
-  }
-  ct.shadowColor=edge;ct.shadowBlur=10;ct.strokeStyle=edge;ct.globalAlpha=.5;ct.lineWidth=1.5;
-  ct.beginPath();ct.moveTo(0,GY-.5);ct.lineTo(CW,GY-.5);ct.stroke();ct.shadowBlur=0;ct.globalAlpha=1;ct.lineWidth=1;
-
-  const gridColor=edge.replace(')',',.10)').replace('rgb','rgba');
-  ct.save();ct.strokeStyle=gridColor;ct.lineWidth=1;
-  const spacing=52,startX=Math.floor(camX/spacing)*spacing;
-  for(let wx=startX;wx<camX+CW+spacing;wx+=spacing){const sx=wx-camX;ct.beginPath();ct.moveTo(CW*.5,GY);ct.lineTo(sx,CH);ct.stroke();}
-  for(let i=1;i<=7;i++){const t=i/7,ty=GY+(CH-GY)*t*t;ct.globalAlpha=.08*(1-t*.55);ct.beginPath();ct.moveTo(0,ty);ct.lineTo(CW,ty);ct.stroke();}
-  ct.restore();ct.globalAlpha=1;
-
-  const fgFloor=PC_PARALLAX_ASSETS[li];
-  if(fgFloor&&fgFloor.complete&&fgFloor.naturalWidth){
-    ct.save();
-    const floorProg=Math.max(0,Math.min(1,(camX*.82)/Math.max(1,lw-CW)));
-    ct.globalAlpha=.34;
-    ct.filter='saturate(1.16) contrast(1.08) brightness(.82)';
-    ct.beginPath();ct.rect(0,GY-74,CW,CH-GY+78);ct.clip();
-    drawImageCover(fgFloor,0,GY-112,CW,164,floorProg);
-    ct.filter='none';
-    const fade=ct.createLinearGradient(0,GY-76,0,CH);
-    fade.addColorStop(0,'rgba(0,0,0,.35)');
-    fade.addColorStop(.36,'rgba(0,0,0,0)');
-    fade.addColorStop(1,'rgba(0,0,0,.55)');
-    ct.fillStyle=fade;ct.fillRect(0,GY-76,CW,CH-GY+76);
-    ct.restore();
-    ct.shadowColor=edge;ct.shadowBlur=12;ct.strokeStyle=`rgba(180,245,255,.34)`;ct.lineWidth=1.5;
-    ct.beginPath();ct.moveTo(0,GY-.5);ct.lineTo(CW,GY-.5);ct.stroke();ct.shadowBlur=0;ct.lineWidth=1;
-  }
+  // Use the provided foreground ground art in the premium background path too.
+  drawPremiumGround(li,BG_TYPE[li]||0);
 
   const vign=ct.createRadialGradient(CW/2,CH*.46,40,CW/2,CH*.5,Math.max(CW,CH)*.72);
   vign.addColorStop(0,'rgba(0,0,0,0)');
