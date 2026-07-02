@@ -23,8 +23,10 @@ h1{font-size:1.9rem;margin-bottom:5px;letter-spacing:4px;text-transform:uppercas
 #hpwr{transition:color .3s}
 #wrap{position:relative;padding:5px;border-radius:18px;background:linear-gradient(135deg,rgba(124,243,255,.34),rgba(255,230,107,.14),rgba(255,92,184,.24));box-shadow:0 20px 70px rgba(0,0,0,.45),0 0 48px rgba(0,190,255,.20)}
 canvas{display:block;border:1px solid rgba(190,245,255,.52);border-radius:14px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.10),0 0 36px rgba(0,200,255,.22);background:#030815}
-#ov{position:absolute;inset:5px;background:radial-gradient(circle at 50% 28%,rgba(124,243,255,.18),transparent 32%),linear-gradient(160deg,rgba(3,18,40,.92),rgba(8,26,58,.88));display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:14px;gap:9px;padding:20px;backdrop-filter:blur(8px)}
-#ov:before{content:'';width:86px;height:86px;border-radius:24px;background:url('assets/icons/icon-192.png') center/cover no-repeat,linear-gradient(135deg,#7cf3ff,#ffe66b);box-shadow:0 14px 38px rgba(0,0,0,.45),0 0 24px rgba(124,243,255,.30);border:1px solid rgba(255,255,255,.28);margin-bottom:2px}
+#ov{position:absolute;inset:5px;background:radial-gradient(circle at 50% 30%,rgba(124,243,255,.20),transparent 30%),linear-gradient(180deg,rgba(1,6,18,.38),rgba(4,10,28,.78)),url('assets/cover/cosmokid_cover_wide_v66.jpg') center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:14px;gap:9px;padding:20px;backdrop-filter:blur(6px);overflow:hidden;box-shadow:inset 0 0 90px rgba(0,0,0,.44)}
+#ov:after{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(3,8,24,.80),rgba(5,18,45,.52) 36%,rgba(5,18,45,.52) 64%,rgba(3,8,24,.80)),radial-gradient(circle at 50% 48%,rgba(0,210,255,.16),transparent 34%);pointer-events:none}
+#ov>*{position:relative;z-index:1}
+#ov:before{content:'';position:relative;z-index:1;width:86px;height:86px;border-radius:24px;background:url('assets/icons/icon-192.png') center/cover no-repeat,linear-gradient(135deg,#7cf3ff,#ffe66b);box-shadow:0 14px 38px rgba(0,0,0,.45),0 0 24px rgba(124,243,255,.30);border:1px solid rgba(255,255,255,.28);margin-bottom:2px}
 #ov.off{display:none}
 #ov-t{font-size:2.8rem;font-weight:900;color:#00ccff;letter-spacing:5px;text-align:center;text-shadow:0 0 30px #00ccff,0 0 60px rgba(0,180,255,.4);line-height:1}
 #ov-sub{font-size:.65rem;color:#5588aa;letter-spacing:4px;text-transform:uppercase;margin-top:2px}
@@ -130,7 +132,7 @@ body.fs-layout canvas{border:0;border-radius:0;box-shadow:none}
 :fullscreen #ov-t,:-webkit-full-screen #ov-t{font-size:3.5rem}
 :fullscreen #ov-btn,:-webkit-full-screen #ov-btn{max-width:340px;min-height:74px;font-size:1.25rem}
 :fullscreen canvas,:-webkit-full-screen canvas{border:0;border-radius:0;box-shadow:none}
-canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!important;object-fit:contain;background:#030815}
+canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!important;object-fit:fill;background:#030815}
 /* Difficulty selector */
 #ov-diff{display:flex;gap:7px;justify-content:center;margin:2px 0 4px}
 .dbtn{flex:1;max-width:88px;min-height:44px;border-radius:10px;border:2px solid rgba(255,255,255,.18);background:rgba(0,8,30,.55);color:rgba(255,255,255,.7);font-size:.62rem;font-weight:bold;letter-spacing:.5px;cursor:pointer;font-family:monospace;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:all .12s;padding:4px 2px}
@@ -395,12 +397,18 @@ fsBtn.addEventListener('click',()=>{initAC();isImmersive()?exitFS():requestFS(cv
 let tcH=0,isTouchDevice=false;
 function resize(){
   const fs=isImmersive();
+  if(fs){
+    const w=Math.max(1,innerWidth),h=Math.max(1,innerHeight);
+    cv.style.width=w+'px';cv.style.height=h+'px';
+    wrap.style.width=w+'px';wrap.style.height=h+'px';
+    return;
+  }
   const land=innerWidth>innerHeight;
-  const topH=fs?0:(isTouchDevice&&land?30:isTouchDevice?8:118);
+  const topH=isTouchDevice&&land?30:isTouchDevice?8:118;
   const botH=isTouchDevice&&!land?120:0;
   const sidePad=isTouchDevice&&land?196:0; // room for side controls
-  const maxS=fs?Infinity:land&&isTouchDevice?2.2:1.6;
-  const pad=fs?0:4;
+  const maxS=land&&isTouchDevice?2.2:1.6;
+  const pad=4;
   const availW=Math.max(1,innerWidth-pad-sidePad),availH=Math.max(1,innerHeight-topH-botH-pad);
   const s=Math.min(availW/CW,availH/CH,maxS);
   const w=Math.floor(CW*s),h=Math.floor(CH*s);
@@ -556,7 +564,15 @@ const PLATFORM_ASSET_FILES={
   grassSmall:'assets/platforms/grass_island_small.png',
   grassCyan:'assets/platforms/grass_island_cyan.png',
   purpleRound:'assets/platforms/purple_island_round.png',
-  stoneTall:'assets/platforms/stone_tall.png'
+  stoneTall:'assets/platforms/stone_tall.png',
+  premiumCyber:'assets/platforms/premium_cyber_floor.png',
+  premiumArcane:'assets/platforms/premium_arcane_floor.png',
+  premiumGrass:'assets/platforms/premium_grass_floor.png',
+  premiumToxic:'assets/platforms/premium_toxic_floor.png',
+  premiumDesert:'assets/platforms/premium_desert_floor.png',
+  premiumLava:'assets/platforms/premium_lava_floor.png',
+  premiumIce:'assets/platforms/premium_ice_floor.png',
+  premiumNeon:'assets/platforms/premium_neon_floor.png'
 };
 const PLATFORM_ASSETS=Object.fromEntries(Object.entries(PLATFORM_ASSET_FILES).map(([k,src])=>[k,(()=>{const img=new Image();img.src=src;return img;})()]));
 const CLEAN_ASSET_CACHE=new WeakMap();
@@ -2635,14 +2651,14 @@ function platformImgFor(p,seed){
   const li=Math.min(levelNum,7);
   const wide=p.w>=112;
   const alt=platRng(seed,91)>.52;
-  if(li===0)return wide?(alt?PLATFORM_ASSETS.crystalBlue:PLATFORM_ASSETS.grassPremium):PLATFORM_ASSETS.grassCyan;
-  if(li===1)return wide?(alt?PLATFORM_ASSETS.techCrystal:PLATFORM_ASSETS.techLong):PLATFORM_ASSETS.purpleRound;
-  if(li===2)return wide?(alt?PLATFORM_ASSETS.stoneRuins:PLATFORM_ASSETS.crystalBlue):PLATFORM_ASSETS.purpleRound;
-  if(li===3)return wide?(alt?PLATFORM_ASSETS.desertProps:PLATFORM_ASSETS.desertClean):PLATFORM_ASSETS.stoneTall;
+  if(li===0)return wide?(alt?PLATFORM_ASSETS.premiumGrass:PLATFORM_ASSETS.grassPremium):PLATFORM_ASSETS.grassCyan;
+  if(li===1)return wide?(alt?PLATFORM_ASSETS.premiumCyber:PLATFORM_ASSETS.premiumNeon):PLATFORM_ASSETS.purpleRound;
+  if(li===2)return wide?(alt?PLATFORM_ASSETS.premiumArcane:PLATFORM_ASSETS.crystalBlue):PLATFORM_ASSETS.purpleRound;
+  if(li===3)return wide?(alt?PLATFORM_ASSETS.premiumDesert:PLATFORM_ASSETS.desertClean):PLATFORM_ASSETS.stoneTall;
   if(li===4)return wide?(alt?PLATFORM_ASSETS.jungleDecor:PLATFORM_ASSETS.grassVines):PLATFORM_ASSETS.grassSmall;
-  if(li===5)return wide?PLATFORM_ASSETS.lavaSquare:PLATFORM_ASSETS.lavaFlat;
-  if(li===6)return wide?(alt?PLATFORM_ASSETS.iceBlue:PLATFORM_ASSETS.crystalBlue):PLATFORM_ASSETS.iceBlue;
-  return wide?(alt?PLATFORM_ASSETS.grassUltra:PLATFORM_ASSETS.grassPremium):PLATFORM_ASSETS.grassRound;
+  if(li===5)return wide?PLATFORM_ASSETS.premiumLava:PLATFORM_ASSETS.lavaFlat;
+  if(li===6)return wide?(alt?PLATFORM_ASSETS.premiumIce:PLATFORM_ASSETS.iceBlue):PLATFORM_ASSETS.iceBlue;
+  return wide?(alt?PLATFORM_ASSETS.premiumToxic:PLATFORM_ASSETS.grassUltra):PLATFORM_ASSETS.grassRound;
 }
 function drawRealPlatformAsset(p,ox,shx,seed,bgt2){
   const rawImg=platformImgFor(p,seed);
@@ -2652,11 +2668,11 @@ function drawRealPlatformAsset(p,ox,shx,seed,bgt2){
   const x=Math.round(p.x-ox)+shx,py=p.y,pw=p.w;
   const wide=pw>=112;
   const ratio=ih/iw;
-  const dw=wide?Math.max(74,pw+28):Math.max(74,pw+42);
-  const minH=wide?30:48,maxH=wide?82:122;
+  const dw=wide?Math.max(86,pw+42):Math.max(82,pw+48);
+  const minH=wide?34:50,maxH=wide?92:126;
   const dh=Math.max(minH,Math.min(maxH,dw*ratio));
   const dx=x-(dw-pw)/2;
-  const dy=py-(wide?dh*.20:dh*.18);
+  const dy=py-(wide?dh*.23:dh*.20);
   ct.save();
   ct.globalAlpha=.28;ct.fillStyle='#000';ct.beginPath();ct.ellipse(x+pw/2,py+18,pw*.58,8,0,0,Math.PI*2);ct.fill();
   ct.globalAlpha=1;
@@ -3840,10 +3856,26 @@ function drawLaser(lb,ox){
 
 // ── MENU PREVIEW ─────────────────────────────────────────────
 function drawMenuPreview(){
-  const fr2=NOW/220%4|0,floatY=Math.sin(NOW*.002)*6;
-  ct.globalAlpha=.12;ct.fillStyle='#000';ct.beginPath();ct.ellipse(CW/2,CH*.78,18,4,0,0,Math.PI*2);ct.fill();ct.globalAlpha=1;
-  ct.save();ct.translate(CW/2-20,CH*.36+floatY);ct.scale(2,2);
+  const fr2=NOW/220%4|0,floatY=Math.sin(NOW*.002)*6,pulse=.5+.5*Math.sin(NOW*.004);
+  const floor=PLATFORM_ASSETS.premiumGrass||PLATFORM_ASSETS.grassPremium;
+  ct.save();
+  ct.globalAlpha=.9;
+  drawNeoCanvasWorld(0);
+  if(floor&&floor.naturalWidth){
+    const img=cleanLightMatteAsset(floor);
+    ct.globalAlpha=.96;ct.drawImage(img,78,266,250,92);
+    ct.globalAlpha=.78;ct.drawImage(img,368,246,176,70);
+  }
+  ct.globalAlpha=.32;ct.fillStyle='#000';ct.beginPath();ct.ellipse(178,318,28,6,0,0,Math.PI*2);ct.fill();
+  ct.globalAlpha=1;
+  ct.save();ct.translate(148,250+floatY*.35);ct.scale(1.35,1.35);
   drawAstronaut(0,0,true,false,(NOW/2000|0)%2===0&&gst==='menu'?1:0,false,fr2,1);
+  ct.restore();
+  for(let i=0;i<4;i++)drawCrystal({x:236+i*24,y:260+Math.sin(NOW*.004+i)*3,w:14,h:18,col:false,fr:0,ft:0},0);
+  drawBlob({x:408,y:251,w:28,h:24,walk:0,vy:0,stun:0,alive:true},0);
+  ct.globalAlpha=.82;drawBeacon(496,0);
+  ct.globalCompositeOperation='screen';
+  ct.fillStyle=`rgba(124,243,255,${.10+.06*pulse})`;ct.beginPath();ct.ellipse(CW/2,CH*.50,190,94,0,0,Math.PI*2);ct.fill();
   ct.restore();
 }
 
