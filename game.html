@@ -2,6 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="description" content="Modo 2.5D estable de Cosmo Kid: aventura espacial ligera para móvil y escritorio.">
 <meta name="mobile-web-app-capable" content="yes">
@@ -167,7 +169,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
 .hp-c{margin:12px 0 4px;background:rgba(0,60,90,.85);border:1.5px solid rgba(0,200,255,.45);color:#bfefff;font-size:.85rem;letter-spacing:2px;padding:10px 28px;border-radius:10px;cursor:pointer;font-family:monospace;min-height:48px}
 .hp-c:hover,.hp-c:active{background:rgba(0,110,160,.6);border-color:#00ccff}
 </style>
-<link rel="manifest" href="manifest.webmanifest?v=66">
+<link rel="manifest" href="manifest.webmanifest?v=67">
 <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
@@ -188,7 +190,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
   <canvas id="c" width="600" height="380"></canvas>
   <div id="ov">
     <div id="ov-t">COSMO KID</div>
-    <div id="ov-sub">Aventura Espacial · 8 Misiones · v66</div>
+    <div id="ov-sub">Aventura Espacial · 8 Misiones · v67</div>
     <div id="ov-hi"></div>
     <div id="ov-m"></div>
     <div id="ov-b"></div>
@@ -267,7 +269,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
   <span class="k">P</span> pausa
 </div>
 <button id="fs-btn" title="Pantalla completa">&#x26F6;</button>
-<a id="homeBtn" href="index.html?v=66">INICIO</a>
+<a id="homeBtn" href="index.html?v=67">INICIO</a>
 <div id="tc">
   <div id="joy-base"><div id="joy-knob"></div></div>
   <div class="tcb" id="tc-p">&#9646;&#9646;</div>
@@ -4486,7 +4488,7 @@ const ppP=e=>{e.preventDefault();tcpEl.classList.add('on');togglePause();hap(15)
 const ppR=e=>{e.preventDefault();tcpEl.classList.remove('on');};
 tcpEl.addEventListener('touchstart',ppP,{passive:false});tcpEl.addEventListener('touchend',ppR,{passive:false});
 tcpEl.addEventListener('mousedown',ppP);tcpEl.addEventListener('mouseup',ppR);
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=66').catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=67').catch(()=>{}));}
 </script>
 </body>
 </html>

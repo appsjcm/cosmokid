@@ -1,10 +1,10 @@
-const COSMO_CACHE = 'cosmo-kid-v66-premium-cover';
+const COSMO_CACHE = 'cosmo-kid-v67-ground-art';
 const CORE = [
   './',
-  './index.html?v=66',
-  './game.html?v=66',
+  './index.html?v=67',
+  './game.html?v=67',
 
-  './diagnostico.html?v=66',
+  './diagnostico.html?v=67',
   './manifest.webmanifest',
   './assets/cover/cosmokid_cover.png',
   './assets/cover/cosmokid_cover_mobile_v66.jpg',
@@ -138,6 +138,13 @@ const CORE = [
   './assets/mobile/platforms/004_plataformas_3d_tamanos_04_plataforma_mediana_cristales_azules.png',
   './assets/mobile/platforms/001_plataformas_3d_tamanos_01_plataforma_pequena_redonda_arcana.png',
   './assets/mobile/platforms/017_plataformas_separadas_plataforma_media_02.png',
+  './assets/platforms/ground_world_01_grass_crystal.png',
+  './assets/platforms/ground_world_02_blue_biolume.png',
+  './assets/platforms/ground_world_03_scifi.png',
+  './assets/platforms/ground_world_04_desert_ruins.png',
+  './assets/platforms/ground_world_05_toxic.png',
+  './assets/platforms/ground_world_06_lava.png',
+  './assets/platforms/ground_world_07_ice.png',
   './assets/mobile/traps/001_pack_trampas_cosmo_kid_01_trampa_pinchos_futurista.png',
   './assets/mobile/traps/002_pack_trampas_cosmo_kid_02_torreta_laser_horizontal.png',
   './assets/mobile/traps/003_pack_trampas_cosmo_kid_03_plataforma_trampa_holografica.png',
@@ -219,7 +226,7 @@ self.addEventListener('fetch', event => {
         const copy = res.clone();
         caches.open(COSMO_CACHE).then(cache => cache.put(req, copy));
         return res;
-    }).catch(() => caches.match(req).then(cached => cached || caches.match('./index.html?v=66')))
+    }).catch(() => caches.match(req).then(cached => cached || caches.match('./index.html?v=67')))
     );
     return;
   }
