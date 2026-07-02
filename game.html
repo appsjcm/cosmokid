@@ -130,6 +130,7 @@ body.fs-layout canvas{border:0;border-radius:0;box-shadow:none}
 :fullscreen #ov-t,:-webkit-full-screen #ov-t{font-size:3.5rem}
 :fullscreen #ov-btn,:-webkit-full-screen #ov-btn{max-width:340px;min-height:74px;font-size:1.25rem}
 :fullscreen canvas,:-webkit-full-screen canvas{border:0;border-radius:0;box-shadow:none}
+canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!important;object-fit:contain;background:#030815}
 /* Difficulty selector */
 #ov-diff{display:flex;gap:7px;justify-content:center;margin:2px 0 4px}
 .dbtn{flex:1;max-width:88px;min-height:44px;border-radius:10px;border:2px solid rgba(255,255,255,.18);background:rgba(0,8,30,.55);color:rgba(255,255,255,.7);font-size:.62rem;font-weight:bold;letter-spacing:.5px;cursor:pointer;font-family:monospace;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:all .12s;padding:4px 2px}
@@ -372,7 +373,8 @@ function requestFS(el){
   try{
     const f=el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen;
     if(f){
-      const r=f.call(el);
+      let r;
+      try{r=f.call(el,{navigationUI:'hide'});}catch(e){r=f.call(el);}
       if(r&&r.catch)r.catch(()=>setImmersive(true));
     }
   }catch(e){setImmersive(true);}
@@ -382,7 +384,7 @@ function exitFS(){
   try{const f=document.exitFullscreen||document.webkitExitFullscreen;if(f&&isFS())f.call(document);}catch(e){}
 }
 const fsBtn=document.getElementById('fs-btn');
-fsBtn.addEventListener('click',()=>{initAC();isImmersive()?exitFS():requestFS(document.documentElement);});
+fsBtn.addEventListener('click',()=>{initAC();isImmersive()?exitFS():requestFS(cv);});
 ['fullscreenchange','webkitfullscreenchange'].forEach(ev=>document.addEventListener(ev,()=>{
   const fs=isFS();
   if(!fs&&!fsWanted)setImmersive(false);
@@ -407,7 +409,7 @@ function resize(){
   wrap.style.width=(w+framePad)+'px';wrap.style.height=(h+framePad)+'px';
 }
 window.addEventListener('resize',resize);
-window.addEventListener('orientationchange',()=>setTimeout(()=>{resize();if(fsWanted&&!isFS())requestFS(document.documentElement);},400));
+window.addEventListener('orientationchange',()=>setTimeout(()=>{resize();if(fsWanted&&!isFS())requestFS(cv);},400));
 // Prevent default scroll/bounce (but allow scrolling inside the help overlay)
 document.addEventListener('touchmove',e=>{if(helpOv&&helpOv.classList.contains('on')&&helpOv.contains(e.target))return;e.preventDefault();},{passive:false});
 resize();
@@ -1600,7 +1602,7 @@ function pWin(){
 }
 function showEnd(title,col,msg,badge,btnTxt){gst='stop';ov.classList.remove('off');ovT.textContent=title;ovT.style.color=col;ovHi.textContent='';ovM.innerHTML=msg;ovB.textContent=badge;ovBtn.textContent=btnTxt;ovBtn.style.display='';ovDiff.style.display='none';helpOpenBtn.style.display='none';}
 function initGame(){
-  if(isTouchDevice&&!isFS())requestFS(document.documentElement);
+  if(isTouchDevice&&!isFS())requestFS(cv);
   score=0;coins=0;lives=df().lives;levelNum=0;nextLvlReady=false;cpX=-1;comboMult=1;comboTimer=0;levelEndTime=0;
   runKills=0;runMaxCombo=1;
   hdiffEl.textContent=df().nm;hdiffEl.style.color=df().col;
@@ -4188,7 +4190,7 @@ ovBtn.addEventListener('click',()=>{
     setHUD();updatePwrHUD();showBanner(LEVEL_NAMES[levelNum]);
     lvCountdown=180;lvGoTimer=0;
     musicBeat=0;if(AC)musicNextT=AC.currentTime;if(!musicActive)startMusic();
-    if(isTouchDevice&&!isFS())requestFS(document.documentElement);
+    if(isTouchDevice&&!isFS())requestFS(cv);
     return;
   }
   nextLvlReady=false;ovT.style.color='#00ccff';initGame();
