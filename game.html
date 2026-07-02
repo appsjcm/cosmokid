@@ -444,7 +444,7 @@ document.getElementById('help-close').addEventListener('click',e=>{e.stopPropaga
 let gst='menu',score=0,coins=0,lives=3,tLeft=300,levelEndTime=0;
 let bonusRoom=null;
 let camX=0,tAccum=0,dTimer=0,wTimer=0;
-let lvCountdown=0,lvGoTimer=0;
+let lvCountdown=0,lvGoTimer=0,lowTimeWarned=false;
 let player,enemies,coinList,blkList,powerUps,lasers,parts,lvData;
 let levelNum=0,lw=3600,nextLvlReady=false;
 let cpX=-1; // checkpoint respawn X (-1 = none)
@@ -1528,10 +1528,10 @@ function initGame(){
   lvCountdown=180;lvGoTimer=0;startMusic();
 }
 function resetRound(){
-  camX=0;tAccum=0;dTimer=0;wTimer=0;tLeft=Math.round(LEVEL_TIME[levelNum]*df().tsc);comboMult=1;comboTimer=0;lvNoHit=true;
+  camX=0;tAccum=0;dTimer=0;wTimer=0;tLeft=Math.round(LEVEL_TIME[levelNum]*df().tsc);comboMult=1;comboTimer=0;lvNoHit=true;lowTimeWarned=false;
   bonusRoom=null;
   player=mkPlayer();
-  if(cpX>=0){player.x=cpX;camX=Math.max(0,Math.min(lw-CW,cpX-CW*.38));}
+  if(cpX>=0){player.x=cpX;camX=Math.max(0,Math.min(lw-CW,cpX-CW*.38));showBanner('CHECKPOINT RESTAURADO');}
   enemies=mkEnemies(lvData.ens);
   coinList=lvData.cns.map(c=>({...c,col:false,fr:0,ft:0}));
   blkList=lvData.blks.map(b=>({...b,hit:false,bh:0}));
@@ -1631,7 +1631,8 @@ function update(){
   if(bonusRoom){updateBonusRoom();return;}
   if(++tAccum>=60){
     tAccum=0;if(lvCountdown<=0){tLeft=Math.max(0,tLeft-1);htEl.textContent=Math.ceil(tLeft);
-      if(tLeft===30)SFX.warn();
+      if(tLeft===30){SFX.warn();showBanner('POCO TIEMPO!');lowTimeWarned=true;}
+      if(!lowTimeWarned&&tLeft<=30&&tLeft>0){showBanner('POCO TIEMPO!');lowTimeWarned=true;}
       if(tLeft>0&&tLeft<=10)SFX.warn();
       htEl.style.color=tLeft<=10&&tLeft>0?'#ff3333':tLeft<=30&&tLeft>0?'#ff8833':'';
       htEl.classList.toggle('warn',tLeft<=10&&tLeft>0);
@@ -1778,6 +1779,7 @@ function update(){
     for(const cp of lvData.checkpts){
       if(!cp.active&&hit(player,{x:cp.x,y:GY-54,w:32,h:54})){
         cp.active=true;cpX=cp.x+8;SFX.cp();shake(2);hap(35);
+        showBanner('CHECKPOINT GUARDADO');
         parts.push(new TextPop(cp.x+16,GY-60,'CHECKPOINT!','#ffee22'));
         for(let i=0;i<14;i++){const a=Math.PI*2*i/14;parts.push(new Pop(cp.x+16,GY-30,Math.cos(a)*5,Math.sin(a)*5-4,i%3===0?'#ffee22':i%3===1?'#00ff88':'#00ccff',32));}
       }
