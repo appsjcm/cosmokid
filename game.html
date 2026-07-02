@@ -2006,8 +2006,6 @@ function chooseAstronautAnim(p){
   return{anim:'idle',frame:(NOW/170|0)};
 }
 function pickCraterAsset(p){
-  const flat=CRATER_FLAT_ASSETS[Math.abs(((p.x*19+p.y*23)|0))%CRATER_FLAT_ASSETS.length];
-  if(flat&&flat.complete&&flat.naturalWidth)return flat;
   return CRATER_ASSETS[Math.abs(((p.x*19+p.y*23)|0))%CRATER_ASSETS.length];
 }
 function drawRealCraterAsset(p,x,y,w,h){
@@ -2015,12 +2013,11 @@ function drawRealCraterAsset(p,x,y,w,h){
   if(!rawImg||!rawImg.complete||!rawImg.naturalWidth)return false;
   const img=cleanLightMatteAsset(rawImg);
   const bonus=p.bonus&&!p.used,pulse=.5+.5*Math.sin(NOW*.008+p.x*.02);
-  const isFlat=rawImg.src&&rawImg.src.includes('/craters_flat/');
-  const dw=isFlat?w*2.18:w*1.62;
+  const dw=w*1.62;
   const iw=img.naturalWidth||img.width,ih=img.naturalHeight||img.height;
-  const dh=isFlat?Math.max(28,w*.72):Math.min(h*1.08,dw*(ih/iw));
-  const dx=x+w/2-dw/2,dy=isFlat?y+h-dh+2:y+h-dh+2;
-  const sx=isFlat?0:0,sy=isFlat?360:0,sw=iw,sh=isFlat?560:ih;
+  const dh=Math.min(h*1.08,dw*(ih/iw));
+  const dx=x+w/2-dw/2,dy=y+h-dh+2;
+  const sx=0,sy=0,sw=iw,sh=ih;
   ct.save();
   ct.globalAlpha=.32;ct.fillStyle='#000';ct.beginPath();ct.ellipse(x+w/2,y+h+4,w*.98,7,0,0,Math.PI*2);ct.fill();ct.globalAlpha=1;
   if(bonus){
