@@ -116,11 +116,14 @@ body.touch #ov-btn{max-width:310px}
 }
 body.touch h1{display:none}
 /* Fullscreen */
-:fullscreen h1,:fullscreen #ctrl,:-webkit-full-screen h1,:-webkit-full-screen #ctrl{display:none!important}
-:fullscreen #hud,:-webkit-full-screen #hud{margin-bottom:3px}
+:fullscreen,:-webkit-full-screen{background:#020611!important}
+:fullscreen body,:-webkit-full-screen body{width:100vw;height:100vh;margin:0;overflow:hidden;justify-content:center}
+:fullscreen h1,:fullscreen #ctrl,:fullscreen #hud,:-webkit-full-screen h1,:-webkit-full-screen #ctrl,:-webkit-full-screen #hud{display:none!important}
+:fullscreen #wrap,:-webkit-full-screen #wrap{padding:0;border-radius:0;background:#030815;box-shadow:none}
+:fullscreen #ov,:-webkit-full-screen #ov{inset:0;border-radius:0}
 :fullscreen #ov-t,:-webkit-full-screen #ov-t{font-size:3.5rem}
 :fullscreen #ov-btn,:-webkit-full-screen #ov-btn{max-width:340px;min-height:74px;font-size:1.25rem}
-:fullscreen canvas,:-webkit-full-screen canvas{border-color:transparent;box-shadow:none}
+:fullscreen canvas,:-webkit-full-screen canvas{border:0;border-radius:0;box-shadow:none}
 /* Difficulty selector */
 #ov-diff{display:flex;gap:7px;justify-content:center;margin:2px 0 4px}
 .dbtn{flex:1;max-width:88px;min-height:44px;border-radius:10px;border:2px solid rgba(255,255,255,.18);background:rgba(0,8,30,.55);color:rgba(255,255,255,.7);font-size:.62rem;font-weight:bold;letter-spacing:.5px;cursor:pointer;font-family:monospace;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:all .12s;padding:4px 2px}
@@ -370,9 +373,14 @@ function resize(){
   const topH=fs?0:(isTouchDevice&&land?30:isTouchDevice?8:118);
   const botH=isTouchDevice&&!land?120:0;
   const sidePad=isTouchDevice&&land?196:0; // room for side controls
-  const maxS=fs?3.5:land&&isTouchDevice?2.2:1.6;
-  const s=Math.min((innerWidth-4-sidePad)/CW,(innerHeight-topH-botH)/CH,maxS);
-  cv.style.width=CW*s+'px';cv.style.height=CH*s+'px';wrap.style.width=CW*s+'px';
+  const maxS=fs?Infinity:land&&isTouchDevice?2.2:1.6;
+  const pad=fs?0:4;
+  const availW=Math.max(1,innerWidth-pad-sidePad),availH=Math.max(1,innerHeight-topH-botH-pad);
+  const s=Math.min(availW/CW,availH/CH,maxS);
+  const w=Math.floor(CW*s),h=Math.floor(CH*s);
+  cv.style.width=w+'px';cv.style.height=h+'px';
+  const framePad=fs?0:10;
+  wrap.style.width=(w+framePad)+'px';wrap.style.height=(h+framePad)+'px';
 }
 window.addEventListener('resize',resize);
 window.addEventListener('orientationchange',()=>setTimeout(()=>{resize();if(fsWanted&&!isFS())requestFS(document.documentElement);},400));
