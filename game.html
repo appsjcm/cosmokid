@@ -116,6 +116,12 @@ body.touch #ov-btn{max-width:310px}
 }
 body.touch h1{display:none}
 /* Fullscreen */
+:root{background:#020611}
+body.fs-layout{width:100vw;height:100vh;margin:0;overflow:hidden;justify-content:center;padding:0!important}
+body.fs-layout h1,body.fs-layout #ctrl,body.fs-layout #hud{display:none!important}
+body.fs-layout #wrap{padding:0;border-radius:0;background:#030815;box-shadow:none}
+body.fs-layout #ov{inset:0;border-radius:0}
+body.fs-layout canvas{border:0;border-radius:0;box-shadow:none}
 :fullscreen,:-webkit-full-screen{background:#020611!important}
 :fullscreen body,:-webkit-full-screen body{width:100vw;height:100vh;margin:0;overflow:hidden;justify-content:center}
 :fullscreen h1,:fullscreen #ctrl,:fullscreen #hud,:-webkit-full-screen h1,:-webkit-full-screen #ctrl,:-webkit-full-screen #hud{display:none!important}
@@ -354,21 +360,39 @@ function shake(n){shk=Math.max(shk,n);}
 // ── FULLSCREEN ──────────────────────────────────────────────
 let fsWanted=false;
 function isFS(){return!!(document.fullscreenElement||document.webkitFullscreenElement);}
-function requestFS(el){try{const f=el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen;if(f){f.call(el);fsWanted=true;}}catch(e){}}
-function exitFS(){try{const f=document.exitFullscreen||document.webkitExitFullscreen;if(f){f.call(document);fsWanted=false;}}catch(e){}}
-const fsBtn=document.getElementById('fs-btn');
-fsBtn.addEventListener('click',()=>{initAC();isFS()?exitFS():requestFS(document.documentElement);});
-['fullscreenchange','webkitfullscreenchange'].forEach(ev=>document.addEventListener(ev,()=>{
-  const fs=isFS();if(!fs&&fsWanted)fsWanted=false;
-  fsBtn.innerHTML=fs?'&#x2715;':'&#x26F6;';
-  fsBtn.style.opacity=fs?.45:1;
+function isImmersive(){return isFS()||document.body.classList.contains('fs-layout');}
+function setImmersive(on){
+  document.body.classList.toggle('fs-layout',!!on);
+  fsBtn.innerHTML=on?'&#x2715;':'&#x26F6;';
+  fsBtn.style.opacity=on?.55:1;
   resize();
+}
+function requestFS(el){
+  fsWanted=true;setImmersive(true);
+  try{
+    const f=el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen;
+    if(f){
+      const r=f.call(el);
+      if(r&&r.catch)r.catch(()=>setImmersive(true));
+    }
+  }catch(e){setImmersive(true);}
+}
+function exitFS(){
+  fsWanted=false;setImmersive(false);
+  try{const f=document.exitFullscreen||document.webkitExitFullscreen;if(f&&isFS())f.call(document);}catch(e){}
+}
+const fsBtn=document.getElementById('fs-btn');
+fsBtn.addEventListener('click',()=>{initAC();isImmersive()?exitFS():requestFS(document.documentElement);});
+['fullscreenchange','webkitfullscreenchange'].forEach(ev=>document.addEventListener(ev,()=>{
+  const fs=isFS();
+  if(!fs&&!fsWanted)setImmersive(false);
+  else setImmersive(fs||fsWanted);
 }));
 
 // ── RESIZE ──────────────────────────────────────────────────
 let tcH=0,isTouchDevice=false;
 function resize(){
-  const fs=isFS();
+  const fs=isImmersive();
   const land=innerWidth>innerHeight;
   const topH=fs?0:(isTouchDevice&&land?30:isTouchDevice?8:118);
   const botH=isTouchDevice&&!land?120:0;
