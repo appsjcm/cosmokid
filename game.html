@@ -489,6 +489,13 @@ const PC_PARALLAX_PATHS=[
   PC_ASSET_ROOT+'parallax_foregrounds/006_bosque_alienigena_bioluminiscente_flotante.png'
 ];
 const PC_PARALLAX_ASSETS=PC_PARALLAX_PATHS.map(src=>{const img=new Image();img.src=src;return img;});
+const GOAL_ASSET_FILES={
+  flag:PC_ASSET_ROOT+'objects/001_pack_final_nivel_2d_lateral_bandera_de_meta_futurista_con_luz.png',
+  pad:PC_ASSET_ROOT+'objects/003_pack_final_nivel_2d_lateral_plataforma_de_teletransportacion_futurista.png',
+  portal:PC_ASSET_ROOT+'objects/004_pack_final_nivel_2d_lateral_portal_cosmico_de_energia_dinamica.png',
+  exit:PC_ASSET_ROOT+'objects/005_pack_final_nivel_2d_lateral_portal_futurista_con_senal_de_salida.png'
+};
+const GOAL_ASSETS=Object.fromEntries(Object.entries(GOAL_ASSET_FILES).map(([k,src])=>[k,(()=>{const img=new Image();img.src=src;return img;})()]));
 const ROCK_ASSET_PATHS=Array.from({length:15},(_,i)=>'assets/rocks/roca_'+String(i+1).padStart(2,'0')+'.png');
 const ROCK_ASSETS=ROCK_ASSET_PATHS.map(src=>{const img=new Image();img.src=src;return img;});
 const CRATER_ASSET_PATHS=Array.from({length:12},(_,i)=>PC_ASSET_ROOT+'craters/'+String(i+1).padStart(3,'0')+'_crateres_separados_crater_'+String(i+1).padStart(2,'0')+'.png');
@@ -2162,6 +2169,25 @@ function drawPremiumWorldBG(){
   for(let i=1;i<=7;i++){const t=i/7,ty=GY+(CH-GY)*t*t;ct.globalAlpha=.08*(1-t*.55);ct.beginPath();ct.moveTo(0,ty);ct.lineTo(CW,ty);ct.stroke();}
   ct.restore();ct.globalAlpha=1;
 
+  const fgFloor=PC_PARALLAX_ASSETS[li];
+  if(fgFloor&&fgFloor.complete&&fgFloor.naturalWidth){
+    ct.save();
+    const floorProg=Math.max(0,Math.min(1,(camX*.82)/Math.max(1,lw-CW)));
+    ct.globalAlpha=.34;
+    ct.filter='saturate(1.16) contrast(1.08) brightness(.82)';
+    ct.beginPath();ct.rect(0,GY-74,CW,CH-GY+78);ct.clip();
+    drawImageCover(fgFloor,0,GY-112,CW,164,floorProg);
+    ct.filter='none';
+    const fade=ct.createLinearGradient(0,GY-76,0,CH);
+    fade.addColorStop(0,'rgba(0,0,0,.35)');
+    fade.addColorStop(.36,'rgba(0,0,0,0)');
+    fade.addColorStop(1,'rgba(0,0,0,.55)');
+    ct.fillStyle=fade;ct.fillRect(0,GY-76,CW,CH-GY+76);
+    ct.restore();
+    ct.shadowColor=edge;ct.shadowBlur=12;ct.strokeStyle=`rgba(180,245,255,.34)`;ct.lineWidth=1.5;
+    ct.beginPath();ct.moveTo(0,GY-.5);ct.lineTo(CW,GY-.5);ct.stroke();ct.shadowBlur=0;ct.lineWidth=1;
+  }
+
   const vign=ct.createRadialGradient(CW/2,CH*.46,40,CW/2,CH*.5,Math.max(CW,CH)*.72);
   vign.addColorStop(0,'rgba(0,0,0,0)');
   vign.addColorStop(.72,'rgba(0,0,0,.06)');
@@ -3132,7 +3158,41 @@ function drawSpring(sp,ox){
 }
 
 // ── BEACON / GOAL ────────────────────────────────────────────
+function goalImg(name){
+  const img=GOAL_ASSETS[name];
+  return img&&img.complete&&img.naturalWidth?cleanLightMatteAsset(img):null;
+}
+function drawGoalAsset(fx,ox){
+  const portal=goalImg('portal')||goalImg('exit'),pad=goalImg('pad'),flag=goalImg('flag');
+  if(!portal||!pad||!flag)return false;
+  const x=Math.round(fx-ox),pulse=.5+.5*Math.sin(NOW*.006),baseY=GY+4;
+  ct.save();
+  ct.globalAlpha=.32;ct.fillStyle='#000';ct.shadowColor='rgba(0,0,0,.55)';ct.shadowBlur=12;
+  ct.beginPath();ct.ellipse(x+28,baseY-2,58,10,0,0,Math.PI*2);ct.fill();ct.shadowBlur=0;ct.globalAlpha=1;
+  ct.globalCompositeOperation='screen';
+  ct.shadowColor='#7cf3ff';ct.shadowBlur=24+12*pulse;
+  ct.fillStyle=`rgba(124,243,255,${.10+.08*pulse})`;
+  ct.beginPath();ct.ellipse(x+30,GY-48,54+8*pulse,40+6*pulse,0,0,Math.PI*2);ct.fill();
+  ct.globalCompositeOperation='source-over';
+  ct.filter='drop-shadow(0 8px 9px rgba(0,0,0,.48)) saturate(1.1) contrast(1.04)';
+  ct.drawImage(pad,x-26,GY-56,112,86);
+  ct.drawImage(portal,x-9,GY-112,82,112);
+  ct.drawImage(flag,x+46,GY-98,58,82);
+  ct.filter='none';
+  ct.globalCompositeOperation='screen';
+  ct.strokeStyle=`rgba(124,243,255,${.64+.25*pulse})`;ct.lineWidth=2.4;ct.shadowColor='#7cf3ff';ct.shadowBlur=16;
+  ct.beginPath();ct.ellipse(x+32,GY-54,31+4*pulse,42+5*pulse,0,0,Math.PI*2);ct.stroke();
+  ct.strokeStyle=`rgba(255,230,107,${.35+.25*pulse})`;ct.lineWidth=1.5;
+  ct.beginPath();ct.ellipse(x+32,GY-54,45+7*pulse,54+7*pulse,0,0,Math.PI*2);ct.stroke();
+  ct.globalCompositeOperation='source-over';ct.shadowBlur=0;
+  ct.fillStyle='rgba(1,7,18,.78)';rr(x+4,GY-127,70,15,7);ct.fill();
+  ct.shadowColor='#7cffaa';ct.shadowBlur=8;ct.fillStyle='#dffbff';ct.font='bold 9px monospace';ct.textAlign='center';ct.textBaseline='middle';
+  ct.fillText('META',x+39,GY-119);ct.shadowBlur=0;
+  ct.restore();
+  return true;
+}
 function drawBeacon(fx,ox){
+  if(drawGoalAsset(fx,ox))return;
   const x=Math.round(fx-ox);
   const cx2=x+28,bot=GY,pw=26,ph=38;
   const pulse=.5+.5*Math.sin(NOW*.005);
