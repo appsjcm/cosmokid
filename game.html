@@ -657,7 +657,7 @@ function prepareTraps(){
     else if(m===3)traps.push({kind:'laser',asset:1,x,y:GY-74,w:58,h:46,phase:i*53,dir:i%2?1:-1,armed:true});
     else traps.push({kind:'rockfall',asset:7,x,y:72+(i%3)*18,w:48,h:58,phase:i*31,baseY:72+(i%3)*18,armed:true,falling:false,vy:0});
   }
-  lvData.traps=traps;
+  lvData.traps=sortByWorldPos(traps);
 }
 function updatePwrHUD(){
   if(!player){hpwrEl.textContent='-';hpwrEl.style.color='#aaa';return;}
@@ -1210,7 +1210,24 @@ function buildLevel6(){return buildLvGen(6400,3.2,3.7);}
 function buildLevel7(){return buildLvGen(7000,3.6,4.9);}
 function buildLevel8(){return buildLvGen(7600,3.9,0.7,true,12);}
 
-const LV_BUILDERS=[buildLevel1,buildLevel2,buildLevel3,buildLevel4,buildLevel5,buildLevel6,buildLevel7,buildLevel8];
+function sortByWorldPos(list){
+  return (list||[]).sort((a,b)=>(a.x??0)-(b.x??0)||(a.y??0)-(b.y??0)||(a.t||a.kind||'').localeCompare(b.t||b.kind||''));
+}
+function organizeLevelData(lv){
+  if(!lv)return lv;
+  ['plats','movPlats','blks','cns','tubes','checkpts','springs','spikes','bushes','traps'].forEach(k=>{
+    if(Array.isArray(lv[k]))lv[k]=sortByWorldPos(lv[k]);
+  });
+  if(Array.isArray(lv.ens)){
+    const enemyRank={g:1,r:2,k:3,h:4,m:5,f:6,v:7,s:8};
+    lv.ens.sort((a,b)=>(a.x??0)-(b.x??0)||(enemyRank[a.t]||99)-(enemyRank[b.t]||99));
+  }
+  if(Array.isArray(lv.checkpts))lv.checkpts.forEach(cp=>{cp.active=false;});
+  lv.flagX=Math.max(420,Math.min(lv.flagX||lv.lw-130,(lv.lw||3600)-120));
+  return lv;
+}
+const RAW_LV_BUILDERS=[buildLevel1,buildLevel2,buildLevel3,buildLevel4,buildLevel5,buildLevel6,buildLevel7,buildLevel8];
+const LV_BUILDERS=RAW_LV_BUILDERS.map(build=>()=>organizeLevelData(build()));
 
 // ── FACTORIES ───────────────────────────────────────────────
 function mkPlayer(){return{x:60,y:GY-34,w:20,h:34,vx:0,vy:0,dir:1,onG:false,coy:0,jBuf:0,jHeld:false,crouch:false,pwr:false,fire:false,star:0,fr:0,ft:0,inv:0,dead:false,dvy:-11,goal:false,fireCool:0,djump:0,shield:false,wallDir:0,slide:0,pounding:false,poundImpact:0,dashCool:0,dashTimer:0,dashDir:1,lastTapDir:0,lastTapT:0,hidden:false};}
@@ -1578,20 +1595,23 @@ function startBonusRoom(crater){
     const row=i<10?0:1, col=i%10;
     coins.push({x:48+col*28,y:84+row*44+(col%2)*8,w:14,h:18,col:false,fr:0,ft:0});
   }
+  const traps=sortByWorldPos([
+    {kind:'mine',x:124,y:156,w:36,h:36,baseY:156,phase:0},
+    {kind:'mine',x:240,y:136,w:34,h:34,baseY:136,phase:80},
+    {kind:'laser',x:78,y:126,w:202,h:7,phase:36},
+    {kind:'vent',x:166,y:232,w:42,h:52,phase:20}
+  ]);
+  const key={x:194,y:74,w:18,h:18,col:false};
+  const exit={x:300,y:198,w:48,h:74};
   bonusRoom={
     crater,
     returnX:crater.x+crater.w/2-player.w/2,
     returnY:Math.max(20,crater.y-player.h-2),
     px:34,py:206,pvx:0,pvy:0,onG:false,jBuf:0,
-    coins,
-    key:{x:194,y:74,w:18,h:18,col:false},
-    traps:[
-      {kind:'mine',x:124,y:156,w:36,h:36,baseY:156,phase:0},
-      {kind:'mine',x:240,y:136,w:34,h:34,baseY:136,phase:80},
-      {kind:'laser',x:78,y:126,w:202,h:7,phase:36},
-      {kind:'vent',x:166,y:232,w:42,h:52,phase:20}
-    ],
-    exit:{x:300,y:198,w:48,h:74},
+    coins:sortByWorldPos(coins),
+    key,
+    traps,
+    exit,
     t:0,time:30*60,fail:false,inv:0
   };
   SFX.cp(); shake(3); hap(30);
