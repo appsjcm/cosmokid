@@ -496,26 +496,26 @@ const CRATER_ASSETS=CRATER_ASSET_PATHS.map(src=>{const img=new Image();img.src=s
 const CRATER_FLAT_ASSET_PATHS=Array.from({length:12},(_,i)=>'assets/craters_flat/crater_plano_'+String(i+1).padStart(2,'0')+'.png');
 const CRATER_FLAT_ASSETS=CRATER_FLAT_ASSET_PATHS.map(src=>{const img=new Image();img.src=src;return img;});
 const PLATFORM_ASSET_FILES={
-  techLong:PC_ASSET_ROOT+'platforms/021_suelos_perspectiva_pack_01_plataforma_futurista_cibernetica_iluminada.png',
-  techCrystal:PC_ASSET_ROOT+'platforms/028_suelos_perspectiva_pack_08_plataforma_futurista_con_luces_neon.png',
-  grassSoft:PC_ASSET_ROOT+'platforms/023_suelos_perspectiva_pack_03_plataforma_de_hierba_detallada_con_rocas.png',
-  grassClean:PC_ASSET_ROOT+'platforms/005_plataformas_3d_tamanos_05_plataforma_larga_hierba_roca.png',
-  grassPremium:PC_ASSET_ROOT+'platforms/006_plataformas_3d_tamanos_06_plataforma_extra_larga_hierba.png',
-  grassVines:PC_ASSET_ROOT+'platforms/024_suelos_perspectiva_pack_04_plataforma_alienigena_con_slime_toxico.png',
-  grassUltra:PC_ASSET_ROOT+'platforms/023_suelos_perspectiva_pack_03_plataforma_de_hierba_detallada_con_rocas.png',
-  desertClean:PC_ASSET_ROOT+'platforms/025_suelos_perspectiva_pack_05_plataforma_rocosa_en_un_desierto.png',
-  desertProps:PC_ASSET_ROOT+'platforms/010_plataformas_3d_tamanos_10_plataforma_larga_desertica.png',
-  crystalBlue:PC_ASSET_ROOT+'platforms/027_suelos_perspectiva_pack_07_plataforma_de_hielo_con_cristales.png',
-  stoneRuins:PC_ASSET_ROOT+'platforms/022_suelos_perspectiva_pack_02_plataforma_magica_futurista_en_perspectiva.png',
-  jungleDecor:PC_ASSET_ROOT+'platforms/007_plataformas_3d_tamanos_07_plataforma_grande_alien_teal.png',
-  lavaFlat:PC_ASSET_ROOT+'platforms/008_plataformas_3d_tamanos_08_plataforma_mediana_volcanica.png',
-  lavaSquare:PC_ASSET_ROOT+'platforms/026_suelos_perspectiva_pack_06_plataforma_volcanica_iluminada_en_lava.png',
-  iceBlue:PC_ASSET_ROOT+'platforms/027_suelos_perspectiva_pack_07_plataforma_de_hielo_con_cristales.png',
-  grassRound:PC_ASSET_ROOT+'platforms/003_plataformas_3d_tamanos_03_plataforma_mediana_hierba.png',
-  grassSmall:PC_ASSET_ROOT+'platforms/002_plataformas_3d_tamanos_02_plataforma_pequena_musgo.png',
-  grassCyan:PC_ASSET_ROOT+'platforms/004_plataformas_3d_tamanos_04_plataforma_mediana_cristales_azules.png',
-  purpleRound:PC_ASSET_ROOT+'platforms/001_plataformas_3d_tamanos_01_plataforma_pequena_redonda_arcana.png',
-  stoneTall:PC_ASSET_ROOT+'platforms/017_plataformas_separadas_plataforma_media_02.png'
+  techLong:'assets/platforms/tech_long.png',
+  techCrystal:'assets/platforms/crystal_tech_long.png',
+  grassSoft:'assets/platforms/grass_long_soft.png',
+  grassClean:'assets/platforms/grass_long_clean.png',
+  grassPremium:'assets/platforms/grass_long_premium.png',
+  grassVines:'assets/platforms/grass_long_vines.png',
+  grassUltra:'assets/platforms/grass_ultra_long.png',
+  desertClean:'assets/platforms/desert_long_clean.png',
+  desertProps:'assets/platforms/desert_long_props.png',
+  crystalBlue:'assets/platforms/crystal_long_blue.png',
+  stoneRuins:'assets/platforms/stone_long_ruins.png',
+  jungleDecor:'assets/platforms/jungle_long_decor.png',
+  lavaFlat:'assets/platforms/lava_island_flat.png',
+  lavaSquare:'assets/platforms/lava_island_square.png',
+  iceBlue:'assets/platforms/ice_island_blue.png',
+  grassRound:'assets/platforms/grass_island_round.png',
+  grassSmall:'assets/platforms/grass_island_small.png',
+  grassCyan:'assets/platforms/grass_island_cyan.png',
+  purpleRound:'assets/platforms/purple_island_round.png',
+  stoneTall:'assets/platforms/stone_tall.png'
 };
 const PLATFORM_ASSETS=Object.fromEntries(Object.entries(PLATFORM_ASSET_FILES).map(([k,src])=>[k,(()=>{const img=new Image();img.src=src;return img;})()]));
 const CLEAN_ASSET_CACHE=new WeakMap();
@@ -530,7 +530,7 @@ function cleanLightMatteAsset(img){
     const id=cx2.getImageData(0,0,w,h),d=id.data,seen=new Uint8Array(w*h),q=[];
     const isMatte=i=>{
       const p=i*4,r=d[p],g=d[p+1],b=d[p+2],a=d[p+3],mx=Math.max(r,g,b),mn=Math.min(r,g,b);
-      return a>0&&mn>184&&mx>204&&mx-mn<44;
+      return a>0&&mn>150&&mx>168&&mx-mn<72;
     };
     const push=i=>{if(i>=0&&i<w*h&&!seen[i]&&isMatte(i)){seen[i]=1;q.push(i);}};
     for(let x=0;x<w;x++){push(x);push((h-1)*w+x);}
