@@ -897,9 +897,9 @@ const ASTRONAUT_ASSETS={right:{},left:{}};
 // ── ALIEN SPRITES ────────────────────────────────────────────
 function loadPcSheet(path){const img=new Image();img.src=PC_ASSET_ROOT+path;return img;}
 const ALIEN_ANIM_META={
-  reptil:{folder:'alien_walker',keys:{idle:'idle',walk:'walk',hurt:'hurt',death:'death',attack:'attack_projectile'},counts:{idle:4,walk:6,hurt:3,death:5,attack:5}},
-  medusa:{folder:'alien_floater',keys:{idle:'idle',move:'float_move',hurt:'hurt',death:'death',attack:'attack_projectile'},counts:{idle:4,move:6,hurt:3,death:5,attack:5}},
-  volador:{folder:'alien_flyer',keys:{idle:'idle',move:'fly_move',hurt:'hurt',death:'death',attack:'attack_projectile'},counts:{idle:4,move:6,hurt:3,death:5,attack:5}}
+  reptil:{folder:'alien_walker',keys:{idle:'idle',walk:'walk',hurt:'hurt',death:'death',attack:'attack_projectile'},counts:{idle:3,walk:6,hurt:2,death:5,attack:5}},
+  medusa:{folder:'alien_floater',keys:{idle:'idle',move:'float_move',hurt:'hurt',death:'death',attack:'attack_projectile'},counts:{idle:3,move:5,hurt:3,death:5,attack:5}},
+  volador:{folder:'alien_flyer',keys:{idle:'idle',move:'fly_move',hurt:'hurt',death:'death',attack:'attack_projectile'},counts:{idle:4,move:6,hurt:3,death:4,attack:5}}
 };
 const ALIEN_SHEETS={};
 Object.entries(ALIEN_ANIM_META).forEach(([type,meta])=>{
