@@ -1,10 +1,10 @@
-const COSMO_CACHE = 'cosmo-kid-v74-mobile-fullscreen';
+const COSMO_CACHE = 'cosmo-kid-v75-crater-align';
 const CORE = [
   './',
-  './index.html?v=74',
-  './game.html?v=74',
+  './index.html?v=75',
+  './game.html?v=75',
 
-  './diagnostico.html?v=74',
+  './diagnostico.html?v=75',
   './manifest.webmanifest',
   './assets/cover/cosmokid_cover.png',
   './assets/cover/cosmokid_cover_premium_wide.jpg',
@@ -228,7 +228,7 @@ self.addEventListener('fetch', event => {
         const copy = res.clone();
         caches.open(COSMO_CACHE).then(cache => cache.put(req, copy));
         return res;
-    }).catch(() => caches.match(req).then(cached => cached || caches.match('./game.html?v=74')))
+    }).catch(() => caches.match(req).then(cached => cached || caches.match('./game.html?v=75')))
     );
     return;
   }
