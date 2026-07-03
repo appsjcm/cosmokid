@@ -1,15 +1,17 @@
-const COSMO_CACHE = 'cosmo-kid-v72-premium-crouch';
+const COSMO_CACHE = 'cosmo-kid-v73-premium-touch';
 const CORE = [
   './',
-  './index.html?v=72',
-  './game.html?v=72',
+  './index.html?v=73',
+  './game.html?v=73',
 
-  './diagnostico.html?v=72',
+  './diagnostico.html?v=73',
   './manifest.webmanifest',
   './assets/cover/cosmokid_cover.png',
-  './assets/cover/cosmokid_cover_mobile_v66.jpg',
-  './assets/cover/cosmokid_cover_wide_v66.jpg',
+  './assets/cover/cosmokid_cover_premium_wide.jpg',
+  './assets/cover/cosmokid_cover_premium_mobile.jpg',
+  './assets/cover/cosmokid_cover_premium_banner.jpg',
   './assets/icons/icon-192.png',
+  './assets/icons/icon-512.png',
   './assets/icons/icon-512.png',
   './assets/rocks/roca_01.png',
   './assets/rocks/roca_02.png',
@@ -226,7 +228,7 @@ self.addEventListener('fetch', event => {
         const copy = res.clone();
         caches.open(COSMO_CACHE).then(cache => cache.put(req, copy));
         return res;
-    }).catch(() => caches.match(req).then(cached => cached || caches.match('./index.html?v=72')))
+    }).catch(() => caches.match(req).then(cached => cached || caches.match('./game.html?v=73')))
     );
     return;
   }
