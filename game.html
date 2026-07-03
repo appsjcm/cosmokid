@@ -897,9 +897,9 @@ const ASTRONAUT_ASSETS={right:{},left:{}};
 // ── ALIEN SPRITES ────────────────────────────────────────────
 function loadPcSheet(path){const img=new Image();img.src=PC_ASSET_ROOT+path;return img;}
 const ALIEN_ANIM_META={
-  reptil:{folder:'alien_walker',keys:{idle:'idle',walk:'walk',hurt:'hurt',death:'death'},counts:{idle:4,walk:6,hurt:3,death:5}},
-  medusa:{folder:'alien_floater',keys:{idle:'idle',move:'float_move',hurt:'hurt',death:'death'},counts:{idle:4,move:6,hurt:3,death:5}},
-  volador:{folder:'alien_flyer',keys:{idle:'idle',move:'fly_move',hurt:'hurt',death:'death'},counts:{idle:4,move:6,hurt:3,death:5}}
+  reptil:{folder:'alien_walker',keys:{idle:'idle',walk:'walk',hurt:'hurt',death:'death',attack:'attack_projectile'},counts:{idle:4,walk:6,hurt:3,death:5,attack:5}},
+  medusa:{folder:'alien_floater',keys:{idle:'idle',move:'float_move',hurt:'hurt',death:'death',attack:'attack_projectile'},counts:{idle:4,move:6,hurt:3,death:5,attack:5}},
+  volador:{folder:'alien_flyer',keys:{idle:'idle',move:'fly_move',hurt:'hurt',death:'death',attack:'attack_projectile'},counts:{idle:4,move:6,hurt:3,death:5,attack:5}}
 };
 const ALIEN_SHEETS={};
 Object.entries(ALIEN_ANIM_META).forEach(([type,meta])=>{
@@ -912,6 +912,18 @@ Object.entries(ALIEN_ANIM_META).forEach(([type,meta])=>{
         img.src='assets/aliens/'+meta.folder+'/'+dirKey+'/'+fileAnim+'/'+meta.folder+'_'+fileAnim+'_'+dirKey+'_'+String(i+1).padStart(2,'0')+'.png';
         return img;
       });
+    });
+  });
+});
+const ALIEN_PROJ_KIND={reptil:'acid',medusa:'plasma',volador:'laser'};
+const ALIEN_PROJ_ASSETS={};
+Object.entries(ALIEN_ANIM_META).forEach(([type,meta])=>{
+  ALIEN_PROJ_ASSETS[type]={right:[],left:[]};
+  ['right','left'].forEach(dirKey=>{
+    ALIEN_PROJ_ASSETS[type][dirKey]=Array.from({length:6},(_,i)=>{
+      const img=new Image();
+      img.src='assets/aliens/projectiles/'+meta.folder+'/'+dirKey+'/projectile_'+meta.folder+'_'+dirKey+'_'+String(i+1).padStart(2,'0')+'.png';
+      return img;
     });
   });
 });
@@ -1045,6 +1057,19 @@ function showMenu(){
 
 // ── BOSS ─────────────────────────────────────────────────────
 let boss=null,bossProjs=[];
+let alienProjs=[];
+function tryAlienAttack(e,type,range){
+  if(e.atkTimer>0){e.atkTimer--;return;}
+  if(e.atkCd>0){e.atkCd--;return;}
+  if(!player||player.dead||player.goal||player.hidden)return;
+  const dx=(player.x+10)-(e.x+e.w/2),dy=(player.y+player.h/2)-(e.y+e.h/2),d=Math.sqrt(dx*dx+dy*dy);
+  if(d>range||d<24)return;
+  e.atkTimer=32;e.atkCd=(150+Math.random()*70|0)/df().espd|0;
+  e.dir=dx>0?1:-1;
+  const sp=2.6*df().pspd;
+  alienProjs.push({x:e.x+e.w/2,y:e.y+e.h/2,vx:dx/d*sp,vy:dy/d*sp,life:180,active:true,type,dir:e.dir,fr:0,ft:0});
+  SFX.shot();
+}
 function mkBoss(x,hp,isMini,kind){hp=Math.max(2,Math.round((hp||8)*df().bsc));const sz=isMini?40:56;return{x,y:60,w:sz,h:sz,hp,maxHp:hp,vx:0,vy:0,onG:false,alive:true,inv:0,timer:0,rage:false,triggered:false,isMini:!!isMini,kind:kind||(isMini?'tentaculos':'bestia')};}
 function updBoss(sl){
   if(!boss||!boss.alive)return;
@@ -1257,6 +1282,22 @@ function drawBossProj(bp,ox){
   ct.fillStyle=purple?'#9f37ff':'#ff6600';ct.beginPath();ct.arc(x,y,6,0,Math.PI*2);ct.fill();
   ct.fillStyle=purple?'#f0b8ff':'#ffcc44';ct.beginPath();ct.arc(x-1,y-1,3,0,Math.PI*2);ct.fill();
   ct.shadowBlur=0;
+}
+const ALIEN_PROJ_COLOR={reptil:'#8fef4a',medusa:'#20e8d8',volador:'#c060ff'};
+function drawAlienProj(ap,ox){
+  const x=Math.round(ap.x-ox),y=Math.round(ap.y);
+  const dirKey=ap.dir<0?'left':'right';
+  const set=ALIEN_PROJ_ASSETS[ap.type]&&ALIEN_PROJ_ASSETS[ap.type][dirKey];
+  const img=set&&set[Math.abs(ap.fr|0)%set.length];
+  if(img&&img.complete&&img.naturalWidth){
+    const dh=18,dw=dh*(img.naturalWidth/img.naturalHeight);
+    ct.drawImage(img,x-dw/2,y-dh/2,dw,dh);
+  }else{
+    const col=ALIEN_PROJ_COLOR[ap.type]||'#ffffff';
+    ct.shadowColor=col;ct.shadowBlur=10;
+    ct.fillStyle=col;ct.beginPath();ct.arc(x,y,6,0,Math.PI*2);ct.fill();
+    ct.shadowBlur=0;
+  }
 }
 function drawAlienBossSprite(x,y,scale,triggered,rage){
   const s=scale||1,cx=x+20*s,cy=y+21*s,pulse=.5+.5*Math.sin(NOW*.009);
@@ -1569,11 +1610,11 @@ function mkEnemies(defs){const es=df().espd;return defs.map(d=>{
   if(d.t==='s'){return{t:'s',x:d.x,y:GY-28,w:28,h:28,cooldown:45+Math.random()*30|0,dir:-1,alive:true,stomp:false,sTimer:0};}
   if(d.t==='h'){const hy=d.y||(GY-130);return{t:'h',x:d.x,y:hy,baseY:hy,amp:22+Math.random()*18|0,ph:Math.random()*6.28,w:24,h:28,vx:0,alive:true,stomp:false,sTimer:0,dir:-1};}
   // alien_reptil: ground walker (type 'r')
-  if(d.t==='r'){return{t:'r',x:d.x,y:GY-50,w:40,h:50,vx:-(d.sp||1.0)*es,vy:0,alive:true,stomp:false,sTimer:0,dir:-1,fr:0,ft:0,alert:0,chasing:false,baseVx:(d.sp||1.0)*es,hp:d.hp||1,hpFlash:0};}
+  if(d.t==='r'){return{t:'r',x:d.x,y:GY-50,w:40,h:50,vx:-(d.sp||1.0)*es,vy:0,alive:true,stomp:false,sTimer:0,dir:-1,fr:0,ft:0,alert:0,chasing:false,baseVx:(d.sp||1.0)*es,hp:d.hp||1,hpFlash:0,atkCd:60+Math.random()*90|0,atkTimer:0};}
   // alien_medusa: floating jellyfish (type 'm')
-  if(d.t==='m'){const my=d.y||(GY-140);return{t:'m',x:d.x,y:my,baseY:my,amp:28+Math.random()*20|0,ph:Math.random()*6.28,w:36,h:60,vx:-(d.sp||0.72)*es,alive:true,stomp:false,sTimer:0,dir:-1,fr:0,ft:0,hpFlash:0};}
+  if(d.t==='m'){const my=d.y||(GY-140);return{t:'m',x:d.x,y:my,baseY:my,amp:28+Math.random()*20|0,ph:Math.random()*6.28,w:36,h:60,vx:-(d.sp||0.72)*es,alive:true,stomp:false,sTimer:0,dir:-1,fr:0,ft:0,hpFlash:0,atkCd:60+Math.random()*90|0,atkTimer:0};}
   // alien_volador: flying creature (type 'v')
-  if(d.t==='v'){const vy2=d.y||(GY-150);return{t:'v',x:d.x,y:vy2,baseY:vy2,amp:32+Math.random()*22|0,ph:Math.random()*6.28,w:44,h:62,vx:-(d.sp||1.15)*es,alive:true,stomp:false,sTimer:0,dir:-1,fr:0,ft:0,baseVx:(d.sp||1.15)*es,hpFlash:0};}
+  if(d.t==='v'){const vy2=d.y||(GY-150);return{t:'v',x:d.x,y:vy2,baseY:vy2,amp:32+Math.random()*22|0,ph:Math.random()*6.28,w:44,h:62,vx:-(d.sp||1.15)*es,alive:true,stomp:false,sTimer:0,dir:-1,fr:0,ft:0,baseVx:(d.sp||1.15)*es,hpFlash:0,atkCd:60+Math.random()*90|0,atkTimer:0};}
   return{t:d.t,x:d.x,y:GY-(d.t==='k'?36:26),w:d.t==='k'?28:24,h:d.t==='k'?36:26,vx:-(d.sp||1.1)*es,vy:0,alive:true,stomp:false,sTimer:0,shell:false,dir:-1,fr:0,ft:0,alert:0,chasing:false,baseVx:(d.sp||1.1)*es,hp:d.hp||1,hpFlash:0};
 });}
 function getSolids(lv){
@@ -1762,6 +1803,7 @@ function updEnemy(e,sl){
     e.x+=e.vx;e.ph+=.038;e.y=e.baseY+Math.sin(e.ph)*e.amp;
     e.x=Math.max(0,e.x);e.dir=e.vx>=0?1:-1;
     if(++e.ft>=8){e.fr=(e.fr+1)%6;e.ft=0;}
+    tryAlienAttack(e,'volador',300);
     return;
   }
   // alien_medusa: slow sinusoidal hover, chases player
@@ -1771,6 +1813,7 @@ function updEnemy(e,sl){
     e.x=Math.max(0,e.x);e.dir=e.vx>=0?1:-1;
     if(NOW%6===0)parts.push(new Pop(e.x+e.w/2+(Math.random()-.5)*10,e.y+e.h+2,(Math.random()-.5)*.3,.4,'#20e8d8',8));
     if(++e.ft>=7){e.fr=(e.fr+1)%6;e.ft=0;}
+    tryAlienAttack(e,'medusa',260);
     return;
   }
   if(e.hpFlash>0)e.hpFlash--;
@@ -1785,6 +1828,7 @@ function updEnemy(e,sl){
     }
     if(e.chasing){const tgt=(dx>0?1:-1)*e.baseVx*1.45;e.vx+=(tgt-e.vx)*.1;}
   }
+  if(e.t==='r')tryAlienAttack(e,'reptil',240);
   e.vy+=GRAV;if(e.vy>14)e.vy=14;
   e.x+=e.vx;for(const s of sl){if(!hit(e,s))continue;e.vx>0?(e.x=s.x-e.w,e.vx=-Math.abs(e.vx)):(e.x=s.x+s.w,e.vx=Math.abs(e.vx));break;}
   e.onG=false;e.y+=e.vy;for(const s of sl){if(!hit(e,s))continue;if(e.vy>=0){e.y=s.y-e.h;e.vy=0;e.onG=true;}else{e.y=s.y+s.h;e.vy=1;}break;}
@@ -1912,7 +1956,7 @@ function resetRound(){
   enemies=mkEnemies(lvData.ens);
   coinList=lvData.cns.map(c=>({...c,col:false,fr:0,ft:0}));
   blkList=lvData.blks.map(b=>({...b,hit:false,bh:0}));
-  powerUps=[];lasers=[];parts=[];bossProjs=[];tProjs=[];shockwaves=[];dmgFlash=0;oneupFlash=0;magnetTimer=0;bootsTimer=0;x2Timer=0;coinStreak=0;coinStreakTimer=0;bossIntroTimer=0;bossIntroText='';
+  powerUps=[];lasers=[];parts=[];bossProjs=[];tProjs=[];alienProjs=[];shockwaves=[];dmgFlash=0;oneupFlash=0;magnetTimer=0;bootsTimer=0;x2Timer=0;coinStreak=0;coinStreakTimer=0;bossIntroTimer=0;bossIntroText='';
   if(lvData.plats)lvData.plats.forEach(p=>{if(p.crumble){p.cst=0;p.ctimer=0;p.respawnT=0;}});
   prepareCraters();
   prepareTraps();
@@ -2217,6 +2261,17 @@ function update(){
     }
   }
   tProjs=tProjs.filter(tp=>tp.active);
+  // Alien ranged attack projectiles
+  if(!startLocked){
+    for(const ap of alienProjs){
+      if(!ap.active)continue;
+      ap.x+=ap.vx;ap.y+=ap.vy;ap.life--;if(++ap.ft>=6){ap.fr=(ap.fr+1)%6;ap.ft=0;}
+      if(ap.life<=0||ap.x<camX-60||ap.x>camX+CW+60||ap.y<-60||ap.y>CH+60){ap.active=false;continue;}
+      if(!player.dead&&!player.goal&&player.inv<=0&&player.star<=0&&player.dashTimer<=0&&!chts.ghost&&hit(player,{x:ap.x-7,y:ap.y-7,w:14,h:14})){ap.active=false;pHurt();continue;}
+      for(const lb of lasers){if(lb.active&&hit(lb,{x:ap.x-7,y:ap.y-7,w:14,h:14})){ap.active=false;lb.active=false;for(let i=0;i<3;i++)parts.push(new Pop(ap.x,ap.y,(Math.random()-.5)*4,-Math.random()*3,'#88ff66',12));break;}}
+    }
+  }
+  alienProjs=alienProjs.filter(ap=>ap.active);
   if((!boss||!boss.alive)&&hit(player,{x:lvData.flagX+14,y:60,w:6,h:GY-60}))pWin();
   parts=parts.filter(p=>p.tick());
 }
@@ -4101,8 +4156,8 @@ function drawAlienReptil(e,ox){
   const x=Math.round(e.x-ox),y=Math.round(e.y),dw=44,dh=56;
   if(e.stomp){ct.globalAlpha=.55;ct.fillStyle='#4a8840';ct.beginPath();ct.ellipse(x+dw/2,y+e.h+2,dw/2,5,0,0,Math.PI*2);ct.fill();ct.globalAlpha=1;return;}
   ct.save();ct.globalAlpha=.28;ct.fillStyle='#000';ct.shadowColor='rgba(0,0,0,.5)';ct.shadowBlur=6;ct.beginPath();ct.ellipse(x+dw/2,y+e.h+2,dw*.42,4,0,0,Math.PI*2);ct.fill();ct.restore();
-  const anim=e.chasing?'walk':'idle';
-  const drawn=drawAlienSprite('reptil',anim,e.fr,x,y,dw,dh,e.dir);
+  const anim=e.atkTimer>0?'attack':(e.chasing?'walk':'idle');
+  const drawn=drawAlienSprite('reptil',anim,e.atkTimer>0?(32-e.atkTimer)/6|0:e.fr,x,y,dw,dh,e.dir);
   if(!drawn){// fallback shape
     ct.fillStyle='#6a9a30';ct.fillRect(x,y,dw,dh);
   }
@@ -4116,7 +4171,8 @@ function drawAlienMedusa(e,ox){
   const pulse=.5+.5*Math.sin(NOW*.05+e.ph);
   ct.save();ct.globalAlpha=.18+.1*pulse;ct.fillStyle='#000';ct.beginPath();ct.ellipse(x+dw/2,y+e.h+2,dw*.36,3.5,0,0,Math.PI*2);ct.fill();ct.restore();
   ct.save();ct.shadowColor='#20e8d8';ct.shadowBlur=10*pulse;
-  const drawn=drawAlienSprite('medusa','move',e.fr,x,y,dw,dh,e.dir,0.88+.12*pulse);
+  const anim=e.atkTimer>0?'attack':'move';
+  const drawn=drawAlienSprite('medusa',anim,e.atkTimer>0?(32-e.atkTimer)/6|0:e.fr,x,y,dw,dh,e.dir,0.88+.12*pulse);
   if(!drawn){ct.fillStyle='#20a8a8';ct.beginPath();ct.ellipse(x+dw/2,y+dh*.4,dw*.46,dh*.28,0,0,Math.PI*2);ct.fill();}
   ct.restore();
   if(e.hpFlash>0){ct.save();ct.globalAlpha=e.hpFlash/14*.55;ct.fillStyle='#fff';ct.fillRect(x,y,dw,dh);ct.restore();}
@@ -4127,7 +4183,8 @@ function drawAlienVolador(e,ox){
   if(e.stomp){ct.globalAlpha=.5;ct.fillStyle='#8840b0';ct.beginPath();ct.ellipse(x+dw/2,y+e.h,dw*.5,5,0,0,Math.PI*2);ct.fill();ct.globalAlpha=1;return;}
   const wob=Math.sin(NOW*.011+e.ph)*1.5;
   ct.save();ct.globalAlpha=.2;ct.fillStyle='#000';ct.beginPath();ct.ellipse(x+dw/2,GY+2,dw*.4,3.5,0,0,Math.PI*2);ct.fill();ct.restore();
-  const drawn=drawAlienSprite('volador','move',e.fr,x,y+wob,dw,dh,e.dir);
+  const anim=e.atkTimer>0?'attack':'move';
+  const drawn=drawAlienSprite('volador',anim,e.atkTimer>0?(32-e.atkTimer)/6|0:e.fr,x,y+wob,dw,dh,e.dir);
   if(!drawn){ct.fillStyle='#8040c0';ct.beginPath();ct.ellipse(x+dw/2,y+dh*.35,dw*.46,dh*.25,0,0,Math.PI*2);ct.fill();}
   if(e.hpFlash>0){ct.save();ct.globalAlpha=e.hpFlash/14*.55;ct.fillStyle='#fff';ct.fillRect(x,y,dw,dh);ct.restore();}
 }
@@ -4374,6 +4431,7 @@ function render(){
   bossProjs.forEach(bp=>{if(bp.active){const sx=bp.x-ox;if(sx>-20&&sx<CW+20)drawBossProj(bp,ox);}});
   shockwaves.forEach(sw=>{if(sw.active){const sx=sw.x-ox;if(sx>-30&&sx<CW+30)drawShockwave(sw,ox);}});
   tProjs.forEach(tp=>{if(tp.active)drawTurretProj(tp,ox);});
+  alienProjs.forEach(ap=>{if(ap.active){const sx=ap.x-ox;if(sx>-20&&sx<CW+20)drawAlienProj(ap,ox);}});
   lasers.forEach(lb=>{if(lb.active)drawLaser(lb,ox);});
   if(player&&(!player.dead||player.y<CH+40))drawPlayer(player,ox);
   if(lvData&&lvData.bushes)lvData.bushes.forEach(b=>{const sx=b.x-ox;if(sx>-b.w&&sx<CW+b.w)drawBush(b,ox);});
