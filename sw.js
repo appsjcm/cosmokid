@@ -1,10 +1,10 @@
-const COSMO_CACHE = 'cosmo-kid-v76-keyboard-fix';
+const COSMO_CACHE = 'cosmo-kid-v77-flag-goal';
 const CORE = [
   './',
-  './index.html?v=76',
-  './game.html?v=76',
+  './index.html?v=77',
+  './game.html?v=77',
 
-  './diagnostico.html?v=76',
+  './diagnostico.html?v=77',
   './manifest.webmanifest',
   './assets/cover/cosmokid_cover.png',
   './assets/cover/cosmokid_cover_premium_wide.jpg',
@@ -228,7 +228,7 @@ self.addEventListener('fetch', event => {
         const copy = res.clone();
         caches.open(COSMO_CACHE).then(cache => cache.put(req, copy));
         return res;
-    }).catch(() => caches.match(req).then(cached => cached || caches.match('./game.html?v=76')))
+    }).catch(() => caches.match(req).then(cached => cached || caches.match('./game.html?v=77')))
     );
     return;
   }

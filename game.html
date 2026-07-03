@@ -5,12 +5,12 @@
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="description" content="Modo 2.5D estable v76 de Cosmo Kid: teclado PC reforzado, cráteres alineados y control táctil libre.">
+<meta name="description" content="Modo 2.5D estable v77 de Cosmo Kid: meta con bandera, teclado PC reforzado y control táctil libre.">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0a2040">
-<title>Cosmo Kid 2.5D · Modo estable v76</title>
+<title>Cosmo Kid 2.5D · Modo estable v77</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{overscroll-behavior:none;touch-action:none}
@@ -205,7 +205,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
 .hp-c{margin:12px 0 4px;background:rgba(0,60,90,.85);border:1.5px solid rgba(0,200,255,.45);color:#bfefff;font-size:.85rem;letter-spacing:2px;padding:10px 28px;border-radius:10px;cursor:pointer;font-family:monospace;min-height:48px}
 .hp-c:hover,.hp-c:active{background:rgba(0,110,160,.6);border-color:#00ccff}
 
-/* V76: teclado PC reforzado + pantalla completa móvil */
+/* V77: meta con bandera + pantalla completa móvil */
 #ov{
   background:
     radial-gradient(circle at 50% 18%,rgba(124,243,255,.26),transparent 28%),
@@ -216,7 +216,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),inset 0 -80px 120px rgba(0,0,0,.36),0 0 70px rgba(0,200,255,.22);
 }
 #ov:before{
-  content:'COSMO KID · V76 TECLADO';
+  content:'COSMO KID · V77 BANDERA';
   position:absolute;top:14px;left:50%;transform:translateX(-50%);
   z-index:1;border-radius:999px;padding:7px 12px;
   background:rgba(1,7,18,.68);border:1px solid rgba(255,230,107,.38);
@@ -323,7 +323,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
   <canvas id="c" width="600" height="380" tabindex="0"></canvas>
   <div id="ov">
     <div id="ov-t">COSMO KID</div>
-    <div id="ov-sub">Aventura Espacial · 8 Misiones · v76</div>
+    <div id="ov-sub">Aventura Espacial · 8 Misiones · v77</div>
     <div id="ov-hi"></div>
     <div id="ov-m"></div>
     <div id="ov-b"></div>
@@ -462,7 +462,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
   <span class="k">P</span> pausa
 </div>
 <button id="fs-btn" title="Pantalla completa">&#x26F6;</button>
-<a id="homeBtn" href="game.html?v=76">INICIO</a>
+<a id="homeBtn" href="game.html?v=77">INICIO</a>
 <button id="perfBtn" title="Modo rendimiento">AUTO</button>
 <div id="tc">
   <div id="joy-base"><div id="joy-knob"></div></div>
@@ -601,7 +601,7 @@ const perfBtn=document.getElementById('perfBtn');
 // ── RESIZE ──────────────────────────────────────────────────
 let tcH=0,isTouchDevice=false;
 
-// ── V76: modo rendimiento móvil/PC ──────────────────────────
+// ── V77: modo rendimiento móvil/PC ──────────────────────────
 let COSMO_LOWQ=false, _cosmoFps=60, _cosmoFpsT=0, _cosmoFpsC=0;
 function cosmoStoreGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function cosmoStoreSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
@@ -896,10 +896,7 @@ const PC_PARALLAX_PATHS=[
 ];
 const PC_PARALLAX_ASSETS=PC_PARALLAX_PATHS.map(src=>{const img=new Image();img.src=src;return img;});
 const GOAL_ASSET_FILES={
-  flag:PC_ASSET_ROOT+'objects/001_pack_final_nivel_2d_lateral_bandera_de_meta_futurista_con_luz.png',
-  pad:PC_ASSET_ROOT+'objects/003_pack_final_nivel_2d_lateral_plataforma_de_teletransportacion_futurista.png',
-  portal:PC_ASSET_ROOT+'objects/004_pack_final_nivel_2d_lateral_portal_cosmico_de_energia_dinamica.png',
-  exit:PC_ASSET_ROOT+'objects/005_pack_final_nivel_2d_lateral_portal_futurista_con_senal_de_salida.png'
+  flag:PC_ASSET_ROOT+'objects/001_pack_final_nivel_2d_lateral_bandera_de_meta_futurista_con_luz.png'
 };
 const GOAL_ASSETS=Object.fromEntries(Object.entries(GOAL_ASSET_FILES).map(([k,src])=>[k,(()=>{const img=new Image();img.src=src;return img;})()]));
 const ROCK_ASSET_PATHS=Array.from({length:15},(_,i)=>'assets/rocks/roca_'+String(i+1).padStart(2,'0')+'.png');
@@ -3718,92 +3715,47 @@ function goalImg(name){
   return img&&img.complete&&img.naturalWidth?cleanLightMatteAsset(img):null;
 }
 function drawGoalAsset(fx,ox){
-  const portal=goalImg('portal')||goalImg('exit'),pad=goalImg('pad'),flag=goalImg('flag');
-  if(!portal||!pad||!flag)return false;
+  const flag=goalImg('flag');
+  if(!flag)return false;
   const x=Math.round(fx-ox),pulse=.5+.5*Math.sin(NOW*.006),baseY=GY+4;
   ct.save();
-  ct.globalAlpha=.32;ct.fillStyle='#000';ct.shadowColor='rgba(0,0,0,.55)';ct.shadowBlur=12;
-  ct.beginPath();ct.ellipse(x+28,baseY-2,58,10,0,0,Math.PI*2);ct.fill();ct.shadowBlur=0;ct.globalAlpha=1;
+  ct.globalAlpha=.28;ct.fillStyle='#000';ct.shadowColor='rgba(0,0,0,.55)';ct.shadowBlur=12;
+  ct.beginPath();ct.ellipse(x+18,baseY-2,38,8,0,0,Math.PI*2);ct.fill();ct.shadowBlur=0;ct.globalAlpha=1;
   ct.globalCompositeOperation='screen';
-  ct.shadowColor='#7cf3ff';ct.shadowBlur=24+12*pulse;
-  ct.fillStyle=`rgba(124,243,255,${.10+.08*pulse})`;
-  ct.beginPath();ct.ellipse(x+30,GY-48,54+8*pulse,40+6*pulse,0,0,Math.PI*2);ct.fill();
+  ct.shadowColor='#7cffaa';ct.shadowBlur=16+8*pulse;
+  ct.strokeStyle=`rgba(124,255,170,${.45+.22*pulse})`;ct.lineWidth=2;
+  ct.beginPath();ct.moveTo(x+17,GY-92);ct.lineTo(x+17,GY-7);ct.stroke();
   ct.globalCompositeOperation='source-over';
   ct.filter='drop-shadow(0 8px 9px rgba(0,0,0,.48)) saturate(1.1) contrast(1.04)';
-  ct.drawImage(pad,x-26,GY-56,112,86);
-  ct.drawImage(portal,x-9,GY-112,82,112);
-  ct.drawImage(flag,x+46,GY-98,58,82);
+  ct.drawImage(flag,x-16,GY-101,70,88);
   ct.filter='none';
   ct.globalCompositeOperation='screen';
-  ct.strokeStyle=`rgba(124,243,255,${.64+.25*pulse})`;ct.lineWidth=2.4;ct.shadowColor='#7cf3ff';ct.shadowBlur=16;
-  ct.beginPath();ct.ellipse(x+32,GY-54,31+4*pulse,42+5*pulse,0,0,Math.PI*2);ct.stroke();
-  ct.strokeStyle=`rgba(255,230,107,${.35+.25*pulse})`;ct.lineWidth=1.5;
-  ct.beginPath();ct.ellipse(x+32,GY-54,45+7*pulse,54+7*pulse,0,0,Math.PI*2);ct.stroke();
+  ct.strokeStyle=`rgba(124,255,170,${.40+.25*pulse})`;ct.lineWidth=1.5;ct.shadowColor='#7cffaa';ct.shadowBlur=10;
+  ct.beginPath();ct.ellipse(x+18,GY-4,23+4*pulse,5+1.5*pulse,0,0,Math.PI*2);ct.stroke();
   ct.globalCompositeOperation='source-over';ct.shadowBlur=0;
-  ct.fillStyle='rgba(1,7,18,.78)';rr(x+4,GY-127,70,15,7);ct.fill();
+  ct.fillStyle='rgba(1,7,18,.78)';rr(x-14,GY-123,64,15,7);ct.fill();
   ct.shadowColor='#7cffaa';ct.shadowBlur=8;ct.fillStyle='#dffbff';ct.font='bold 9px monospace';ct.textAlign='center';ct.textBaseline='middle';
-  ct.fillText('META',x+39,GY-119);ct.shadowBlur=0;
+  ct.fillText('META',x+18,GY-115);ct.shadowBlur=0;
   ct.restore();
   return true;
 }
 function drawBeacon(fx,ox){
   if(drawGoalAsset(fx,ox))return;
   const x=Math.round(fx-ox);
-  const cx2=x+28,bot=GY,pw=26,ph=38;
+  const cx2=x+18,bot=GY;
   const pulse=.5+.5*Math.sin(NOW*.005);
-  // ── Vortex interior (clipped to portal ellipse)
   ct.save();
-  ct.beginPath();ct.ellipse(cx2,bot-42,pw,ph,0,0,Math.PI*2);ct.clip();
-  ct.fillStyle='#05081a';ct.fillRect(cx2-pw-1,bot-ph-43,pw*2+2,ph*2+2);
-  for(let s=0;s<4;s++){
-    ct.save();ct.translate(cx2,bot-42);ct.rotate(NOW*.002*(s+1)+s*1.3);
-    const ag=ct.createLinearGradient(0,-ph,0,0);
-    const cols=s%2===0?['rgba(40,80,255,.0)','rgba(40,80,255,.6)']:['rgba(140,30,220,.0)','rgba(140,30,220,.5)'];
-    ag.addColorStop(0,cols[0]);ag.addColorStop(.6,cols[1]);ag.addColorStop(1,cols[0]);
-    ct.fillStyle=ag;ct.beginPath();ct.ellipse(pw*.25,0,pw*.55,ph*.6,.4,0,Math.PI*2);ct.fill();
-    ct.restore();
-  }
-  const vr=ct.createRadialGradient(cx2,bot-42,pw*.3,cx2,bot-42,pw);
-  vr.addColorStop(0,'rgba(60,100,255,0)');vr.addColorStop(1,'rgba(0,20,160,.6)');
-  ct.fillStyle=vr;ct.beginPath();ct.ellipse(cx2,bot-42,pw,ph,0,0,Math.PI*2);ct.fill();
-  const vc=ct.createRadialGradient(cx2,bot-42,0,cx2,bot-42,pw*.5);
-  vc.addColorStop(0,'rgba(180,220,255,.9)');vc.addColorStop(.5,'rgba(60,120,255,.5)');vc.addColorStop(1,'rgba(30,60,220,0)');
-  ct.fillStyle=vc;ct.beginPath();ct.ellipse(cx2,bot-42,pw*.5,ph*.5,0,0,Math.PI*2);ct.fill();
+  ct.globalAlpha=.25;ct.fillStyle='#000';ct.beginPath();ct.ellipse(cx2,bot-2,35,7,0,0,Math.PI*2);ct.fill();ct.globalAlpha=1;
+  ct.shadowColor='#7cffaa';ct.shadowBlur=10+6*pulse;
+  ct.strokeStyle='#dffbff';ct.lineWidth=3;ct.beginPath();ct.moveTo(cx2,bot-7);ct.lineTo(cx2,bot-91);ct.stroke();
+  ct.strokeStyle=`rgba(124,255,170,${.48+.28*pulse})`;ct.lineWidth=1.5;
+  ct.beginPath();ct.moveTo(cx2+2,bot-87);ct.lineTo(cx2+2,bot-50);ct.stroke();
+  ct.fillStyle=lg(cx2,bot-88,cx2+48,bot-57,'#7cf3ff','#7cffaa');
+  ct.beginPath();ct.moveTo(cx2+2,bot-90);ct.lineTo(cx2+50,bot-80);ct.lineTo(cx2+34,bot-66);ct.lineTo(cx2+50,bot-52);ct.lineTo(cx2+2,bot-60);ct.closePath();ct.fill();
+  ct.fillStyle='rgba(255,255,255,.25)';ct.beginPath();ct.moveTo(cx2+8,bot-84);ct.lineTo(cx2+38,bot-78);ct.lineTo(cx2+25,bot-70);ct.lineTo(cx2+8,bot-73);ct.closePath();ct.fill();
+  ct.shadowBlur=0;ct.fillStyle='rgba(1,7,18,.76)';rr(cx2-32,bot-114,64,15,7);ct.fill();
+  ct.shadowColor='#7cffaa';ct.shadowBlur=8;ct.fillStyle='#dffbff';ct.font='bold 9px monospace';ct.textAlign='center';ct.textBaseline='middle';ct.fillText('META',cx2,bot-106);
   ct.restore();
-  // ── Frame arch segments (dark armored plates)
-  ct.shadowColor='#40a0ff';ct.shadowBlur=8+4*pulse;
-  for(let i=0;i<12;i++){
-    const a1=Math.PI+i/12*Math.PI,a2=Math.PI+(i+1)/12*Math.PI;
-    ct.fillStyle=i%3===1?'#2a3a5a':'#1a2540';
-    ct.beginPath();
-    ct.moveTo(cx2+(pw+6)*Math.cos(a1),bot-42+(ph+8)*Math.sin(a1));
-    ct.lineTo(cx2+(pw+14)*Math.cos(a1),bot-42+(ph+14)*Math.sin(a1));
-    ct.lineTo(cx2+(pw+14)*Math.cos(a2),bot-42+(ph+14)*Math.sin(a2));
-    ct.lineTo(cx2+(pw+6)*Math.cos(a2),bot-42+(ph+8)*Math.sin(a2));
-    ct.closePath();ct.fill();
-  }
-  // Legs
-  ct.fillStyle='#1a2540';ct.fillRect(cx2-pw-13,bot-14,10,14);ct.fillRect(cx2+pw+3,bot-14,10,14);
-  // Base platform
-  ct.fillStyle='#0e1830';rr(cx2-pw-16,bot-5,pw*2+32,9,4);ct.fill();
-  // Cyan LED arc on frame
-  ct.shadowColor='#00c0ff';ct.shadowBlur=8+4*pulse;
-  ct.strokeStyle=`rgba(0,200,255,${.5+.3*pulse})`;ct.lineWidth=2;
-  ct.beginPath();ct.ellipse(cx2,bot-42,pw+7,ph+9,0,Math.PI*.08,Math.PI*.92);ct.stroke();
-  // Orange accent triangles on sides
-  ct.shadowColor='#ff8800';ct.shadowBlur=6;ct.fillStyle='rgba(255,130,20,.85)';
-  [[-pw-7,-5,1],[pw+7,-5,-1]].forEach(([dx,dy,s])=>{
-    ct.beginPath();ct.moveTo(cx2+dx,bot-42+dy);ct.lineTo(cx2+dx+s*8,bot-42+dy+4);ct.lineTo(cx2+dx,bot-42+dy+8);ct.closePath();ct.fill();
-  });
-  // Bottom LED strips
-  ct.shadowColor='#00d8ff';ct.shadowBlur=5;ct.strokeStyle=`rgba(0,220,255,${.4+.3*pulse})`;ct.lineWidth=1.5;
-  ct.beginPath();ct.moveTo(cx2-pw-14,bot-2);ct.lineTo(cx2-pw-6,bot-2);ct.stroke();
-  ct.beginPath();ct.moveTo(cx2+pw+6,bot-2);ct.lineTo(cx2+pw+14,bot-2);ct.stroke();
-  // Top diamond cap
-  ct.fillStyle='#1a2540';ct.shadowColor='#40a0ff';ct.shadowBlur=8;
-  ct.beginPath();ct.moveTo(cx2,bot-82);ct.lineTo(cx2-5,bot-70);ct.lineTo(cx2,bot-66);ct.lineTo(cx2+5,bot-70);ct.closePath();ct.fill();
-  ct.fillStyle=`rgba(80,180,255,${.65+.3*pulse})`;ct.beginPath();ct.arc(cx2,bot-70,2.5,0,Math.PI*2);ct.fill();
-  ct.shadowBlur=0;
 }
 
 // ── POWER-UPS ───────────────────────────────────────────────
@@ -5010,7 +4962,7 @@ const ppP=e=>{e.preventDefault();tcpEl.classList.add('on');togglePause();hap(15)
 const ppR=e=>{e.preventDefault();tcpEl.classList.remove('on');};
 tcpEl.addEventListener('touchstart',ppP,{passive:false});tcpEl.addEventListener('touchend',ppR,{passive:false});
 tcpEl.addEventListener('mousedown',ppP);tcpEl.addEventListener('mouseup',ppR);
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=76').catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=77').catch(()=>{}));}
 </script>
 </body>
 </html>
