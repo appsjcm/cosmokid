@@ -25,7 +25,7 @@ h1{font-size:1.9rem;margin-bottom:5px;letter-spacing:4px;text-transform:uppercas
 #hpwr{transition:color .3s}
 #wrap{position:relative;padding:5px;border-radius:18px;background:linear-gradient(135deg,rgba(124,243,255,.34),rgba(255,230,107,.14),rgba(255,92,184,.24));box-shadow:0 20px 70px rgba(0,0,0,.45),0 0 48px rgba(0,190,255,.20)}
 canvas{display:block;border:1px solid rgba(190,245,255,.52);border-radius:14px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.10),0 0 36px rgba(0,200,255,.22);background:#030815}
-#ov{position:absolute;inset:5px;background:radial-gradient(circle at 50% 30%,rgba(124,243,255,.20),transparent 30%),linear-gradient(180deg,rgba(1,6,18,.38),rgba(4,10,28,.78)),url('assets/cover/cosmokid_cover_wide_v66.jpg') center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:14px;gap:9px;padding:20px;backdrop-filter:blur(6px);overflow:hidden;box-shadow:inset 0 0 90px rgba(0,0,0,.44)}
+#ov{position:absolute;inset:5px;background:radial-gradient(circle at 50% 30%,rgba(124,243,255,.20),transparent 30%),linear-gradient(180deg,rgba(1,6,18,.38),rgba(4,10,28,.78)),url('assets/cover/cosmokid_cover_wide_v66.jpg') center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:14px;gap:9px;padding:20px;backdrop-filter:blur(6px);overflow-y:auto;overflow-x:hidden;box-shadow:inset 0 0 90px rgba(0,0,0,.44)}
 #ov:after{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(3,8,24,.80),rgba(5,18,45,.52) 36%,rgba(5,18,45,.52) 64%,rgba(3,8,24,.80)),radial-gradient(circle at 50% 48%,rgba(0,210,255,.16),transparent 34%);pointer-events:none}
 #ov>*{position:relative;z-index:1}
 #ov:before{content:'';position:relative;z-index:1;width:86px;height:86px;border-radius:24px;background:url('assets/icons/icon-192.png') center/cover no-repeat,linear-gradient(135deg,#7cf3ff,#ffe66b);box-shadow:0 14px 38px rgba(0,0,0,.45),0 0 24px rgba(124,243,255,.30);border:1px solid rgba(255,255,255,.28);margin-bottom:2px}
@@ -496,7 +496,7 @@ const SFX={
 };
 
 // ── MUSIC ─────────────────────────────────────────────────────
-let musicActive=false,musicBeat=0,musicNextT=0,musicMuted=false,sfxMuted=false;
+let musicActive=false,musicBeat=0,musicNextT=0,musicMuted=cosmoStoreGet('cosmoMusicMuted')==='1',sfxMuted=cosmoStoreGet('cosmoSfxMuted')==='1';
 const MELODIES=[
   [523,659,784,659,523,392,440,523,587,659,698,659,587,523,494,523],
   [349,440,523,440,349,262,294,349,392,440,466,440,392,349,330,349],
@@ -523,7 +523,7 @@ const hmuEl=document.getElementById('hmu');
 const hsfxEl=document.getElementById('hsfx');
 function setMusicIcon(){hmuEl.textContent=musicMuted?'🔇':'♩';hmuEl.style.color=musicMuted?'#555':'#00ccff';}
 function setSFXIcon(){hsfxEl.textContent=sfxMuted?'–♪':'♪';hsfxEl.style.color=sfxMuted?'#555':'#00ccff';}
-setMusicIcon();
+setMusicIcon();setSFXIcon();
 
 // ── SCREEN SHAKE ─────────────────────────────────────────────
 let shk=0;
@@ -556,6 +556,7 @@ function exitFS(){
 }
 const fsBtn=document.getElementById('fs-btn');
 fsBtn.addEventListener('click',()=>{initAC();isImmersive()?exitFS():requestFS(cv);});
+const perfBtn=document.getElementById('perfBtn');
 ['fullscreenchange','webkitfullscreenchange'].forEach(ev=>document.addEventListener(ev,()=>{
   const fs=isFS();
   if(!fs&&!fsWanted)setImmersive(false);
@@ -625,7 +626,7 @@ resize();
 
 // ── INPUT ───────────────────────────────────────────────────
 const K={},JP={};
-window.addEventListener('keydown',e=>{if(!K[e.code])JP[e.code]=true;K[e.code]=true;if(['Space','ArrowUp','ArrowLeft','ArrowRight','ArrowDown'].includes(e.code))e.preventDefault();if(e.code==='KeyP')togglePause();if(e.code==='KeyM'){musicMuted=!musicMuted;if(!musicMuted&&musicActive&&AC)musicNextT=AC.currentTime;setMusicIcon();}if(e.code==='KeyN'){sfxMuted=!sfxMuted;setSFXIcon();}});
+window.addEventListener('keydown',e=>{if(!K[e.code])JP[e.code]=true;K[e.code]=true;if(['Space','ArrowUp','ArrowLeft','ArrowRight','ArrowDown'].includes(e.code))e.preventDefault();if(e.code==='KeyP')togglePause();if(e.code==='KeyM'){musicMuted=!musicMuted;cosmoStoreSet('cosmoMusicMuted',musicMuted?'1':'0');if(!musicMuted&&musicActive&&AC)musicNextT=AC.currentTime;setMusicIcon();}if(e.code==='KeyN'){sfxMuted=!sfxMuted;cosmoStoreSet('cosmoSfxMuted',sfxMuted?'1':'0');setSFXIcon();}});
 window.addEventListener('keyup',e=>K[e.code]=false);
 window.addEventListener('blur',()=>{for(const k in K)K[k]=false;});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)for(const k in K)K[k]=false;});
@@ -680,7 +681,6 @@ const hlEl=document.getElementById('hl'),htEl=document.getElementById('ht');
 const hnEl=document.getElementById('hn'),hpwrEl=document.getElementById('hpwr');
 const hdiffEl=document.getElementById('hdiff');
 const tcXBtn=document.getElementById('tc-x');
-const perfBtn=document.getElementById('perfBtn');
 const helpOpenBtn=document.getElementById('help-open'),helpOv=document.getElementById('help-ov');
 const settingsOpenBtn=document.getElementById('settings-open'),settingsOv=document.getElementById('settings-ov'),settingsCloseBtn=document.getElementById('settings-close');
 const setQualityBtn=document.getElementById('set-quality'),setMusicBtn=document.getElementById('set-music'),setSfxBtn=document.getElementById('set-sfx'),setFullBtn=document.getElementById('set-full'),setContinueBtn=document.getElementById('set-continue'),setClearBtn=document.getElementById('set-clear'),setPadEditBtn=document.getElementById('set-pad-edit'),setPadResetBtn=document.getElementById('set-pad-reset');
@@ -710,8 +710,8 @@ if(settingsOpenBtn)settingsOpenBtn.addEventListener('click',e=>{e.preventDefault
 if(settingsCloseBtn)settingsCloseBtn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();closeSettings();});
 if(settingsOv)settingsOv.addEventListener('click',e=>{if(e.target===settingsOv)closeSettings();});
 if(setQualityBtn)setQualityBtn.addEventListener('click',e=>{e.preventDefault();applyCosmoQuality(!COSMO_LOWQ,true);updateSettingsUI();showBanner(COSMO_LOWQ?'Modo rendimiento':'Modo HD');});
-if(setMusicBtn)setMusicBtn.addEventListener('click',e=>{e.preventDefault();musicMuted=!musicMuted;if(!musicMuted&&musicActive&&AC)musicNextT=AC.currentTime;setMusicIcon();updateSettingsUI();});
-if(setSfxBtn)setSfxBtn.addEventListener('click',e=>{e.preventDefault();sfxMuted=!sfxMuted;setSFXIcon();updateSettingsUI();});
+if(setMusicBtn)setMusicBtn.addEventListener('click',e=>{e.preventDefault();musicMuted=!musicMuted;cosmoStoreSet('cosmoMusicMuted',musicMuted?'1':'0');if(!musicMuted&&musicActive&&AC)musicNextT=AC.currentTime;setMusicIcon();updateSettingsUI();});
+if(setSfxBtn)setSfxBtn.addEventListener('click',e=>{e.preventDefault();sfxMuted=!sfxMuted;cosmoStoreSet('cosmoSfxMuted',sfxMuted?'1':'0');setSFXIcon();updateSettingsUI();});
 if(setFullBtn)setFullBtn.addEventListener('click',e=>{e.preventDefault();isImmersive()?exitFS():requestFS(cv);updateSettingsUI();});
 if(setContinueBtn)setContinueBtn.addEventListener('click',e=>{e.preventDefault();const u=cosmoGetUnlocked();if(u>0){closeSettings();initGame(u);}else showBanner('Sin progreso guardado');});
 if(setClearBtn)setClearBtn.addEventListener('click',e=>{e.preventDefault();cosmoClearProgress();updateSettingsUI();showMenu();showBanner('PROGRESO BORRADO');});
@@ -1026,10 +1026,10 @@ function showMenu(){
   ovBtn.textContent='JUGAR';ovBtn.style.display='';
   const unlocked=cosmoGetUnlocked();
   if(ovContinueBtn){
-    ovContinueBtn.style.display=unlocked>0?'':'none';
+    ovContinueBtn.style.display=unlocked>0?'block':'none';
     ovContinueBtn.textContent='CONTINUAR MISION '+(unlocked+1);
   }
-  if(ovResetBtn)ovResetBtn.style.display=unlocked>0?'':'none';
+  if(ovResetBtn)ovResetBtn.style.display=unlocked>0?'block':'none';
   if(settingsOpenBtn)settingsOpenBtn.style.display='';
   helpOpenBtn.style.display='';
 }
@@ -4543,8 +4543,8 @@ if(ovResetBtn){
 }
 
 ct.fillStyle='#5bbce4';ct.fillRect(0,0,CW,CH);
-hmuEl.addEventListener('click',()=>{musicMuted=!musicMuted;if(!musicMuted&&musicActive&&AC)musicNextT=AC.currentTime;setMusicIcon();});
-hsfxEl.addEventListener('click',()=>{sfxMuted=!sfxMuted;setSFXIcon();});
+hmuEl.addEventListener('click',()=>{musicMuted=!musicMuted;cosmoStoreSet('cosmoMusicMuted',musicMuted?'1':'0');if(!musicMuted&&musicActive&&AC)musicNextT=AC.currentTime;setMusicIcon();});
+hsfxEl.addEventListener('click',()=>{sfxMuted=!sfxMuted;cosmoStoreSet('cosmoSfxMuted',sfxMuted?'1':'0');setSFXIcon();});
 requestAnimationFrame(loop);showMenu();
 
 // ── CHEAT MENU ──────────────────────────────────────────────
