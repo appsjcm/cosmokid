@@ -6,10 +6,10 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#020712">
-<link rel="manifest" href="manifest.webmanifest?v=66">
+<link rel="manifest" href="manifest.webmanifest?v=71">
 <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>Cosmo Kid v66 — Diagnóstico</title>
+<title>Cosmo Kid v71 — Diagnóstico</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{min-height:100%;background:#020712;color:#fff;font-family:monospace}
@@ -33,7 +33,7 @@ a,button{border:1px solid rgba(124,243,255,.38);background:rgba(0,34,64,.72);col
 <canvas id="fpsCanvas" width="220" height="120"></canvas>
 <div class="wrap">
 <h1>COSMO KID</h1>
-<div class="sub">Diagnóstico v66</div>
+<div class="sub">Diagnóstico v71</div>
 
 <div class="box">
   <div id="recommend">Analizando dispositivo...</div>
@@ -45,10 +45,10 @@ a,button{border:1px solid rgba(124,243,255,.38);background:rgba(0,34,64,.72);col
 
 <div class="grid">
   <a class="main" id="openBest" href="game.html">ABRIR RECOMENDADO</a>
-  <a href="game.html?v=66">2,5D ESTABLE</a>
+  <a href="game.html?v=71">2,5D ESTABLE V71</a>
   <a class="warn" href="game.html">WEBGL MÓVIL LITE</a>
   <a href="game.html">WEBGL PC</a>
-  <a href="index.html?v=66">LAUNCHER</a>
+  <a href="index.html?v=71">LAUNCHER</a>
 </div>
 
 <div class="box small">
@@ -88,7 +88,7 @@ function testCanvasFPS(done){
 function bestURL(){
   if(touch||isSmall||isIOS||isAndroid) return 'game.html';
   if(webgl==='sí') return 'game.html';
-  return 'game.html?v=66';
+  return 'game.html?v=71';
 }
 function render(){
   const best=bestURL();
@@ -120,7 +120,7 @@ document.querySelectorAll('a').forEach(a=>{
     a.href=u.href;
   });
 });
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=66').catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=71').catch(()=>{}));}
 </script>
 </body>
 </html>

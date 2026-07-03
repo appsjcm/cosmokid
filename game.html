@@ -5,12 +5,12 @@
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="description" content="Modo 2.5D estable de Cosmo Kid: aventura espacial ligera para móvil y escritorio.">
+<meta name="description" content="Modo 2.5D estable v71 de Cosmo Kid: aventura espacial ligera, con modo rendimiento para móvil y PC.">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0a2040">
-<title>Cosmo Kid 2.5D · Modo estable</title>
+<title>Cosmo Kid 2.5D · Modo estable v71</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{overscroll-behavior:none;touch-action:none}
@@ -65,6 +65,11 @@ canvas{display:block;border:1px solid rgba(190,245,255,.52);border-radius:14px;b
 /* V30: botón launcher */
 #homeBtn{position:fixed;left:12px;top:12px;z-index:58;background:rgba(0,24,48,.72);border:1px solid rgba(255,255,255,.35);color:#dffbff;border-radius:999px;padding:8px 12px;font:700 .62rem monospace;letter-spacing:1px;display:block;text-decoration:none}
 body.touch #homeBtn{display:block}
+#perfBtn{position:fixed;left:12px;top:50px;z-index:58;background:rgba(0,18,38,.74);border:1px solid rgba(124,243,255,.38);color:#dffbff;border-radius:999px;padding:8px 11px;font:900 .58rem monospace;letter-spacing:1px;display:block;box-shadow:0 6px 20px rgba(0,0,0,.32);pointer-events:all;touch-action:none}
+#perfBtn.on{background:linear-gradient(135deg,rgba(124,255,170,.82),rgba(124,243,255,.78));color:#06131f;border-color:rgba(255,255,255,.6);box-shadow:0 0 18px rgba(124,255,170,.36),0 6px 20px rgba(0,0,0,.32)}
+body.touch #perfBtn{top:max(54px,calc(env(safe-area-inset-top,0px) + 50px));left:max(12px,env(safe-area-inset-left,12px))}
+@media (orientation:landscape) and (max-height:500px){#perfBtn{top:54px;left:10px;padding:7px 9px}}
+
 
 /* V22: mandos 2,5D configurables */
 body.touch #tc{display:block;position:fixed;inset:0;height:100dvh;background:none;padding:0;z-index:220}
@@ -156,6 +161,11 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
 .ch-c{margin-top:6px;background:rgba(80,0,0,.8);border:1px solid rgba(255,80,80,.4);color:#ff8888;font-size:.7rem;padding:5px 16px;border-radius:6px;cursor:pointer;font-family:monospace}
 .ch-c:hover{background:rgba(160,0,0,.5);border-color:#ff4444}
 /* How-to-play overlay */
+#ov-continue,#ov-reset{display:none;margin-top:6px;border-radius:12px;font-family:monospace;font-weight:900;letter-spacing:1px;cursor:pointer;min-height:42px;padding:10px 18px}
+#ov-continue{background:linear-gradient(135deg,#ffe66b,#7cffaa);border:0;color:#06131f;box-shadow:0 8px 24px rgba(0,0,0,.25),0 0 24px rgba(255,230,107,.18)}
+#ov-reset{background:rgba(40,6,18,.62);border:1px solid rgba(255,92,184,.36);color:#ffb6d6;font-size:.62rem}
+#ov-continue:hover,#ov-continue:active{transform:scale(1.04)}
+#ov-reset:hover,#ov-reset:active{border-color:#ff5cb8;color:#fff}
 #help-open{margin-top:6px;background:none;border:1px solid rgba(0,200,255,.3);color:#7abbe0;font-size:.72rem;letter-spacing:1px;cursor:pointer;font-family:monospace;padding:7px 16px;border-radius:8px;min-height:40px}
 #help-open:hover,#help-open:active{color:#00ccff;border-color:rgba(0,200,255,.7)}
 #help-ov{display:none;position:fixed;inset:0;background:rgba(0,4,20,.97);z-index:520;flex-direction:column;align-items:center;gap:4px;padding:16px 14px;overflow-y:auto;-webkit-overflow-scrolling:touch}
@@ -168,8 +178,105 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
 .hp-r b{color:#ffd866}
 .hp-c{margin:12px 0 4px;background:rgba(0,60,90,.85);border:1.5px solid rgba(0,200,255,.45);color:#bfefff;font-size:.85rem;letter-spacing:2px;padding:10px 28px;border-radius:10px;cursor:pointer;font-family:monospace;min-height:48px}
 .hp-c:hover,.hp-c:active{background:rgba(0,110,160,.6);border-color:#00ccff}
+
+/* V71: portada premium + menú de configuración */
+#ov{
+  background:
+    radial-gradient(circle at 50% 18%,rgba(124,243,255,.26),transparent 28%),
+    radial-gradient(circle at 80% 82%,rgba(255,230,107,.17),transparent 30%),
+    linear-gradient(180deg,rgba(1,7,18,.32),rgba(1,7,18,.88)),
+    url('assets/cover/cosmokid_cover_wide_v66.jpg') center/cover no-repeat;
+  border:1px solid rgba(190,245,255,.50);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),inset 0 -80px 120px rgba(0,0,0,.36),0 0 70px rgba(0,200,255,.22);
+}
+#ov:before{
+  content:'COSMO KID · V71 PREMIUM';
+  position:absolute;top:14px;left:50%;transform:translateX(-50%);
+  z-index:1;border-radius:999px;padding:7px 12px;
+  background:rgba(1,7,18,.68);border:1px solid rgba(255,230,107,.38);
+  color:#ffe66b;font:900 .52rem monospace;letter-spacing:1.4px;white-space:nowrap;
+  box-shadow:0 0 24px rgba(255,230,107,.18);
+}
+#ov:after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.78;
+  background:
+    linear-gradient(115deg,rgba(255,255,255,.12),transparent 18%,transparent 72%,rgba(124,243,255,.12)),
+    radial-gradient(circle at 18% 26%,rgba(124,255,170,.15),transparent 20%);
+}
+#ov>*{position:relative;z-index:2}
+#ov-t{
+  letter-spacing:7px;text-shadow:0 0 22px rgba(124,243,255,.85),0 0 52px rgba(255,230,107,.25);
+  filter:drop-shadow(0 10px 24px rgba(0,0,0,.45));
+}
+#ov-sub{
+  color:#dffbff;text-transform:uppercase;letter-spacing:2px;
+  background:rgba(1,7,18,.48);border:1px solid rgba(124,243,255,.20);
+  border-radius:999px;padding:6px 12px;
+}
+#ov-m,#ov-b{
+  background:rgba(1,7,18,.54);border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;padding:10px 12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+#ov-btn,#ov-continue,#settings-open{
+  border-radius:16px!important;min-height:48px!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.32),0 0 25px rgba(124,243,255,.16)!important;
+}
+#settings-open{
+  margin-top:6px;border:1px solid rgba(124,243,255,.42);
+  background:rgba(0,26,56,.72);color:#dffbff;
+  font:900 .68rem monospace;letter-spacing:1.2px;padding:10px 18px;
+  cursor:pointer;backdrop-filter:blur(8px);
+}
+#settings-open:hover,#settings-open:active{border-color:#ffe66b;color:#ffe66b;transform:scale(1.03)}
+#settings-ov{
+  display:none;position:fixed;inset:0;z-index:540;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 20%,rgba(0,200,255,.18),transparent 34%),rgba(0,3,14,.94);
+  padding:16px;overflow:auto;-webkit-overflow-scrolling:touch;
+}
+#settings-ov.on{display:flex}
+.settings-card{
+  width:min(760px,94vw);max-height:92dvh;overflow:auto;
+  border-radius:28px;padding:18px;
+  background:linear-gradient(145deg,rgba(4,16,38,.96),rgba(1,7,18,.94));
+  border:1px solid rgba(124,243,255,.36);
+  box-shadow:0 28px 90px rgba(0,0,0,.62),0 0 50px rgba(0,200,255,.16),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.settings-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.settings-title{font:900 1.45rem monospace;letter-spacing:3px;color:#ffe66b;text-shadow:0 0 24px rgba(255,230,107,.28)}
+.settings-close{
+  border:1px solid rgba(255,92,184,.45);background:rgba(60,10,28,.65);color:#ffb6d6;
+  border-radius:999px;padding:9px 12px;font:900 .72rem monospace;cursor:pointer;
+}
+.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.settings-section{
+  border-radius:20px;padding:14px;background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+.settings-section.wide{grid-column:1/-1}
+.settings-section h3{font:900 .78rem monospace;letter-spacing:2px;color:#7cf3ff;text-transform:uppercase;margin-bottom:9px}
+.settings-text{font:.72rem/1.55 monospace;color:#b9d6ee}
+.setting-row{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid rgba(255,255,255,.08);padding:9px 0}
+.setting-row:first-of-type{border-top:0}
+.setting-row span{font:.72rem monospace;color:#dffbff}
+.setting-btn{
+  min-width:112px;border-radius:999px;border:1px solid rgba(124,243,255,.36);
+  background:rgba(0,28,62,.70);color:#e9fbff;padding:8px 10px;
+  font:900 .62rem monospace;letter-spacing:1px;cursor:pointer;
+}
+.setting-btn.hot{background:linear-gradient(135deg,#ffe66b,#7cffaa);color:#07131f;border:0}
+.setting-btn.warn{background:rgba(55,10,24,.75);border-color:rgba(255,92,184,.40);color:#ffc2dc}
+.key-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.key-item{border-radius:12px;background:rgba(0,0,0,.24);border:1px solid rgba(255,255,255,.08);padding:8px;color:#bddaf2;font:.68rem monospace}
+.key-item b{display:block;color:#ffe66b;margin-bottom:3px}
+.mobileOnly{display:none}
+body.touch .mobileOnly{display:block}
+body.touch .pcOnly{display:none}
+body.touch #settings-ov{align-items:flex-start;padding-top:max(14px,env(safe-area-inset-top,14px));padding-bottom:calc(140px + env(safe-area-inset-bottom,0px))}
+body.touch .settings-grid{grid-template-columns:1fr}
+@media(max-width:620px){.settings-grid,.key-grid{grid-template-columns:1fr}.settings-title{font-size:1.05rem}.settings-card{border-radius:22px;padding:14px}}
+
 </style>
-<link rel="manifest" href="manifest.webmanifest?v=67">
+<link rel="manifest" href="manifest.webmanifest?v=71">
 <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
@@ -180,7 +287,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
   <div class="hb"><div class="hl">Cristales</div><div class="hv" id="hc">x00</div></div>
   <div class="hb"><div class="hl">Vidas</div><div class="hv" id="hl">&#9829;&#9829;&#9829;</div></div>
   <div class="hb"><div class="hl">Tiempo</div><div class="hv" id="ht">300</div></div>
-  <div class="hb"><div class="hl">Mision</div><div class="hv" id="hn">1/3</div></div>
+  <div class="hb"><div class="hl">Mision</div><div class="hv" id="hn">1/8</div></div>
   <div class="hb"><div class="hl">Estado</div><div class="hv" id="hpwr">-</div></div>
   <div class="hb"><div class="hl">Nivel</div><div class="hv" id="hdiff" style="font-size:.72rem">MEDIO</div></div>
   <div class="hb"><div class="hl">Musica</div><div class="hv" id="hmu" style="cursor:pointer;font-size:.95rem" title="M = silenciar">&#9835;</div></div>
@@ -190,12 +297,15 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
   <canvas id="c" width="600" height="380"></canvas>
   <div id="ov">
     <div id="ov-t">COSMO KID</div>
-    <div id="ov-sub">Aventura Espacial · 8 Misiones · v67</div>
+    <div id="ov-sub">Aventura Espacial · 8 Misiones · v71</div>
     <div id="ov-hi"></div>
     <div id="ov-m"></div>
     <div id="ov-b"></div>
     <div id="ov-diff"></div>
     <button id="ov-btn">JUGAR</button>
+    <button id="ov-continue">CONTINUAR</button>
+    <button id="ov-reset">BORRAR PROGRESO</button>
+    <button id="settings-open">⚙ CONFIGURACIÓN</button>
     <button id="help-open">&#128218; CÓMO JUGAR</button>
   </div>
 </div>
@@ -243,6 +353,62 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
   </div>
   <button class="hp-c" id="help-close">&#x2715; VOLVER</button>
 </div>
+
+<div id="settings-ov" aria-hidden="true">
+  <div class="settings-card">
+    <div class="settings-top">
+      <div class="settings-title">CONFIGURACIÓN</div>
+      <button class="settings-close" id="settings-close">✕ CERRAR</button>
+    </div>
+
+    <div class="settings-grid">
+      <div class="settings-section">
+        <h3>Opciones de juego</h3>
+        <div class="setting-row"><span>Calidad gráfica</span><button class="setting-btn hot" id="set-quality">LITE / HD</button></div>
+        <div class="setting-row"><span>Música</span><button class="setting-btn" id="set-music">ON</button></div>
+        <div class="setting-row"><span>Efectos</span><button class="setting-btn" id="set-sfx">ON</button></div>
+        <div class="setting-row"><span>Pantalla completa</span><button class="setting-btn" id="set-full">ABRIR</button></div>
+      </div>
+
+      <div class="settings-section">
+        <h3>Partida</h3>
+        <div class="setting-row"><span>Progreso guardado</span><button class="setting-btn hot" id="set-continue">CONTINUAR</button></div>
+        <div class="setting-row"><span>Reiniciar avance</span><button class="setting-btn warn" id="set-clear">BORRAR</button></div>
+        <p class="settings-text">El juego recuerda la última misión desbloqueada en este navegador.</p>
+      </div>
+
+      <div class="settings-section wide pcOnly">
+        <h3>Teclas PC</h3>
+        <div class="key-grid">
+          <div class="key-item"><b>← / →</b>Moverse</div>
+          <div class="key-item"><b>↑ / Z / Espacio</b>Saltar</div>
+          <div class="key-item"><b>↓</b>Agacharse / pisotón en el aire</div>
+          <div class="key-item"><b>Shift</b>Correr</div>
+          <div class="key-item"><b>X</b>Láser / ataque</div>
+          <div class="key-item"><b>P</b>Pausa</div>
+          <div class="key-item"><b>M / N</b>Música / efectos</div>
+          <div class="key-item"><b>Doble toque ←/→</b>Dash</div>
+        </div>
+      </div>
+
+      <div class="settings-section wide mobileOnly">
+        <h3>PAD móvil</h3>
+        <p class="settings-text">Puedes mover los botones del PAD. Pulsa editar, arrastra el joystick o los botones y cierra el modo edición para guardar.</p>
+        <div class="setting-row"><span>Editar posición del PAD</span><button class="setting-btn hot" id="set-pad-edit">EDITAR PAD</button></div>
+        <div class="setting-row"><span>Restaurar PAD</span><button class="setting-btn warn" id="set-pad-reset">RESET PAD</button></div>
+        <div class="key-grid">
+          <div class="key-item"><b>Joystick</b>Moverse / correr al inclinar fuerte</div>
+          <div class="key-item"><b>▲</b>Saltar</div>
+          <div class="key-item"><b>RUN</b>Correr / dash</div>
+          <div class="key-item"><b>✦</b>Láser</div>
+          <div class="key-item"><b>⚙</b>Editar mandos rápidos</div>
+          <div class="key-item"><b>⏸</b>Pausa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="ch-ov">
   <div class="ch-t">&#9733; COSMO TRUCOS &#9733;</div>
   <div class="ch-h">Escribe COSMO &middot; Toca "COSMO KID" x5</div>
@@ -269,7 +435,8 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
   <span class="k">P</span> pausa
 </div>
 <button id="fs-btn" title="Pantalla completa">&#x26F6;</button>
-<a id="homeBtn" href="index.html?v=67">INICIO</a>
+<a id="homeBtn" href="index.html?v=71">INICIO</a>
+<button id="perfBtn" title="Modo rendimiento">AUTO</button>
 <div id="tc">
   <div id="joy-base"><div id="joy-knob"></div></div>
   <div class="tcb" id="tc-p">&#9646;&#9646;</div>
@@ -397,6 +564,38 @@ fsBtn.addEventListener('click',()=>{initAC();isImmersive()?exitFS():requestFS(cv
 
 // ── RESIZE ──────────────────────────────────────────────────
 let tcH=0,isTouchDevice=false;
+
+// ── V71: modo rendimiento móvil/PC ──────────────────────────
+let COSMO_LOWQ=false, _cosmoFps=60, _cosmoFpsT=0, _cosmoFpsC=0;
+function cosmoStoreGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+function cosmoStoreSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+function cosmoAutoLowQ(){
+  const ua=navigator.userAgent||'';
+  const mem=navigator.deviceMemory||4;
+  const cores=navigator.hardwareConcurrency||4;
+  return /iphone|ipad|ipod|android/i.test(ua)||navigator.maxTouchPoints>0||mem<=3||cores<=4;
+}
+function applyCosmoQuality(on,save){
+  COSMO_LOWQ=!!on;
+  document.body.classList.toggle('lowq',COSMO_LOWQ);
+  if(perfBtn){
+    perfBtn.classList.toggle('on',COSMO_LOWQ);
+    perfBtn.textContent=COSMO_LOWQ?'LITE':'HD';
+    perfBtn.title=COSMO_LOWQ?'Modo rendimiento activado':'Modo HD activado';
+  }
+  try{ct.imageSmoothingEnabled=!COSMO_LOWQ;}catch(e){}
+  if(save)cosmoStoreSet('cosmoLowQ',COSMO_LOWQ?'1':'0');
+}
+function initCosmoQuality(){
+  const saved=cosmoStoreGet('cosmoLowQ');
+  applyCosmoQuality(saved===null?cosmoAutoLowQ():saved==='1',false);
+}
+if(perfBtn){
+  perfBtn.addEventListener('click',e=>{e.preventDefault();applyCosmoQuality(!COSMO_LOWQ,true);showBanner(COSMO_LOWQ?'Modo rendimiento':'Modo HD');});
+  perfBtn.addEventListener('touchend',e=>{e.preventDefault();applyCosmoQuality(!COSMO_LOWQ,true);showBanner(COSMO_LOWQ?'Modo rendimiento':'Modo HD');},{passive:false});
+}
+initCosmoQuality();
+
 function resize(){
   const fs=isImmersive();
   if(fs){
@@ -475,14 +674,50 @@ const jpL=()=>JP.ArrowLeft||JP.KeyA,jpR=()=>JP.ArrowRight||JP.KeyD;
 const ov=document.getElementById('ov'),ovT=document.getElementById('ov-t');
 const ovHi=document.getElementById('ov-hi'),ovM=document.getElementById('ov-m');
 const ovB=document.getElementById('ov-b'),ovBtn=document.getElementById('ov-btn');
+const ovContinueBtn=document.getElementById('ov-continue'),ovResetBtn=document.getElementById('ov-reset');
 const hsEl=document.getElementById('hs'),hcEl=document.getElementById('hc');
 const hlEl=document.getElementById('hl'),htEl=document.getElementById('ht');
 const hnEl=document.getElementById('hn'),hpwrEl=document.getElementById('hpwr');
 const hdiffEl=document.getElementById('hdiff');
 const tcXBtn=document.getElementById('tc-x');
+const perfBtn=document.getElementById('perfBtn');
 const helpOpenBtn=document.getElementById('help-open'),helpOv=document.getElementById('help-ov');
+const settingsOpenBtn=document.getElementById('settings-open'),settingsOv=document.getElementById('settings-ov'),settingsCloseBtn=document.getElementById('settings-close');
+const setQualityBtn=document.getElementById('set-quality'),setMusicBtn=document.getElementById('set-music'),setSfxBtn=document.getElementById('set-sfx'),setFullBtn=document.getElementById('set-full'),setContinueBtn=document.getElementById('set-continue'),setClearBtn=document.getElementById('set-clear'),setPadEditBtn=document.getElementById('set-pad-edit'),setPadResetBtn=document.getElementById('set-pad-reset');
 helpOpenBtn.addEventListener('click',e=>{e.stopPropagation();helpOv.classList.add('on');});
 document.getElementById('help-close').addEventListener('click',e=>{e.stopPropagation();helpOv.classList.remove('on');});
+
+function updateSettingsUI(){
+  if(setQualityBtn)setQualityBtn.textContent=COSMO_LOWQ?'LITE ACTIVADO':'HD ACTIVADO';
+  if(setMusicBtn)setMusicBtn.textContent=musicMuted?'OFF':'ON';
+  if(setSfxBtn)setSfxBtn.textContent=sfxMuted?'OFF':'ON';
+  if(setContinueBtn){
+    const u=cosmoGetUnlocked?cosmoGetUnlocked():0;
+    setContinueBtn.textContent=u>0?'MISIÓN '+(u+1):'SIN PROGRESO';
+  }
+  if(setPadEditBtn)setPadEditBtn.textContent=(typeof padEdit!=='undefined'&&padEdit)?'GUARDAR PAD':'EDITAR PAD';
+}
+function openSettings(){
+  updateSettingsUI();
+  settingsOv.classList.add('on');
+  settingsOv.setAttribute('aria-hidden','false');
+}
+function closeSettings(){
+  settingsOv.classList.remove('on');
+  settingsOv.setAttribute('aria-hidden','true');
+}
+if(settingsOpenBtn)settingsOpenBtn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();openSettings();});
+if(settingsCloseBtn)settingsCloseBtn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();closeSettings();});
+if(settingsOv)settingsOv.addEventListener('click',e=>{if(e.target===settingsOv)closeSettings();});
+if(setQualityBtn)setQualityBtn.addEventListener('click',e=>{e.preventDefault();applyCosmoQuality(!COSMO_LOWQ,true);updateSettingsUI();showBanner(COSMO_LOWQ?'Modo rendimiento':'Modo HD');});
+if(setMusicBtn)setMusicBtn.addEventListener('click',e=>{e.preventDefault();musicMuted=!musicMuted;if(!musicMuted&&musicActive&&AC)musicNextT=AC.currentTime;setMusicIcon();updateSettingsUI();});
+if(setSfxBtn)setSfxBtn.addEventListener('click',e=>{e.preventDefault();sfxMuted=!sfxMuted;setSFXIcon();updateSettingsUI();});
+if(setFullBtn)setFullBtn.addEventListener('click',e=>{e.preventDefault();isImmersive()?exitFS():requestFS(cv);updateSettingsUI();});
+if(setContinueBtn)setContinueBtn.addEventListener('click',e=>{e.preventDefault();const u=cosmoGetUnlocked();if(u>0){closeSettings();initGame(u);}else showBanner('Sin progreso guardado');});
+if(setClearBtn)setClearBtn.addEventListener('click',e=>{e.preventDefault();cosmoClearProgress();updateSettingsUI();showMenu();showBanner('PROGRESO BORRADO');});
+if(setPadEditBtn)setPadEditBtn.addEventListener('click',e=>{e.preventDefault();if(typeof setPadEdit==='function'){setPadEdit(!padEdit);updateSettingsUI();}});
+if(setPadResetBtn)setPadResetBtn.addEventListener('click',e=>{e.preventDefault();if(typeof resetPadLayout==='function'){resetPadLayout();updateSettingsUI();}});
+
 
 // ── STATE ───────────────────────────────────────────────────
 let gst='menu',score=0,coins=0,lives=3,tLeft=300,levelEndTime=0;
@@ -507,6 +742,22 @@ const DIFFS=[
 const df=()=>DIFFS[difficulty];
 const hiScores=[0,1,2].map(i=>+localStorage.getItem('cosmoHi'+i)||0);
 const bestTimes=[0,1,2].map(i=>+localStorage.getItem('cosmoBT'+i)||0);
+
+function cosmoGetUnlocked(){
+  try{
+    const n=parseInt(localStorage.getItem('cosmoUnlockedLevel')||'0',10);
+    return Math.max(0,Math.min(MAX_LV-1,isNaN(n)?0:n));
+  }catch(e){return 0;}
+}
+function cosmoSaveUnlocked(n){
+  try{
+    n=Math.max(0,Math.min(MAX_LV-1,n|0));
+    if(n>cosmoGetUnlocked())localStorage.setItem('cosmoUnlockedLevel',String(n));
+  }catch(e){}
+}
+function cosmoClearProgress(){
+  try{localStorage.removeItem('cosmoUnlockedLevel');}catch(e){}
+}
 
 const LEVEL_TIME=[300,240,200,180,160,140,130,120];
 const LEVEL_NAMES=['PLANETA COSMO','ESTACION ORBITAL','NUCLEO ALIEN','NEBULA OSCURA','CORAZON ALIEN','CRATER LUNAR','TORMENTA COSMICA','DIMENSION OMEGA'];
@@ -773,6 +1024,13 @@ function showMenu(){
   ovB.innerHTML='Arcade espacial &nbsp;&#9670;&nbsp; Bonus rooms &nbsp;&#9670;&nbsp; Jefes &nbsp;&#9670;&nbsp; Rango S';
   renderDiffBtns();ovDiff.style.display='';
   ovBtn.textContent='JUGAR';ovBtn.style.display='';
+  const unlocked=cosmoGetUnlocked();
+  if(ovContinueBtn){
+    ovContinueBtn.style.display=unlocked>0?'':'none';
+    ovContinueBtn.textContent='CONTINUAR MISION '+(unlocked+1);
+  }
+  if(ovResetBtn)ovResetBtn.style.display=unlocked>0?'':'none';
+  if(settingsOpenBtn)settingsOpenBtn.style.display='';
   helpOpenBtn.style.display='';
 }
 
@@ -1613,7 +1871,7 @@ function stompE(e){
   if(comboMult<8)comboMult*=2;
   if(Math.random()<.3)coinList.push({x:e.x+e.w/2-7,y:e.y-4,w:14,h:18,col:false,fr:0,ft:0});
 }
-function togglePause(){if(gst==='playing'){gst='paused';ov.classList.remove('off');ovT.textContent='PAUSA';ovT.style.color='#00ccff';ovHi.textContent='';ovM.innerHTML='&#8595; en aire = pisotón &nbsp;&#183;&nbsp; doble toque = dash';ovB.textContent='';ovBtn.textContent='CONTINUAR';ovBtn.style.display='';ovDiff.style.display='none';helpOpenBtn.style.display='';}else if(gst==='paused'){gst='playing';ov.classList.add('off');}}
+function togglePause(){if(gst==='playing'){gst='paused';ov.classList.remove('off');ovT.textContent='PAUSA';ovT.style.color='#00ccff';ovHi.textContent='';ovM.innerHTML='&#8595; en aire = pisotón &nbsp;&#183;&nbsp; doble toque = dash';ovB.textContent='';ovBtn.textContent='CONTINUAR';ovBtn.style.display='';if(settingsOpenBtn)settingsOpenBtn.style.display='';ovDiff.style.display='none';helpOpenBtn.style.display='';}else if(gst==='paused'){gst='playing';ov.classList.add('off');}}
 function pWin(){
   if(player.goal)return;player.goal=true;wTimer=180;SFX.win();shake(3);hap(60);
   const wCols=['#ffcc00','#ff4488','#00ff88','#00ccff','#ff8800','#ffffff'];
@@ -1625,13 +1883,13 @@ function pWin(){
   if(lvNoHit){addScore(2000);parts.push(new TextPop(player.x+10,player.y-26,'SIN DAÑO +2000','#88ffcc'));}
   addScore(Math.ceil(tLeft)*5);tLeft=0;setHUD();
 }
-function showEnd(title,col,msg,badge,btnTxt){gst='stop';ov.classList.remove('off');ovT.textContent=title;ovT.style.color=col;ovHi.textContent='';ovM.innerHTML=msg;ovB.textContent=badge;ovBtn.textContent=btnTxt;ovBtn.style.display='';ovDiff.style.display='none';helpOpenBtn.style.display='none';}
-function initGame(){
+function showEnd(title,col,msg,badge,btnTxt){gst='stop';ov.classList.remove('off');ovT.textContent=title;ovT.style.color=col;ovHi.textContent='';ovM.innerHTML=msg;ovB.textContent=badge;ovBtn.textContent=btnTxt;ovBtn.style.display='';if(ovContinueBtn)ovContinueBtn.style.display='none';if(ovResetBtn)ovResetBtn.style.display='none';ovDiff.style.display='none';if(settingsOpenBtn)settingsOpenBtn.style.display='none';helpOpenBtn.style.display='none';}
+function initGame(startLevel=0){
   if(isTouchDevice&&!isFS())requestFS(cv);
-  score=0;coins=0;lives=df().lives;levelNum=0;nextLvlReady=false;cpX=-1;comboMult=1;comboTimer=0;levelEndTime=0;
+  score=0;coins=0;lives=df().lives;levelNum=Math.max(0,Math.min(MAX_LV-1,startLevel|0));nextLvlReady=false;cpX=-1;comboMult=1;comboTimer=0;levelEndTime=0;
   runKills=0;runMaxCombo=1;
   hdiffEl.textContent=df().nm;hdiffEl.style.color=df().col;
-  lvData=LV_BUILDERS[0]();lw=lvData.lw;
+  lvData=LV_BUILDERS[levelNum]();lw=lvData.lw;
   BEAT_DUR=difficulty===2?.17:difficulty===0?.28:.22;
   resetRound();gst='playing';ov.classList.add('off');setHUD();updatePwrHUD();
   showBanner(LEVEL_NAMES[levelNum]);
@@ -1793,6 +2051,7 @@ function update(){
       const rankStr='RANGO <span style="font-size:2rem;font-weight:900;color:'+rcol+';text-shadow:0 0 14px '+rcol+'">'+rank+'</span><br>';
       if(rank==='S')SFX.combo(5);
       if(levelNum<MAX_LV-1){
+        cosmoSaveUnlocked(levelNum+1);
         nextLvlReady=true;
         showEnd(LEVEL_NAMES[levelNum]+' OK','#00ff88',
           rankStr+stStr+perfStr+'<br>Puntos: '+String(score).padStart(6,'0')+'&nbsp;&nbsp;Cristales: x'+String(coins).padStart(2,'0'),
@@ -2177,7 +2436,7 @@ function drawPremiumWorldBG(){
   const prog=Math.max(0,Math.min(1,camX/Math.max(1,lw-CW)));
   drawImageCover(img,0,0,CW,CH,prog);
   const fg=PC_PARALLAX_ASSETS[li];
-  if(fg&&fg.complete&&fg.naturalWidth){
+  if(!COSMO_LOWQ&&fg&&fg.complete&&fg.naturalWidth){
     ct.save();
     const parProg=Math.max(0,Math.min(1,(camX*.55)/Math.max(1,lw-CW)));
     ct.globalAlpha=.34;
@@ -4097,7 +4356,7 @@ function render(){
   const ox=Math.round(camX);
   drawBG();
   if(bonusRoom){drawBonusRoom();drawMobileHUD();ct.restore();return;}
-  if(gst==='playing'&&lvData)drawAmbient();
+  if(!COSMO_LOWQ&&gst==='playing'&&lvData)drawAmbient();
   drawPremiumBanner();
   if(!lvData){if(gst==='menu')drawMenuPreview();ct.restore();return;}
   drawNeoCanvasWorld(ox);
@@ -4190,8 +4449,8 @@ function render(){
     ct.fillStyle='rgba(223,251,255,.78)';ct.font='bold 7px monospace';ct.textAlign='left';ct.textBaseline='bottom';ct.fillText('M'+(levelNum+1),bx,CH-14);
   }
   // Atmospheric grade: key light + cinematic vignette (depth)
-  if(lvData)drawAtmosphere();
-  drawModernPostFX();
+  if(!COSMO_LOWQ&&lvData)drawAtmosphere();
+  if(!COSMO_LOWQ)drawModernPostFX();
   drawBossIntro();
   if(dmgFlash>0){
     dmgFlash--;
@@ -4231,10 +4490,15 @@ const _STEP=1000/60; // 16.67ms por paso de física
 
 function loop(ts){
   requestAnimationFrame(loop);
-  if(!_lt){_lt=ts;return;}             // primer frame: inicializar y salir
+  if(!_lt){_lt=ts;_cosmoFpsT=ts;return;}             // primer frame: inicializar y salir
   _accum+=Math.min(ts-_lt, _STEP*3);  // cap a 3 pasos: evita espiral de muerte
   _lt=ts;
   NOW=Date.now();
+  _cosmoFpsC++;
+  if(ts-_cosmoFpsT>1000){
+    _cosmoFps=_cosmoFpsC*1000/Math.max(1,ts-_cosmoFpsT);_cosmoFpsC=0;_cosmoFpsT=ts;
+    if(!COSMO_LOWQ&&gst==='playing'&&_cosmoFps<43&&cosmoStoreGet('cosmoLowQ')===null)applyCosmoQuality(true,false);
+  }
   pollGamepad25D();
   scheduleMusicNotes();
   let didStep=false;
@@ -4252,7 +4516,7 @@ ovBtn.addEventListener('click',()=>{
   initAC();
   if(gst==='paused'){togglePause();return;}
   if(gst==='stop'&&nextLvlReady){
-    nextLvlReady=false;levelNum++;cpX=-1;levelEndTime=0;
+    nextLvlReady=false;levelNum++;cosmoSaveUnlocked(levelNum);cpX=-1;levelEndTime=0;
     lvData=LV_BUILDERS[levelNum]();lw=lvData.lw;
     resetRound();gst='playing';ov.classList.add('off');
     setHUD();updatePwrHUD();showBanner(LEVEL_NAMES[levelNum]);
@@ -4264,6 +4528,19 @@ ovBtn.addEventListener('click',()=>{
   nextLvlReady=false;ovT.style.color='#00ccff';initGame();
 });
 cv.addEventListener('click',()=>{initAC();if(gst==='paused'){togglePause();return;}if(gst==='menu')initGame();});
+if(ovContinueBtn){
+  ovContinueBtn.addEventListener('click',e=>{
+    e.preventDefault();e.stopPropagation();initAC();
+    nextLvlReady=false;cpX=-1;levelEndTime=0;
+    initGame(cosmoGetUnlocked());
+  });
+}
+if(ovResetBtn){
+  ovResetBtn.addEventListener('click',e=>{
+    e.preventDefault();e.stopPropagation();
+    cosmoClearProgress();showMenu();showBanner('PROGRESO BORRADO');
+  });
+}
 
 ct.fillStyle='#5bbce4';ct.fillRect(0,0,CW,CH);
 hmuEl.addEventListener('click',()=>{musicMuted=!musicMuted;if(!musicMuted&&musicActive&&AC)musicNextT=AC.currentTime;setMusicIcon();});
@@ -4306,7 +4583,7 @@ requestAnimationFrame(loop);showMenu();
 
 // ── TOUCH CONTROLS ──────────────────────────────────────────
 isTouchDevice=('ontouchstart' in window||navigator.maxTouchPoints>0);
-if(isTouchDevice){document.body.classList.add('touch');document.getElementById('tc').style.display='block';document.getElementById('ctrl').style.display='none';tcH=120;resize();setTimeout(()=>{try{applyPadLayout&&applyPadLayout();}catch(e){}},120);showMenu();}
+if(isTouchDevice){document.body.classList.add('touch');document.getElementById('tc').style.display='block';document.getElementById('ctrl').style.display='none';tcH=120;resize();if(cosmoStoreGet('cosmoLowQ')===null)applyCosmoQuality(true,false);setTimeout(()=>{try{applyPadLayout&&applyPadLayout();}catch(e){}},120);showMenu();}
 function hap(ms){try{if(navigator.vibrate)navigator.vibrate(ms);}catch(e){}}
 function tcBind(id,key,hapMs){
   const el=document.getElementById(id);
@@ -4451,7 +4728,7 @@ const ppP=e=>{e.preventDefault();tcpEl.classList.add('on');togglePause();hap(15)
 const ppR=e=>{e.preventDefault();tcpEl.classList.remove('on');};
 tcpEl.addEventListener('touchstart',ppP,{passive:false});tcpEl.addEventListener('touchend',ppR,{passive:false});
 tcpEl.addEventListener('mousedown',ppP);tcpEl.addEventListener('mouseup',ppR);
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=67').catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=71').catch(()=>{}));}
 </script>
 </body>
 </html>
