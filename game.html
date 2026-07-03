@@ -797,44 +797,20 @@ const CRATER_ASSET_PATHS=Array.from({length:12},(_,i)=>PC_ASSET_ROOT+'craters/'+
 const CRATER_ASSETS=CRATER_ASSET_PATHS.map(src=>{const img=new Image();img.src=src;return img;});
 const CRATER_FLAT_ASSET_PATHS=Array.from({length:12},(_,i)=>'assets/craters_flat/crater_plano_'+String(i+1).padStart(2,'0')+'.png');
 const CRATER_FLAT_ASSETS=CRATER_FLAT_ASSET_PATHS.map(src=>{const img=new Image();img.src=src;return img;});
-const PLATFORM_ASSET_FILES={
-  techLong:'assets/platforms/tech_long.png',
-  techCrystal:'assets/platforms/crystal_tech_long.png',
-  grassSoft:'assets/platforms/grass_long_soft.png',
-  grassClean:'assets/platforms/grass_long_clean.png',
-  grassPremium:'assets/platforms/grass_long_premium.png',
-  grassVines:'assets/platforms/grass_long_vines.png',
-  grassUltra:'assets/platforms/grass_ultra_long.png',
-  desertClean:'assets/platforms/desert_long_clean.png',
-  desertProps:'assets/platforms/desert_long_props.png',
-  crystalBlue:'assets/platforms/crystal_long_blue.png',
-  stoneRuins:'assets/platforms/stone_long_ruins.png',
-  jungleDecor:'assets/platforms/jungle_long_decor.png',
-  lavaFlat:'assets/platforms/lava_island_flat.png',
-  lavaSquare:'assets/platforms/lava_island_square.png',
-  iceBlue:'assets/platforms/ice_island_blue.png',
-  grassRound:'assets/platforms/grass_island_round.png',
-  grassSmall:'assets/platforms/grass_island_small.png',
-  grassCyan:'assets/platforms/grass_island_cyan.png',
-  purpleRound:'assets/platforms/purple_island_round.png',
-  stoneTall:'assets/platforms/stone_tall.png',
-  premiumCyber:'assets/platforms/premium_cyber_floor.png',
-  premiumArcane:'assets/platforms/premium_arcane_floor.png',
-  premiumGrass:'assets/platforms/premium_grass_floor.png',
-  premiumToxic:'assets/platforms/premium_toxic_floor.png',
-  premiumDesert:'assets/platforms/premium_desert_floor.png',
-  premiumLava:'assets/platforms/premium_lava_floor.png',
-  premiumIce:'assets/platforms/premium_ice_floor.png',
-  premiumNeon:'assets/platforms/premium_neon_floor.png',
-  groundGrassCrystal:'assets/platforms/ground_world_01_grass_crystal.png',
-  groundBlueBiolume:'assets/platforms/ground_world_02_blue_biolume.png',
-  groundScifi:'assets/platforms/ground_world_03_scifi.png',
-  groundDesertRuins:'assets/platforms/ground_world_04_desert_ruins.png',
-  groundToxic:'assets/platforms/ground_world_05_toxic.png',
-  groundLava:'assets/platforms/ground_world_06_lava.png',
-  groundIce:'assets/platforms/ground_world_07_ice.png'
-};
-const PLATFORM_ASSETS=Object.fromEntries(Object.entries(PLATFORM_ASSET_FILES).map(([k,src])=>[k,(()=>{const img=new Image();img.src=src;return img;})()]));
+const SLIM_PLATFORM_STYLES=['grass','tech','crystal','desert','toxic','lava','rock','ice'];
+const SLIM_PLATFORM_SIZES=['mini','small','medium','long_slim'];
+const SLIM_PLATFORM_ASSETS={};
+SLIM_PLATFORM_STYLES.forEach(style=>{
+  SLIM_PLATFORM_ASSETS[style]={};
+  SLIM_PLATFORM_SIZES.forEach(size=>{
+    SLIM_PLATFORM_ASSETS[style][size]=Array.from({length:4},(_,i)=>{
+      const img=new Image();
+      img.src='assets/platforms/'+style+'/'+size+'/plataforma_'+style+'_'+size+'_'+String(i+1).padStart(2,'0')+'.png';
+      return img;
+    });
+  });
+});
+const WORLD_SLIM_STYLE=['grass','tech','crystal','desert','toxic','lava','ice','rock'];
 const CLEAN_ASSET_CACHE=new WeakMap();
 function cleanLightMatteAsset(img){
   if(!img||!img.complete||!img.naturalWidth)return img;
@@ -896,13 +872,26 @@ const ASTRONAUT_ASSETS={right:{},left:{}};
 });
 
 // ── ALIEN SPRITES ────────────────────────────────────────────
-function loadAlienSheet(alien,anim){const img=new Image();img.src=PC_ASSET_ROOT+'aliens/'+alien+'/'+anim+'.png';return img;}
 function loadPcSheet(path){const img=new Image();img.src=PC_ASSET_ROOT+path;return img;}
-const ALIEN_SHEETS={
-  reptil:{idle:{img:loadPcSheet('aliens/015_aliens_3d_movimientos_todos_idle.png'),frames:4,fw:799/4,fh:180},walk:{img:loadPcSheet('aliens/016_aliens_3d_movimientos_todos_walk.png'),frames:6,fw:1088/6,fh:189},hurt:{img:loadPcSheet('aliens/014_aliens_3d_movimientos_todos_hurt.png'),frames:3,fw:583/3,fh:165},death:{img:loadPcSheet('aliens/013_aliens_3d_movimientos_todos_death.png'),frames:5,fw:1105/5,fh:165}},
-  medusa:{idle:{img:loadPcSheet('aliens/011_aliens_3d_movimientos_todos_idle.png'),frames:4,fw:699/4,fh:200},move:{img:loadPcSheet('aliens/009_aliens_3d_movimientos_todos_float_move.png'),frames:6,fw:1027/6,fh:248},hurt:{img:loadPcSheet('aliens/010_aliens_3d_movimientos_todos_hurt.png'),frames:3,fw:561/3,fh:170},death:{img:loadPcSheet('aliens/008_aliens_3d_movimientos_todos_death.png'),frames:5,fw:1075/5,fh:175}},
-  volador:{idle:{img:loadPcSheet('aliens/005_aliens_3d_movimientos_todos_idle.png'),frames:4,fw:752/4,fh:161},move:{img:loadPcSheet('aliens/003_aliens_3d_movimientos_todos_fly_move.png'),frames:6,fw:1071/6,fh:285},hurt:{img:loadPcSheet('aliens/004_aliens_3d_movimientos_todos_hurt.png'),frames:3,fw:979/3,fh:220},death:{img:loadPcSheet('aliens/002_aliens_3d_movimientos_todos_death.png'),frames:5,fw:1068/5,fh:305}}
+const ALIEN_ANIM_META={
+  reptil:{folder:'alien_walker',keys:{idle:'idle',walk:'walk',hurt:'hurt',death:'death'},counts:{idle:4,walk:6,hurt:3,death:5}},
+  medusa:{folder:'alien_floater',keys:{idle:'idle',move:'float_move',hurt:'hurt',death:'death'},counts:{idle:4,move:6,hurt:3,death:5}},
+  volador:{folder:'alien_flyer',keys:{idle:'idle',move:'fly_move',hurt:'hurt',death:'death'},counts:{idle:4,move:6,hurt:3,death:5}}
 };
+const ALIEN_SHEETS={};
+Object.entries(ALIEN_ANIM_META).forEach(([type,meta])=>{
+  ALIEN_SHEETS[type]={right:{},left:{}};
+  ['right','left'].forEach(dirKey=>{
+    Object.entries(meta.keys).forEach(([gameKey,fileAnim])=>{
+      const count=meta.counts[gameKey];
+      ALIEN_SHEETS[type][dirKey][gameKey]=Array.from({length:count},(_,i)=>{
+        const img=new Image();
+        img.src='assets/aliens/'+meta.folder+'/'+dirKey+'/'+fileAnim+'/'+meta.folder+'_'+fileAnim+'_'+dirKey+'_'+String(i+1).padStart(2,'0')+'.png';
+        return img;
+      });
+    });
+  });
+});
 function loadBossSheet(bossName,anim){const img=new Image();img.src=PC_ASSET_ROOT+'bosses/'+bossName+'/'+anim+'.png';return img;}
 const BOSS_SHEETS={
   tentaculos:{
@@ -2857,15 +2846,8 @@ function drawBG(){
 
 // ── PLATFORMS ───────────────────────────────────────────────
 function groundImgFor(li){
-  const pick=(...imgs)=>imgs.find(img=>img&&img.naturalWidth)||imgs.find(Boolean);
-  if(li===0)return pick(PLATFORM_ASSETS.groundGrassCrystal,PLATFORM_ASSETS.premiumGrass,PLATFORM_ASSETS.grassPremium);
-  if(li===1)return pick(PLATFORM_ASSETS.groundScifi,PLATFORM_ASSETS.premiumCyber,PLATFORM_ASSETS.premiumNeon);
-  if(li===2)return pick(PLATFORM_ASSETS.groundBlueBiolume,PLATFORM_ASSETS.premiumArcane,PLATFORM_ASSETS.crystalBlue);
-  if(li===3)return pick(PLATFORM_ASSETS.groundDesertRuins,PLATFORM_ASSETS.premiumDesert,PLATFORM_ASSETS.desertClean);
-  if(li===4)return pick(PLATFORM_ASSETS.groundToxic,PLATFORM_ASSETS.premiumToxic,PLATFORM_ASSETS.grassVines);
-  if(li===5)return pick(PLATFORM_ASSETS.groundLava,PLATFORM_ASSETS.premiumLava,PLATFORM_ASSETS.lavaFlat);
-  if(li===6)return pick(PLATFORM_ASSETS.groundIce,PLATFORM_ASSETS.premiumIce,PLATFORM_ASSETS.iceBlue);
-  return pick(PLATFORM_ASSETS.groundGrassCrystal,PLATFORM_ASSETS.groundBlueBiolume,PLATFORM_ASSETS.premiumToxic);
+  const style=WORLD_SLIM_STYLE[Math.min(Math.max(li|0,0),7)]||'rock';
+  return SLIM_PLATFORM_ASSETS[style].long_slim[0];
 }
 function drawPremiumGround(li,bgt){
   const raw=groundImgFor(li);
@@ -2935,15 +2917,10 @@ function platRng(seed,n){return((Math.sin(seed*.127+n*.3118)*43758.5453)%1+1)%1;
 function platformImgFor(p,seed){
   const li=Math.min(levelNum,7);
   const wide=p.w>=112;
-  const alt=platRng(seed,91)>.52;
-  if(li===0)return wide?(alt?PLATFORM_ASSETS.premiumGrass:PLATFORM_ASSETS.grassPremium):PLATFORM_ASSETS.grassCyan;
-  if(li===1)return wide?(alt?PLATFORM_ASSETS.premiumCyber:PLATFORM_ASSETS.premiumNeon):PLATFORM_ASSETS.purpleRound;
-  if(li===2)return wide?(alt?PLATFORM_ASSETS.premiumArcane:PLATFORM_ASSETS.crystalBlue):PLATFORM_ASSETS.purpleRound;
-  if(li===3)return wide?(alt?PLATFORM_ASSETS.premiumDesert:PLATFORM_ASSETS.desertClean):PLATFORM_ASSETS.stoneTall;
-  if(li===4)return wide?(alt?PLATFORM_ASSETS.jungleDecor:PLATFORM_ASSETS.grassVines):PLATFORM_ASSETS.grassSmall;
-  if(li===5)return wide?PLATFORM_ASSETS.premiumLava:PLATFORM_ASSETS.lavaFlat;
-  if(li===6)return wide?(alt?PLATFORM_ASSETS.premiumIce:PLATFORM_ASSETS.iceBlue):PLATFORM_ASSETS.iceBlue;
-  return wide?(alt?PLATFORM_ASSETS.premiumToxic:PLATFORM_ASSETS.grassUltra):PLATFORM_ASSETS.grassRound;
+  const style=WORLD_SLIM_STYLE[li]||'rock';
+  const variants=SLIM_PLATFORM_ASSETS[style][wide?'long_slim':'medium'];
+  const idx=Math.floor(platRng(seed,91)*variants.length)%variants.length;
+  return variants[idx];
 }
 function drawRealPlatformAsset(p,ox,shx,seed,bgt2){
   const rawImg=platformImgFor(p,seed);
@@ -4025,12 +4002,18 @@ function drawFlyer(e,ox){
 }
 
 // ── ALIEN SPRITE HELPER ─────────────────────────────────────
-function drawAlienSprite(sheets,anim,frame,x,y,dw,dh,flipX,alpha){
-  const s=sheets[anim];if(!s||!s.img.naturalWidth)return false;
-  const fw=s.fw,fh=s.fh,f=Math.abs(frame|0)%s.frames;
+function pickAlienFrame(type,anim,frame,dir){
+  const dirKey=dir<0?'left':'right';
+  const set=ALIEN_SHEETS[type]&&ALIEN_SHEETS[type][dirKey]&&ALIEN_SHEETS[type][dirKey][anim];
+  if(!set||!set.length)return null;
+  const img=set[Math.abs(frame|0)%set.length];
+  return img&&img.complete&&img.naturalWidth?img:null;
+}
+function drawAlienSprite(type,anim,frame,x,y,dw,dh,dir,alpha){
+  const img=pickAlienFrame(type,anim,frame,dir);
+  if(!img)return false;
   ct.save();ct.globalAlpha=alpha??1;
-  if(flipX){ct.translate(x+dw,0);ct.scale(-1,1);ct.translate(-x,0);}
-  ct.drawImage(s.img,f*fw,0,fw,fh,flipX?0:x,y,dw,dh);
+  ct.drawImage(img,x,y,dw,dh);
   ct.restore();return true;
 }
 function drawBossEdgeMarker(bx){
@@ -4094,7 +4077,7 @@ function drawAlienReptil(e,ox){
   if(e.stomp){ct.globalAlpha=.55;ct.fillStyle='#4a8840';ct.beginPath();ct.ellipse(x+dw/2,y+e.h+2,dw/2,5,0,0,Math.PI*2);ct.fill();ct.globalAlpha=1;return;}
   ct.save();ct.globalAlpha=.28;ct.fillStyle='#000';ct.shadowColor='rgba(0,0,0,.5)';ct.shadowBlur=6;ct.beginPath();ct.ellipse(x+dw/2,y+e.h+2,dw*.42,4,0,0,Math.PI*2);ct.fill();ct.restore();
   const anim=e.chasing?'walk':'idle';
-  const drawn=drawAlienSprite(ALIEN_SHEETS.reptil,anim,e.fr,x,y,dw,dh,e.dir<0);
+  const drawn=drawAlienSprite('reptil',anim,e.fr,x,y,dw,dh,e.dir);
   if(!drawn){// fallback shape
     ct.fillStyle='#6a9a30';ct.fillRect(x,y,dw,dh);
   }
@@ -4108,7 +4091,7 @@ function drawAlienMedusa(e,ox){
   const pulse=.5+.5*Math.sin(NOW*.05+e.ph);
   ct.save();ct.globalAlpha=.18+.1*pulse;ct.fillStyle='#000';ct.beginPath();ct.ellipse(x+dw/2,y+e.h+2,dw*.36,3.5,0,0,Math.PI*2);ct.fill();ct.restore();
   ct.save();ct.shadowColor='#20e8d8';ct.shadowBlur=10*pulse;
-  const drawn=drawAlienSprite(ALIEN_SHEETS.medusa,'move',e.fr,x,y,dw,dh,e.dir<0,0.88+.12*pulse);
+  const drawn=drawAlienSprite('medusa','move',e.fr,x,y,dw,dh,e.dir,0.88+.12*pulse);
   if(!drawn){ct.fillStyle='#20a8a8';ct.beginPath();ct.ellipse(x+dw/2,y+dh*.4,dw*.46,dh*.28,0,0,Math.PI*2);ct.fill();}
   ct.restore();
   if(e.hpFlash>0){ct.save();ct.globalAlpha=e.hpFlash/14*.55;ct.fillStyle='#fff';ct.fillRect(x,y,dw,dh);ct.restore();}
@@ -4119,7 +4102,7 @@ function drawAlienVolador(e,ox){
   if(e.stomp){ct.globalAlpha=.5;ct.fillStyle='#8840b0';ct.beginPath();ct.ellipse(x+dw/2,y+e.h,dw*.5,5,0,0,Math.PI*2);ct.fill();ct.globalAlpha=1;return;}
   const wob=Math.sin(NOW*.011+e.ph)*1.5;
   ct.save();ct.globalAlpha=.2;ct.fillStyle='#000';ct.beginPath();ct.ellipse(x+dw/2,GY+2,dw*.4,3.5,0,0,Math.PI*2);ct.fill();ct.restore();
-  const drawn=drawAlienSprite(ALIEN_SHEETS.volador,'move',e.fr,x,y+wob,dw,dh,e.dir<0);
+  const drawn=drawAlienSprite('volador','move',e.fr,x,y+wob,dw,dh,e.dir);
   if(!drawn){ct.fillStyle='#8040c0';ct.beginPath();ct.ellipse(x+dw/2,y+dh*.35,dw*.46,dh*.25,0,0,Math.PI*2);ct.fill();}
   if(e.hpFlash>0){ct.save();ct.globalAlpha=e.hpFlash/14*.55;ct.fillStyle='#fff';ct.fillRect(x,y,dw,dh);ct.restore();}
 }
@@ -4142,7 +4125,7 @@ function drawLaser(lb,ox){
 // ── MENU PREVIEW ─────────────────────────────────────────────
 function drawMenuPreview(){
   const fr2=NOW/220%4|0,floatY=Math.sin(NOW*.002)*6,pulse=.5+.5*Math.sin(NOW*.004);
-  const floor=PLATFORM_ASSETS.premiumGrass||PLATFORM_ASSETS.grassPremium;
+  const floor=SLIM_PLATFORM_ASSETS.grass.long_slim[0];
   ct.save();
   ct.globalAlpha=.9;
   drawNeoCanvasWorld(0);
