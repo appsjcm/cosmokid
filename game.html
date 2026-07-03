@@ -5,12 +5,12 @@
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="description" content="Modo 2.5D estable v71 de Cosmo Kid: aventura espacial ligera, con modo rendimiento para móvil y PC.">
+<meta name="description" content="Modo 2.5D estable v72 de Cosmo Kid: aventura espacial ligera, con modo rendimiento para móvil y PC.">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0a2040">
-<title>Cosmo Kid 2.5D · Modo estable v71</title>
+<title>Cosmo Kid 2.5D · Modo estable v72</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{overscroll-behavior:none;touch-action:none}
@@ -179,7 +179,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
 .hp-c{margin:12px 0 4px;background:rgba(0,60,90,.85);border:1.5px solid rgba(0,200,255,.45);color:#bfefff;font-size:.85rem;letter-spacing:2px;padding:10px 28px;border-radius:10px;cursor:pointer;font-family:monospace;min-height:48px}
 .hp-c:hover,.hp-c:active{background:rgba(0,110,160,.6);border-color:#00ccff}
 
-/* V71: portada premium + menú de configuración */
+/* V72: portada premium + menú de configuración */
 #ov{
   background:
     radial-gradient(circle at 50% 18%,rgba(124,243,255,.26),transparent 28%),
@@ -190,7 +190,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),inset 0 -80px 120px rgba(0,0,0,.36),0 0 70px rgba(0,200,255,.22);
 }
 #ov:before{
-  content:'COSMO KID · V71 PREMIUM';
+  content:'COSMO KID · V72 PREMIUM';
   position:absolute;top:14px;left:50%;transform:translateX(-50%);
   z-index:1;border-radius:999px;padding:7px 12px;
   background:rgba(1,7,18,.68);border:1px solid rgba(255,230,107,.38);
@@ -276,7 +276,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
 @media(max-width:620px){.settings-grid,.key-grid{grid-template-columns:1fr}.settings-title{font-size:1.05rem}.settings-card{border-radius:22px;padding:14px}}
 
 </style>
-<link rel="manifest" href="manifest.webmanifest?v=71">
+<link rel="manifest" href="manifest.webmanifest?v=72">
 <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
@@ -297,7 +297,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
   <canvas id="c" width="600" height="380"></canvas>
   <div id="ov">
     <div id="ov-t">COSMO KID</div>
-    <div id="ov-sub">Aventura Espacial · 8 Misiones · v71</div>
+    <div id="ov-sub">Aventura Espacial · 8 Misiones · v72</div>
     <div id="ov-hi"></div>
     <div id="ov-m"></div>
     <div id="ov-b"></div>
@@ -318,7 +318,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
     <div class="hp-r"><span class="hp-k">Shift / B</span> Correr (más velocidad y salto)</div>
     <div class="hp-r"><span class="hp-k">&#8593; / Z / A</span> Saltar &middot; en pared = salto de pared</div>
     <div class="hp-r"><span class="hp-k">Doble salto</span> Con mejora activa, salta otra vez en el aire</div>
-    <div class="hp-r"><span class="hp-k">&#8595;</span> Agacharse &middot; corriendo = deslizar</div>
+    <div class="hp-r"><span class="hp-k">&#8595;</span> Agacharse &middot; con &#8592;/&#8594; = caminar agachado &middot; corriendo = deslizar</div>
     <div class="hp-r"><span class="hp-k">&#8595; en el aire</span> <b>Pisotón</b>: caída fuerte que aplasta el área</div>
     <div class="hp-r"><span class="hp-k">Doble toque &#8592;/&#8594;</span> <b>Dash</b>: impulso veloz, esquiva (invulnerable) y embiste</div>
     <div class="hp-r"><span class="hp-k">X</span> Disparar láser (con mejora Láser o Núcleo)</div>
@@ -382,7 +382,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
         <div class="key-grid">
           <div class="key-item"><b>← / →</b>Moverse</div>
           <div class="key-item"><b>↑ / Z / Espacio</b>Saltar</div>
-          <div class="key-item"><b>↓</b>Agacharse / pisotón en el aire</div>
+          <div class="key-item"><b>↓</b>Agacharse / caminar agachado / pisotón en el aire</div>
           <div class="key-item"><b>Shift</b>Correr</div>
           <div class="key-item"><b>X</b>Láser / ataque</div>
           <div class="key-item"><b>P</b>Pausa</div>
@@ -427,7 +427,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
 <div id="ctrl">
   <span class="k">&#8592;&#8594;</span> mover &nbsp;
   <span class="k">&#8593;</span><span class="k">Z</span> saltar &nbsp;
-  <span class="k">&#8595;</span> agachar &nbsp;
+  <span class="k">&#8595;</span> agachar + mover &nbsp;
   <span class="k">X</span> laser &nbsp;
   <span class="k">Shift</span> correr &nbsp;
   <span class="k">&#8595;</span> aire = caída &nbsp;
@@ -435,7 +435,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
   <span class="k">P</span> pausa
 </div>
 <button id="fs-btn" title="Pantalla completa">&#x26F6;</button>
-<a id="homeBtn" href="index.html?v=71">INICIO</a>
+<a id="homeBtn" href="index.html?v=72">INICIO</a>
 <button id="perfBtn" title="Modo rendimiento">AUTO</button>
 <div id="tc">
   <div id="joy-base"><div id="joy-knob"></div></div>
@@ -566,7 +566,7 @@ const perfBtn=document.getElementById('perfBtn');
 // ── RESIZE ──────────────────────────────────────────────────
 let tcH=0,isTouchDevice=false;
 
-// ── V71: modo rendimiento móvil/PC ──────────────────────────
+// ── V72: modo rendimiento móvil/PC ──────────────────────────
 let COSMO_LOWQ=false, _cosmoFps=60, _cosmoFpsT=0, _cosmoFpsC=0;
 function cosmoStoreGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function cosmoStoreSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
@@ -1706,10 +1706,15 @@ function updPlayer(p,sl){
   if(bootsTimer>0)bootsTimer--;
   const bBoost=bootsTimer>0?.8:0;
   const spd=(isRn()||joyIsRunning||chts.turbo||(p.star>0&&!p.crouch))?RS+(p.star>0?.6:0)+(chts.turbo?.8:0)+bBoost:WS+bBoost*.7;
+  const crouchSpd=Math.max(0.85,Math.min(spd*.48,WS*.82+bBoost*.35));
   if(p.dashTimer>0){p.vx=p.dashDir*RS*2.3;p.dir=p.dashDir;if(NOW%2===0)parts.push(new Pop(p.x+p.w/2,p.y+p.h*.45,-p.dashDir*1.5,(Math.random()-.5),'#aaeeff',12));}
-  else if(!p.crouch){if(isL()){p.vx=-spd;p.dir=-1;}else if(isR()){p.vx=spd;p.dir=1;}else{p.vx*=.72;if(Math.abs(p.vx)<.1)p.vx=0;}}
-  else if(p.slide>0){p.slide--;p.vx*=.91;if(Math.abs(p.vx)<.4)p.slide=0;}
-  else{const cSpd=WS*.5;if(isL()){p.vx=-cSpd;p.dir=-1;}else if(isR()){p.vx=cSpd;p.dir=1;}else{p.vx*=.6;if(Math.abs(p.vx)<.1)p.vx=0;}}
+  else if(p.crouch){
+    const cd=isL()?-1:isR()?1:0;
+    if(cd){p.vx=cd*crouchSpd;p.dir=cd;p.slide=0;if(p.onG&&NOW%14===0)parts.push(new Dust(p.x+(cd>0?-1:p.w+1),p.y+p.h));}
+    else if(p.slide>0){p.slide--;p.vx*=.91;if(Math.abs(p.vx)<.4)p.slide=0;}
+    else{p.vx*=.58;if(Math.abs(p.vx)<.1)p.vx=0;}
+  }
+  else{if(isL()){p.vx=-spd;p.dir=-1;}else if(isR()){p.vx=spd;p.dir=1;}else{p.vx*=.72;if(Math.abs(p.vx)<.1)p.vx=0;}}
   if(jpJ())p.jBuf=8;else if(p.jBuf>0)p.jBuf--;
   if(p.onG)p.coy=6;else if(p.coy>0)p.coy--;
   if(p.jBuf>0&&(p.onG||p.coy>0)&&!p.crouch){p.vy=chts.jump?JV*1.45:JV;p.jHeld=true;p.jBuf=0;p.coy=0;p.djump=0;SFX.jump();}
@@ -1764,7 +1769,7 @@ function updPlayer(p,sl){
     p.fireCool=18;SFX.laser();
     parts.push(new Pop(p.x+(p.dir>0?p.w:0),p.y+(p.pwr?20:14),p.dir*3,-1,'#ffcc00',10));
   }
-  if(p.onG&&Math.abs(p.vx)>.2){p.ft++;if(p.ft>=(isRn()?4:7)){p.fr=(p.fr+1)%4;p.ft=0;}}else if(!p.onG){p.fr=p.vy<-2?4:p.vy>3?5:2;}else p.fr=0;
+  if(p.onG&&Math.abs(p.vx)>.2){p.ft++;const step=p.crouch?10:(isRn()?4:7);if(p.ft>=step){p.fr=(p.fr+1)%4;p.ft=0;}}else if(!p.onG){p.fr=p.vy<-2?4:p.vy>3?5:2;}else p.fr=0;
 }
 
 // ── UPDATE ENEMY ────────────────────────────────────────────
@@ -3806,6 +3811,7 @@ function drawAstronaut(bx,sy,pwr,fire,star,crouch,fr,dir){
   const trimC=fire?'#ffd36a':'#29d8ff';
   const darkC='#111a2a';
   const lo=fr===4?-3:fr===5?4:[0,2,0,-2][fr%4];
+  const cstep=Math.abs(fr|0)%4,crawl=crouch?[0,1,0,-1][cstep]:0,crawlOpp=-crawl;
   const torsoH=crouch?(pwr?10:8):(pwr?17:13);
   const torsoY=crouch?16:17+(pwr?3:0);
   if(star>0){ct.shadowColor=starCols[ph];ct.shadowBlur=10;}
@@ -3818,6 +3824,11 @@ function drawAstronaut(bx,sy,pwr,fire,star,crouch,fr,dir){
     ct.fillStyle=suitC;ct.fillRect(x+3,y+torsoY+4,2,3);ct.fillRect(x+3,y+torsoY+torsoH+7,2,3);
     ct.shadowColor=trimC;ct.shadowBlur=5;ct.fillStyle=trimC;ct.fillRect(x+4.5,y+torsoY+7,1.5,4);ct.shadowBlur=0;
     ct.strokeStyle='rgba(124,233,255,.75)';ct.lineWidth=1.2;ct.beginPath();ct.moveTo(x+4,y+torsoY+5);ct.quadraticCurveTo(x-3,y+15,x+6,y+12);ct.stroke();
+  }else{
+    ct.fillStyle=lg(x+1,y+15,x+1,y+29,'#27354c','#111827');
+    rr(x+1,y+16,5,12,2.5);ct.fill();
+    ct.fillStyle=suitC;ct.fillRect(x+2,y+19,2,3);ct.fillRect(x+2,y+25,2,3);
+    ct.shadowColor=trimC;ct.shadowBlur=4;ct.fillStyle=trimC;ct.fillRect(x+4.5,y+21,1.4,4);ct.shadowBlur=0;
   }
 
   // helmet + visor + collar
@@ -3847,17 +3858,17 @@ function drawAstronaut(bx,sy,pwr,fire,star,crouch,fr,dir){
   ct.fillStyle=suitC;ct.beginPath();ct.arc(x+5,y+torsoY+6,1.4,0,Math.PI*2);ct.fill();
 
   // arms
-  const armY=crouch?19:(pwr?22:19), armH=crouch?6:(pwr?9:6);
-  ct.fillStyle='#f4f0e8';rr(x+1,y+armY,4,armH,2);ct.fill();rr(x+15,y+armY,4,armH,2);ct.fill();
-  ct.fillStyle=suitC;ct.fillRect(x+1,y+armY+1,4,3);ct.fillRect(x+15,y+armY+1,4,3);
+  const armY=crouch?19:(pwr?22:19), armH=crouch?6:(pwr?9:6),armA=crouch?crawl:0,armB=crouch?crawlOpp:0;
+  ct.fillStyle='#f4f0e8';rr(x+1,y+armY+armA,4,armH,2);ct.fill();rr(x+15,y+armY+armB,4,armH,2);ct.fill();
+  ct.fillStyle=suitC;ct.fillRect(x+1,y+armY+1+armA,4,3);ct.fillRect(x+15,y+armY+1+armB,4,3);
   if(fire&&!crouch){ct.fillStyle=lg(x-4,y+armY+1,x+1,y+armY+1,'#883014','#d75422');ct.fillRect(x-4,y+armY+1,5,Math.max(7,armH+1));ct.fillStyle='#ff9c3a';ct.fillRect(x-4,y+armY+2,4,2);}  
-  ct.fillStyle=darkC;ct.beginPath();ct.arc(x+2,y+armY+armH,2.1,0,Math.PI*2);ct.fill();ct.beginPath();ct.arc(x+18,y+armY+armH,2.1,0,Math.PI*2);ct.fill();
+  ct.fillStyle=darkC;ct.beginPath();ct.arc(x+2,y+armY+armH+armA,2.1,0,Math.PI*2);ct.fill();ct.beginPath();ct.arc(x+18,y+armY+armH+armB,2.1,0,Math.PI*2);ct.fill();
 
   // legs + boots
   if(crouch){
-    ct.fillStyle=lg(x,y+24,x,y+30,'#f4f0e8',darkC);rr(x+1,y+24,7,6,2);ct.fill();rr(x+12,y+24,7,6,2);ct.fill();
-    ct.fillStyle=suitC;ct.fillRect(x+3,y+24,4,3);ct.fillRect(x+13,y+24,4,3);
-    ct.fillStyle=darkC;rr(x-1,y+27,10,3,2);ct.fill();rr(x+11,y+27,10,3,2);ct.fill();
+    ct.fillStyle=lg(x,y+24,x,y+30,'#f4f0e8',darkC);rr(x+1+crawl,y+24,7,6,2);ct.fill();rr(x+12+crawlOpp,y+24,7,6,2);ct.fill();
+    ct.fillStyle=suitC;ct.fillRect(x+3+crawl,y+24,4,3);ct.fillRect(x+13+crawlOpp,y+24,4,3);
+    ct.fillStyle=darkC;rr(x-1+crawl*1.8,y+27,10,3,2);ct.fill();rr(x+11+crawlOpp*1.8,y+27,10,3,2);ct.fill();
   }else if(pwr){
     ct.fillStyle=lg(x,y+34,x,y+44,'#f4f0e8',darkC);rr(x+1,y+34,7,8,3);ct.fill();rr(x+12,y+34,7,8,3);ct.fill();
     ct.fillStyle=suitC;ct.fillRect(x+3,y+35,4,4);ct.fillRect(x+13,y+35,4,4);
@@ -3871,7 +3882,7 @@ function drawAstronaut(bx,sy,pwr,fire,star,crouch,fr,dir){
 
   // sole highlights
   ct.fillStyle='rgba(255,255,255,.12)';
-  if(crouch){ct.fillRect(x,y+28,4,1);ct.fillRect(x+12,y+28,4,1);} else if(pwr){ct.fillRect(x,y+39+lo,4,2);ct.fillRect(x+12,y+39-lo,4,2);} else {ct.fillRect(x,y+31+lo,4,1);ct.fillRect(x+12,y+31-lo,4,1);}
+  if(crouch){ct.fillRect(x+crawl,y+28,4,1);ct.fillRect(x+12+crawlOpp,y+28,4,1);} else if(pwr){ct.fillRect(x,y+39+lo,4,2);ct.fillRect(x+12,y+39-lo,4,2);} else {ct.fillRect(x,y+31+lo,4,1);ct.fillRect(x+12,y+31-lo,4,1);}
 
   // chest light and micro details
   const chestY=crouch?20:(pwr?26:22);
@@ -4784,7 +4795,7 @@ const ppP=e=>{e.preventDefault();tcpEl.classList.add('on');togglePause();hap(15)
 const ppR=e=>{e.preventDefault();tcpEl.classList.remove('on');};
 tcpEl.addEventListener('touchstart',ppP,{passive:false});tcpEl.addEventListener('touchend',ppR,{passive:false});
 tcpEl.addEventListener('mousedown',ppP);tcpEl.addEventListener('mouseup',ppR);
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=71').catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=72').catch(()=>{}));}
 </script>
 </body>
 </html>
