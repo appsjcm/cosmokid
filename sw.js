@@ -1,10 +1,10 @@
-const COSMO_CACHE = 'cosmo-kid-v73-premium-touch';
+const COSMO_CACHE = 'cosmo-kid-v74-mobile-fullscreen';
 const CORE = [
   './',
-  './index.html?v=73',
-  './game.html?v=73',
+  './index.html?v=74',
+  './game.html?v=74',
 
-  './diagnostico.html?v=73',
+  './diagnostico.html?v=74',
   './manifest.webmanifest',
   './assets/cover/cosmokid_cover.png',
   './assets/cover/cosmokid_cover_premium_wide.jpg',
@@ -228,7 +228,7 @@ self.addEventListener('fetch', event => {
         const copy = res.clone();
         caches.open(COSMO_CACHE).then(cache => cache.put(req, copy));
         return res;
-    }).catch(() => caches.match(req).then(cached => cached || caches.match('./game.html?v=73')))
+    }).catch(() => caches.match(req).then(cached => cached || caches.match('./game.html?v=74')))
     );
     return;
   }

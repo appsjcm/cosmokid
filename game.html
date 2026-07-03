@@ -5,12 +5,12 @@
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="description" content="Modo 2.5D estable v73 de Cosmo Kid: portada premium, control táctil libre y niveles más orgánicos.">
+<meta name="description" content="Modo 2.5D estable v74 de Cosmo Kid: pantalla completa móvil, orientación adaptativa y control táctil libre.">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0a2040">
-<title>Cosmo Kid 2.5D · Modo estable v73</title>
+<title>Cosmo Kid 2.5D · Modo estable v74</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{overscroll-behavior:none;touch-action:none}
@@ -75,6 +75,8 @@ body.touch #perfBtn{top:max(54px,calc(env(safe-area-inset-top,0px) + 50px));left
 body.touch #tc{display:block;position:fixed;inset:0;height:100dvh;background:none;padding:0;z-index:220}
 body.touch.smart-touch #joy-base{opacity:.20}
 body.touch.smart-touch #tc:after{content:'toca izquierda = mover · derecha = saltar · desliza abajo = agachar';position:fixed;left:50%;bottom:calc(8px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:210;color:rgba(210,245,255,.46);font:700 .54rem monospace;letter-spacing:.7px;background:rgba(0,8,24,.34);border:1px solid rgba(124,243,255,.12);border-radius:999px;padding:5px 9px;pointer-events:none;white-space:nowrap}
+body.touch-landscape.smart-touch #tc:after{content:'izquierda mover · derecha saltar · desliza abajo agachar';bottom:calc(5px + env(safe-area-inset-bottom,0px));font-size:.48rem;padding:4px 8px}
+body.touch-portrait.smart-touch #tc:after{bottom:calc(10px + env(safe-area-inset-bottom,0px));max-width:calc(100vw - 24px);overflow:hidden;text-overflow:ellipsis}
 #tc-cfg{right:212px;bottom:14px;width:42px;height:42px;font-size:1rem;color:#ffe66b;border-color:rgba(255,230,107,.45);background:rgba(40,32,0,.62)}
 #tc-reset{position:absolute;left:50%;bottom:128px;transform:translateX(-50%);display:none;pointer-events:all;touch-action:none;border:1.5px solid rgba(255,230,107,.6);background:rgba(20,16,0,.78);color:#ffe66b;border-radius:999px;padding:9px 13px;font:700 .7rem monospace;letter-spacing:1px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
 body.padedit #tc-reset{display:block}
@@ -133,6 +135,27 @@ body.fs-layout h1,body.fs-layout #ctrl,body.fs-layout #hud{display:none!importan
 body.fs-layout #wrap{padding:0;border-radius:0;background:#030815;box-shadow:none}
 body.fs-layout #ov{inset:0;border-radius:0}
 body.fs-layout canvas{border:0;border-radius:0;box-shadow:none}
+body.mobile-full{width:100vw;height:100vh;height:100dvh;margin:0;overflow:hidden;justify-content:center;padding:0!important;background:#020611}
+body.mobile-full h1,body.mobile-full #ctrl,body.mobile-full #hud{display:none!important}
+body.mobile-full #wrap{width:100vw;height:100vh;height:100dvh;padding:0;border-radius:0;background:#030815;box-shadow:none}
+body.mobile-full #ov{inset:0;border-radius:0}
+body.mobile-full canvas{border:0;border-radius:0;box-shadow:none;display:block;background:#030815}
+body.mobile-full.touch-portrait #ov{top:0;right:0;bottom:0;left:0;min-height:0;border-radius:0}
+body.mobile-full.touch-landscape #ov{top:0;right:0;bottom:0;left:0;min-height:0;border-radius:0}
+body.mobile-full.touch-landscape #perfBtn{top:max(10px,env(safe-area-inset-top,10px));left:max(10px,env(safe-area-inset-left,10px))}
+body.mobile-full.touch-portrait #perfBtn{top:max(10px,env(safe-area-inset-top,10px));left:max(10px,env(safe-area-inset-left,10px))}
+body.touch-landscape #joy-base{left:max(8px,env(safe-area-inset-left,8px));top:50%;bottom:auto;transform:translateY(-50%)}
+body.touch-landscape #tc-a{right:max(8px,env(safe-area-inset-right,8px));bottom:auto;top:calc(50% - 86px)}
+body.touch-landscape #tc-b{right:calc(max(8px,env(safe-area-inset-right,8px)) + 82px);bottom:auto;top:calc(50% - 31px)}
+body.touch-landscape #tc-x{right:max(8px,env(safe-area-inset-right,8px));bottom:auto;top:calc(50% + 4px)}
+body.touch-landscape #tc-p{right:calc(max(8px,env(safe-area-inset-right,8px)) + 150px);bottom:auto;top:max(8px,env(safe-area-inset-top,8px))}
+body.touch-landscape #tc-cfg{right:calc(max(8px,env(safe-area-inset-right,8px)) + 70px);top:calc(50% + 66px);bottom:auto}
+body.touch-portrait #joy-base{left:max(8px,env(safe-area-inset-left,8px));bottom:calc(6px + env(safe-area-inset-bottom,0px))}
+body.touch-portrait #tc-a{right:max(8px,env(safe-area-inset-right,8px));bottom:calc(36px + env(safe-area-inset-bottom,0px))}
+body.touch-portrait #tc-b{right:calc(max(8px,env(safe-area-inset-right,8px)) + 86px);bottom:calc(50px + env(safe-area-inset-bottom,0px))}
+body.touch-portrait #tc-x{right:calc(max(8px,env(safe-area-inset-right,8px)) + 40px);bottom:calc(8px + env(safe-area-inset-bottom,0px))}
+body.touch-portrait #tc-p{right:calc(max(8px,env(safe-area-inset-right,8px)) + 158px);bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+body.touch-portrait #tc-cfg{right:calc(max(8px,env(safe-area-inset-right,8px)) + 207px);bottom:calc(14px + env(safe-area-inset-bottom,0px))}
 :fullscreen,:-webkit-full-screen{background:#020611!important}
 :fullscreen body,:-webkit-full-screen body{width:100vw;height:100vh;margin:0;overflow:hidden;justify-content:center}
 :fullscreen h1,:fullscreen #ctrl,:fullscreen #hud,:-webkit-full-screen h1,:-webkit-full-screen #ctrl,:-webkit-full-screen #hud{display:none!important}
@@ -181,7 +204,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
 .hp-c{margin:12px 0 4px;background:rgba(0,60,90,.85);border:1.5px solid rgba(0,200,255,.45);color:#bfefff;font-size:.85rem;letter-spacing:2px;padding:10px 28px;border-radius:10px;cursor:pointer;font-family:monospace;min-height:48px}
 .hp-c:hover,.hp-c:active{background:rgba(0,110,160,.6);border-color:#00ccff}
 
-/* V73: portada premium + menú de configuración */
+/* V74: portada premium + pantalla completa móvil */
 #ov{
   background:
     radial-gradient(circle at 50% 18%,rgba(124,243,255,.26),transparent 28%),
@@ -192,7 +215,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),inset 0 -80px 120px rgba(0,0,0,.36),0 0 70px rgba(0,200,255,.22);
 }
 #ov:before{
-  content:'COSMO KID · V73 PREMIUM';
+  content:'COSMO KID · V74 MOBILE';
   position:absolute;top:14px;left:50%;transform:translateX(-50%);
   z-index:1;border-radius:999px;padding:7px 12px;
   background:rgba(1,7,18,.68);border:1px solid rgba(255,230,107,.38);
@@ -299,7 +322,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
   <canvas id="c" width="600" height="380"></canvas>
   <div id="ov">
     <div id="ov-t">COSMO KID</div>
-    <div id="ov-sub">Aventura Espacial · 8 Misiones · v73</div>
+    <div id="ov-sub">Aventura Espacial · 8 Misiones · v74</div>
     <div id="ov-hi"></div>
     <div id="ov-m"></div>
     <div id="ov-b"></div>
@@ -438,7 +461,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
   <span class="k">P</span> pausa
 </div>
 <button id="fs-btn" title="Pantalla completa">&#x26F6;</button>
-<a id="homeBtn" href="game.html?v=73">INICIO</a>
+<a id="homeBtn" href="game.html?v=74">INICIO</a>
 <button id="perfBtn" title="Modo rendimiento">AUTO</button>
 <div id="tc">
   <div id="joy-base"><div id="joy-knob"></div></div>
@@ -557,6 +580,13 @@ function exitFS(){
   fsWanted=false;setImmersive(false);
   try{const f=document.exitFullscreen||document.webkitExitFullscreen;if(f&&isFS())f.call(document);}catch(e){}
 }
+function enterMobileFullscreen(){
+  if(isTouchDevice){
+    fsWanted=true;
+    setImmersive(true);
+    if(!isFS())requestFS(cv);
+  }else resize();
+}
 const fsBtn=document.getElementById('fs-btn');
 fsBtn.addEventListener('click',()=>{initAC();isImmersive()?exitFS():requestFS(cv);});
 const perfBtn=document.getElementById('perfBtn');
@@ -569,7 +599,7 @@ const perfBtn=document.getElementById('perfBtn');
 // ── RESIZE ──────────────────────────────────────────────────
 let tcH=0,isTouchDevice=false;
 
-// ── V73: modo rendimiento móvil/PC ──────────────────────────
+// ── V74: modo rendimiento móvil/PC ──────────────────────────
 let COSMO_LOWQ=false, _cosmoFps=60, _cosmoFpsT=0, _cosmoFpsC=0;
 function cosmoStoreGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function cosmoStoreSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
@@ -600,21 +630,40 @@ if(perfBtn){
 }
 initCosmoQuality();
 
+function viewportW(){
+  const vv=window.visualViewport;
+  return Math.max(1,Math.round((vv&&vv.width)||window.innerWidth||document.documentElement.clientWidth||CW));
+}
+function viewportH(){
+  const vv=window.visualViewport;
+  return Math.max(1,Math.round((vv&&vv.height)||window.innerHeight||document.documentElement.clientHeight||CH));
+}
+function isPortraitMode(){return viewportH()>=viewportW();}
+function syncOrientationClass(){
+  const portrait=isPortraitMode();
+  document.body.classList.toggle('portrait',portrait);
+  document.body.classList.toggle('landscape',!portrait);
+  document.body.classList.toggle('touch-portrait',isTouchDevice&&portrait);
+  document.body.classList.toggle('touch-landscape',isTouchDevice&&!portrait);
+}
 function resize(){
+  syncOrientationClass();
   const fs=isImmersive();
-  if(fs){
-    const w=Math.max(1,innerWidth),h=Math.max(1,innerHeight);
+  document.body.classList.toggle('mobile-full',isTouchDevice);
+  if(fs||isTouchDevice){
+    const w=viewportW(),h=viewportH();
     cv.style.width=w+'px';cv.style.height=h+'px';
     wrap.style.width=w+'px';wrap.style.height=h+'px';
     return;
   }
-  const land=innerWidth>innerHeight;
+  const vw=viewportW(),vh=viewportH();
+  const land=vw>vh;
   const topH=isTouchDevice&&land?30:isTouchDevice?8:118;
   const botH=isTouchDevice&&!land?120:0;
   const sidePad=isTouchDevice&&land?196:0; // room for side controls
   const maxS=land&&isTouchDevice?2.2:1.6;
   const pad=4;
-  const availW=Math.max(1,innerWidth-pad-sidePad),availH=Math.max(1,innerHeight-topH-botH-pad);
+  const availW=Math.max(1,vw-pad-sidePad),availH=Math.max(1,vh-topH-botH-pad);
   const s=Math.min(availW/CW,availH/CH,maxS);
   const w=Math.floor(CW*s),h=Math.floor(CH*s);
   cv.style.width=w+'px';cv.style.height=h+'px';
@@ -622,6 +671,10 @@ function resize(){
   wrap.style.width=(w+framePad)+'px';wrap.style.height=(h+framePad)+'px';
 }
 window.addEventListener('resize',resize);
+if(window.visualViewport){
+  visualViewport.addEventListener('resize',resize);
+  visualViewport.addEventListener('scroll',resize);
+}
 window.addEventListener('orientationchange',()=>setTimeout(()=>{resize();if(fsWanted&&!isFS())requestFS(cv);},400));
 // Prevent default scroll/bounce (but allow scrolling inside the help overlay)
 document.addEventListener('touchmove',e=>{if(helpOv&&helpOv.classList.contains('on')&&helpOv.contains(e.target))return;e.preventDefault();},{passive:false});
@@ -1986,7 +2039,7 @@ function pWin(){
 }
 function showEnd(title,col,msg,badge,btnTxt){gst='stop';ov.classList.remove('off');ovT.textContent=title;ovT.style.color=col;ovHi.textContent='';ovM.innerHTML=msg;ovB.textContent=badge;ovBtn.textContent=btnTxt;ovBtn.style.display='';if(ovContinueBtn)ovContinueBtn.style.display='none';if(ovResetBtn)ovResetBtn.style.display='none';ovDiff.style.display='none';if(settingsOpenBtn)settingsOpenBtn.style.display='none';helpOpenBtn.style.display='none';}
 function initGame(startLevel=0){
-  if(isTouchDevice&&!isFS())requestFS(cv);
+  enterMobileFullscreen();
   score=0;coins=0;lives=df().lives;levelNum=Math.max(0,Math.min(MAX_LV-1,startLevel|0));nextLvlReady=false;cpX=-1;comboMult=1;comboTimer=0;levelEndTime=0;
   runKills=0;runMaxCombo=1;
   hdiffEl.textContent=df().nm;hdiffEl.style.color=df().col;
@@ -4632,7 +4685,7 @@ ovBtn.addEventListener('click',()=>{
     setHUD();updatePwrHUD();showBanner(LEVEL_NAMES[levelNum]);
     lvCountdown=180;lvGoTimer=0;
     musicBeat=0;if(AC)musicNextT=AC.currentTime;if(!musicActive)startMusic();
-    if(isTouchDevice&&!isFS())requestFS(cv);
+    enterMobileFullscreen();
     return;
   }
   nextLvlReady=false;ovT.style.color='#00ccff';initGame();
@@ -4894,7 +4947,7 @@ const ppP=e=>{e.preventDefault();tcpEl.classList.add('on');togglePause();hap(15)
 const ppR=e=>{e.preventDefault();tcpEl.classList.remove('on');};
 tcpEl.addEventListener('touchstart',ppP,{passive:false});tcpEl.addEventListener('touchend',ppR,{passive:false});
 tcpEl.addEventListener('mousedown',ppP);tcpEl.addEventListener('mouseup',ppR);
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=73').catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=74').catch(()=>{}));}
 </script>
 </body>
 </html>
