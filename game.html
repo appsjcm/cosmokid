@@ -797,6 +797,29 @@ const CRATER_ASSET_PATHS=Array.from({length:12},(_,i)=>PC_ASSET_ROOT+'craters/'+
 const CRATER_ASSETS=CRATER_ASSET_PATHS.map(src=>{const img=new Image();img.src=src;return img;});
 const CRATER_FLAT_ASSET_PATHS=Array.from({length:12},(_,i)=>'assets/craters_flat/crater_plano_'+String(i+1).padStart(2,'0')+'.png');
 const CRATER_FLAT_ASSETS=CRATER_FLAT_ASSET_PATHS.map(src=>{const img=new Image();img.src=src;return img;});
+const UNDERGROUND_WORLDS=[
+  {folder:'01_cueva_cristalina',base:'mundo_subterraneo_01_cueva_cristalina'},
+  {folder:'02_tuneles_lava',base:'mundo_subterraneo_02_tuneles_lava'},
+  {folder:'03_ruinas_subterraneas',base:'mundo_subterraneo_03_ruinas_subterraneas'},
+  {folder:'04_bosque_hongos',base:'mundo_subterraneo_04_bosque_hongos'},
+  {folder:'05_mina_antigua',base:'mundo_subterraneo_05_mina_antigua'},
+  {folder:'06_lago_subterraneo',base:'mundo_subterraneo_06_lago_subterraneo'},
+  {folder:'07_base_alien',base:'mundo_subterraneo_07_base_alien'},
+  {folder:'08_nucleo_tierra',base:'mundo_subterraneo_08_nucleo_tierra'}
+];
+const UNDERGROUND_BG_HD=UNDERGROUND_WORLDS.map(w=>{const img=new Image();img.src='assets/underground/'+w.folder+'/'+w.base+'_1920x1080.png';return img;});
+const UNDERGROUND_BG_LITE=UNDERGROUND_WORLDS.map(w=>{const img=new Image();img.src='assets/underground/'+w.folder+'/'+w.base+'_game_1200x760.png';return img;});
+function undergroundBgFor(li){
+  const arr=COSMO_LOWQ?UNDERGROUND_BG_LITE:UNDERGROUND_BG_HD;
+  return arr[Math.min(Math.max(li|0,0),arr.length-1)];
+}
+function drawImageCover(img,dx,dy,dw,dh){
+  const ir=img.naturalWidth/img.naturalHeight,dr=dw/dh;
+  let sx=0,sy=0,sw=img.naturalWidth,sh=img.naturalHeight;
+  if(ir>dr){sw=img.naturalHeight*dr;sx=(img.naturalWidth-sw)/2;}
+  else{sh=img.naturalWidth/dr;sy=(img.naturalHeight-sh)/2;}
+  ct.drawImage(img,sx,sy,sw,sh,dx,dy,dw,dh);
+}
 const SLIM_PLATFORM_STYLES=['grass','tech','crystal','desert','toxic','lava','rock','ice'];
 const SLIM_PLATFORM_SIZES=['mini','small','medium','long_slim'];
 const SLIM_PLATFORM_ASSETS={};
@@ -3341,8 +3364,10 @@ function drawBonusRoom(){
   const br=bonusRoom;if(!br)return;
   ct.save();ct.setTransform(1,0,0,1,0,0);
   ct.fillStyle='#040815';ct.fillRect(0,0,CW,CH);
+  const undergroundBg=undergroundBgFor(levelNum);
+  if(undergroundBg&&undergroundBg.complete&&undergroundBg.naturalWidth)drawImageCover(undergroundBg,0,0,CW,CH);
   const g=ct.createRadialGradient(CW/2,CH*.42,10,CW/2,CH*.42,Math.max(CW,CH)*.75);
-  g.addColorStop(0,'rgba(35,80,130,.72)');g.addColorStop(1,'rgba(3,8,20,.96)');ct.fillStyle=g;ct.fillRect(0,0,CW,CH);
+  g.addColorStop(0,'rgba(35,80,130,.42)');g.addColorStop(1,'rgba(3,8,20,.78)');ct.fillStyle=g;ct.fillRect(0,0,CW,CH);
   for(let i=0;i<46;i++){const x=(i*47+br.t*.25)%CW,y=(i*31)%180+18;ct.fillStyle=i%3?'#7cf3ff':'#ffe66b';ct.globalAlpha=.28+(i%5)*.08;ct.fillRect(x,y,2,2);}ct.globalAlpha=1;
   ct.fillStyle='rgba(124,243,255,.16)';rr(22,54,CW-44,220,18);ct.fill();
   ct.strokeStyle='rgba(124,243,255,.45)';ct.lineWidth=2;rr(22,54,CW-44,220,18);ct.stroke();
