@@ -5,12 +5,12 @@
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="description" content="Modo 2.5D estable v75 de Cosmo Kid: cráteres alineados, pantalla completa móvil y control táctil libre.">
+<meta name="description" content="Modo 2.5D estable v76 de Cosmo Kid: teclado PC reforzado, cráteres alineados y control táctil libre.">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0a2040">
-<title>Cosmo Kid 2.5D · Modo estable v75</title>
+<title>Cosmo Kid 2.5D · Modo estable v76</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{overscroll-behavior:none;touch-action:none}
@@ -25,6 +25,7 @@ h1{font-size:1.9rem;margin-bottom:5px;letter-spacing:4px;text-transform:uppercas
 #hpwr{transition:color .3s}
 #wrap{position:relative;padding:5px;border-radius:18px;background:linear-gradient(135deg,rgba(124,243,255,.34),rgba(255,230,107,.14),rgba(255,92,184,.24));box-shadow:0 20px 70px rgba(0,0,0,.45),0 0 48px rgba(0,190,255,.20)}
 canvas{display:block;border:1px solid rgba(190,245,255,.52);border-radius:14px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.10),0 0 36px rgba(0,200,255,.22);background:#030815}
+canvas:focus{outline:none}
 #ov{position:absolute;inset:5px;background:radial-gradient(circle at 50% 30%,rgba(124,243,255,.20),transparent 30%),linear-gradient(180deg,rgba(1,6,18,.26),rgba(4,10,28,.70)),url('assets/cover/cosmokid_cover_premium_wide.jpg') center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:14px;gap:9px;padding:20px;backdrop-filter:blur(6px);overflow-y:auto;overflow-x:hidden;box-shadow:inset 0 0 90px rgba(0,0,0,.44)}
 #ov:after{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(3,8,24,.80),rgba(5,18,45,.52) 36%,rgba(5,18,45,.52) 64%,rgba(3,8,24,.80)),radial-gradient(circle at 50% 48%,rgba(0,210,255,.16),transparent 34%);pointer-events:none}
 #ov>*{position:relative;z-index:1}
@@ -204,7 +205,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
 .hp-c{margin:12px 0 4px;background:rgba(0,60,90,.85);border:1.5px solid rgba(0,200,255,.45);color:#bfefff;font-size:.85rem;letter-spacing:2px;padding:10px 28px;border-radius:10px;cursor:pointer;font-family:monospace;min-height:48px}
 .hp-c:hover,.hp-c:active{background:rgba(0,110,160,.6);border-color:#00ccff}
 
-/* V75: cráteres alineados + pantalla completa móvil */
+/* V76: teclado PC reforzado + pantalla completa móvil */
 #ov{
   background:
     radial-gradient(circle at 50% 18%,rgba(124,243,255,.26),transparent 28%),
@@ -215,7 +216,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),inset 0 -80px 120px rgba(0,0,0,.36),0 0 70px rgba(0,200,255,.22);
 }
 #ov:before{
-  content:'COSMO KID · V75 CRATER';
+  content:'COSMO KID · V76 TECLADO';
   position:absolute;top:14px;left:50%;transform:translateX(-50%);
   z-index:1;border-radius:999px;padding:7px 12px;
   background:rgba(1,7,18,.68);border:1px solid rgba(255,230,107,.38);
@@ -319,10 +320,10 @@ body.touch .settings-grid{grid-template-columns:1fr}
   <div class="hb"><div class="hl">Efectos</div><div class="hv" id="hsfx" style="cursor:pointer;font-size:.95rem" title="N = efectos">&#9834;</div></div>
 </div>
 <div id="wrap">
-  <canvas id="c" width="600" height="380"></canvas>
+  <canvas id="c" width="600" height="380" tabindex="0"></canvas>
   <div id="ov">
     <div id="ov-t">COSMO KID</div>
-    <div id="ov-sub">Aventura Espacial · 8 Misiones · v75</div>
+    <div id="ov-sub">Aventura Espacial · 8 Misiones · v76</div>
     <div id="ov-hi"></div>
     <div id="ov-m"></div>
     <div id="ov-b"></div>
@@ -461,7 +462,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
   <span class="k">P</span> pausa
 </div>
 <button id="fs-btn" title="Pantalla completa">&#x26F6;</button>
-<a id="homeBtn" href="game.html?v=75">INICIO</a>
+<a id="homeBtn" href="game.html?v=76">INICIO</a>
 <button id="perfBtn" title="Modo rendimiento">AUTO</button>
 <div id="tc">
   <div id="joy-base"><div id="joy-knob"></div></div>
@@ -567,6 +568,7 @@ function setImmersive(on){
 }
 function requestFS(el){
   fsWanted=true;setImmersive(true);
+  focusGame();
   try{
     const f=el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen;
     if(f){
@@ -599,7 +601,7 @@ const perfBtn=document.getElementById('perfBtn');
 // ── RESIZE ──────────────────────────────────────────────────
 let tcH=0,isTouchDevice=false;
 
-// ── V75: modo rendimiento móvil/PC ──────────────────────────
+// ── V76: modo rendimiento móvil/PC ──────────────────────────
 let COSMO_LOWQ=false, _cosmoFps=60, _cosmoFpsT=0, _cosmoFpsC=0;
 function cosmoStoreGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function cosmoStoreSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
@@ -681,19 +683,70 @@ document.addEventListener('touchmove',e=>{if(helpOv&&helpOv.classList.contains('
 resize();
 
 // ── INPUT ───────────────────────────────────────────────────
-const K={},JP={};
-window.addEventListener('keydown',e=>{if(!K[e.code])JP[e.code]=true;K[e.code]=true;if(['Space','ArrowUp','ArrowLeft','ArrowRight','ArrowDown'].includes(e.code))e.preventDefault();if(e.code==='KeyP')togglePause();if(e.code==='KeyM'){musicMuted=!musicMuted;cosmoStoreSet('cosmoMusicMuted',musicMuted?'1':'0');if(!musicMuted&&musicActive&&AC)musicNextT=AC.currentTime;setMusicIcon();}if(e.code==='KeyN'){sfxMuted=!sfxMuted;cosmoStoreSet('cosmoSfxMuted',sfxMuted?'1':'0');setSFXIcon();}});
-window.addEventListener('keyup',e=>K[e.code]=false);
-window.addEventListener('blur',()=>{for(const k in K)K[k]=false;});
-document.addEventListener('visibilitychange',()=>{if(document.hidden)for(const k in K)K[k]=false;});
+const K={},JP={},GP={},GPJP={};
+const GAME_KEYS=new Set(['Space','Enter','ArrowUp','ArrowLeft','ArrowRight','ArrowDown','KeyA','KeyD','KeyS','KeyW','KeyZ','KeyX','KeyF','ShiftLeft','ShiftRight']);
+function keyCodeFromEvent(e){
+  const c=e.code&&e.code!=='Unidentified'?e.code:'';
+  if(c)return c;
+  const k=String(e.key||'').toLowerCase();
+  if(k===' '||k==='spacebar')return 'Space';
+  if(k==='arrowleft'||k==='left')return 'ArrowLeft';
+  if(k==='arrowright'||k==='right')return 'ArrowRight';
+  if(k==='arrowup'||k==='up')return 'ArrowUp';
+  if(k==='arrowdown'||k==='down')return 'ArrowDown';
+  if(k==='shift')return 'ShiftLeft';
+  if(k==='escape')return 'Escape';
+  if(k==='enter')return 'Enter';
+  if(k.length===1&&k>='a'&&k<='z')return 'Key'+k.toUpperCase();
+  return '';
+}
+function setPressed(map,jmap,code,on){
+  if(!code)return;
+  if(on){if(!map[code])jmap[code]=true;map[code]=true;}
+  else map[code]=false;
+}
+function clearMap(map){for(const k in map)delete map[k];}
+function clearJustPressed(){clearMap(JP);clearMap(GPJP);}
+function clearAllInput(){clearMap(K);clearMap(JP);clearMap(GP);clearMap(GPJP);}
+function focusGame(){try{cv.focus({preventScroll:true});}catch(e){try{cv.focus();}catch(_){}}}
+function inputTargetIsText(e){
+  const t=e&&e.target;
+  return t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/i.test(t.tagName||''));
+}
+window.addEventListener('keydown',e=>{
+  if(inputTargetIsText(e))return;
+  const code=keyCodeFromEvent(e);
+  if(!code)return;
+  setPressed(K,JP,code,true);
+  if(GAME_KEYS.has(code)){_gp25Enabled=false;clearMap(GP);clearMap(GPJP);}
+  if(GAME_KEYS.has(code))e.preventDefault();
+  if(code==='KeyP')togglePause();
+  if(code==='KeyM'){musicMuted=!musicMuted;cosmoStoreSet('cosmoMusicMuted',musicMuted?'1':'0');if(!musicMuted&&musicActive&&AC)musicNextT=AC.currentTime;setMusicIcon();}
+  if(code==='KeyN'){sfxMuted=!sfxMuted;cosmoStoreSet('cosmoSfxMuted',sfxMuted?'1':'0');setSFXIcon();}
+});
+window.addEventListener('keyup',e=>{
+  if(inputTargetIsText(e))return;
+  const code=keyCodeFromEvent(e);
+  if(code){setPressed(K,JP,code,false);if(GAME_KEYS.has(code))e.preventDefault();}
+});
+window.addEventListener('blur',clearAllInput);
+window.addEventListener('pagehide',clearAllInput);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)clearAllInput();});
 
 // ── Gamepad / mando ─────────────────────────────────────
-let _gp25Prev=[];
+let _gp25Prev=[],_gp25Enabled=false;
 function pollGamepad25D(){
   const gps=navigator.getGamepads?navigator.getGamepads():[];
+  let used=false;
   for(const gp of gps){
     if(!gp) continue;
-    const dead=0.22;
+    const enablePress=[0,1,2,3,9].some(i=>gp.buttons[i]?.pressed);
+    if(!_gp25Enabled){
+      if(enablePress)_gp25Enabled=true;
+      else{clearMap(GP);clearMap(GPJP);continue;}
+    }
+    used=true;
+    const dead=0.38;
     const lx=gp.axes[0]??0, ly=gp.axes[1]??0;
     // Movimiento horizontal: stick izq o D-pad
     const nL=(gp.buttons[14]?.pressed)||lx<-dead;
@@ -702,10 +755,9 @@ function pollGamepad25D(){
     // A/Cross (0) = saltar; B/Circle (1) = ataque/dash; Y/Triangle (3) = stompo
     const nJ=gp.buttons[0]?.pressed||gp.buttons[12]?.pressed; // A o D-pad arriba
     const nX=gp.buttons[1]?.pressed||gp.buttons[2]?.pressed;  // B o X
-    // Aplica: si el estado cambia, actualiza K y JP
+    // Aplica: si el estado cambia, actualiza el estado de mando separado
     function applyBtn(code, pressed){
-      if(pressed && !K[code]){ K[code]=true; JP[code]=true; }
-      else if(!pressed) K[code]=false;
+      setPressed(GP,GPJP,code,pressed);
     }
     applyBtn('ArrowLeft',nL);
     applyBtn('ArrowRight',nR);
@@ -719,13 +771,16 @@ function pollGamepad25D(){
     _gp25Prev=gp.buttons.map(b=>b.pressed);
     break;
   }
+  if(!used){clearMap(GP);clearMap(GPJP);_gp25Prev=[];}
 }
 
-const isL=()=>K.ArrowLeft||K.KeyA,isR=()=>K.ArrowRight||K.KeyD;
-const isJ=()=>K.ArrowUp||K.KeyZ||K.Space,isD=()=>K.ArrowDown||K.KeyS;
-const isRn=()=>K.ShiftLeft||K.ShiftRight;
-const jpJ=()=>JP.ArrowUp||JP.KeyZ||JP.Space,jpX=()=>JP.KeyX||JP.KeyF,jpD=()=>JP.ArrowDown||JP.KeyS;
-const jpL=()=>JP.ArrowLeft||JP.KeyA,jpR=()=>JP.ArrowRight||JP.KeyD;
+const held=code=>!!K[code]||!!GP[code];
+const just=code=>!!JP[code]||!!GPJP[code];
+const isL=()=>held('ArrowLeft')||held('KeyA'),isR=()=>held('ArrowRight')||held('KeyD');
+const isJ=()=>held('ArrowUp')||held('KeyZ')||held('KeyW')||held('Space'),isD=()=>held('ArrowDown')||held('KeyS');
+const isRn=()=>held('ShiftLeft')||held('ShiftRight');
+const jpJ=()=>just('ArrowUp')||just('KeyZ')||just('KeyW')||just('Space'),jpX=()=>just('KeyX')||just('KeyF'),jpD=()=>just('ArrowDown')||just('KeyS');
+const jpL=()=>just('ArrowLeft')||just('KeyA'),jpR=()=>just('ArrowRight')||just('KeyD');
 
 // ── DOM ─────────────────────────────────────────────────────
 const ov=document.getElementById('ov'),ovT=document.getElementById('ov-t');
@@ -4674,16 +4729,17 @@ function loop(ts){
   let didStep=false;
   while(_accum>=_STEP){
     _accum-=_STEP;
-    if(didStep) for(const k in JP)delete JP[k]; // limpiar JP entre substeps (no doble-salto)
+    if(didStep) clearJustPressed(); // limpiar JP entre substeps (no doble-salto)
     update();
     didStep=true;
   }
-  if(didStep){ render(); for(const k in JP)delete JP[k]; }
+  if(didStep){ render(); clearJustPressed(); }
 }
 
 // ── BUTTON HANDLERS ─────────────────────────────────────────
 ovBtn.addEventListener('click',()=>{
   initAC();
+  focusGame();
   if(gst==='paused'){togglePause();return;}
   if(gst==='stop'&&nextLvlReady){
     nextLvlReady=false;levelNum++;cosmoSaveUnlocked(levelNum);cpX=-1;levelEndTime=0;
@@ -4697,7 +4753,7 @@ ovBtn.addEventListener('click',()=>{
   }
   nextLvlReady=false;ovT.style.color='#00ccff';initGame();
 });
-cv.addEventListener('click',()=>{initAC();if(gst==='paused'){togglePause();return;}if(gst==='menu')initGame();});
+cv.addEventListener('click',()=>{initAC();focusGame();if(gst==='paused'){togglePause();return;}if(gst==='menu')initGame();});
 if(ovContinueBtn){
   ovContinueBtn.addEventListener('click',e=>{
     e.preventDefault();e.stopPropagation();initAC();
@@ -4954,7 +5010,7 @@ const ppP=e=>{e.preventDefault();tcpEl.classList.add('on');togglePause();hap(15)
 const ppR=e=>{e.preventDefault();tcpEl.classList.remove('on');};
 tcpEl.addEventListener('touchstart',ppP,{passive:false});tcpEl.addEventListener('touchend',ppR,{passive:false});
 tcpEl.addEventListener('mousedown',ppP);tcpEl.addEventListener('mouseup',ppR);
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=75').catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=76').catch(()=>{}));}
 </script>
 </body>
 </html>
