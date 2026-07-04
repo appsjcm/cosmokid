@@ -1,8 +1,8 @@
-const COSMO_CACHE = 'cosmo-kid-v77-flag-goal';
+const COSMO_CACHE = 'cosmo-kid-v78-boss-visible';
 const CORE = [
   './',
-  './index.html?v=77',
-  './game.html?v=77',
+  './index.html?v=78',
+  './game.html?v=78',
 
   './diagnostico.html?v=77',
   './manifest.webmanifest',
@@ -228,7 +228,7 @@ self.addEventListener('fetch', event => {
         const copy = res.clone();
         caches.open(COSMO_CACHE).then(cache => cache.put(req, copy));
         return res;
-    }).catch(() => caches.match(req).then(cached => cached || caches.match('./game.html?v=77')))
+    }).catch(() => caches.match(req).then(cached => cached || caches.match('./game.html?v=78')))
     );
     return;
   }

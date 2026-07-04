@@ -5,12 +5,12 @@
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="description" content="Modo 2.5D estable v77 de Cosmo Kid: meta con bandera, teclado PC reforzado y control táctil libre.">
+<meta name="description" content="Modo 2.5D estable v78 de Cosmo Kid: boss visible, meta con bandera, teclado PC reforzado y control táctil libre.">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0a2040">
-<title>Cosmo Kid 2.5D · Modo estable v77</title>
+<title>Cosmo Kid 2.5D · Modo estable v78</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{overscroll-behavior:none;touch-action:none}
@@ -205,7 +205,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
 .hp-c{margin:12px 0 4px;background:rgba(0,60,90,.85);border:1.5px solid rgba(0,200,255,.45);color:#bfefff;font-size:.85rem;letter-spacing:2px;padding:10px 28px;border-radius:10px;cursor:pointer;font-family:monospace;min-height:48px}
 .hp-c:hover,.hp-c:active{background:rgba(0,110,160,.6);border-color:#00ccff}
 
-/* V77: meta con bandera + pantalla completa móvil */
+/* V78: boss visible + meta con bandera + pantalla completa móvil */
 #ov{
   background:
     radial-gradient(circle at 50% 18%,rgba(124,243,255,.26),transparent 28%),
@@ -216,7 +216,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),inset 0 -80px 120px rgba(0,0,0,.36),0 0 70px rgba(0,200,255,.22);
 }
 #ov:before{
-  content:'COSMO KID · V77 BANDERA';
+  content:'COSMO KID · V78 BOSS';
   position:absolute;top:14px;left:50%;transform:translateX(-50%);
   z-index:1;border-radius:999px;padding:7px 12px;
   background:rgba(1,7,18,.68);border:1px solid rgba(255,230,107,.38);
@@ -323,7 +323,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
   <canvas id="c" width="600" height="380" tabindex="0"></canvas>
   <div id="ov">
     <div id="ov-t">COSMO KID</div>
-    <div id="ov-sub">Aventura Espacial · 8 Misiones · v77</div>
+    <div id="ov-sub">Aventura Espacial · 8 Misiones · v78</div>
     <div id="ov-hi"></div>
     <div id="ov-m"></div>
     <div id="ov-b"></div>
@@ -462,7 +462,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
   <span class="k">P</span> pausa
 </div>
 <button id="fs-btn" title="Pantalla completa">&#x26F6;</button>
-<a id="homeBtn" href="game.html?v=77">INICIO</a>
+<a id="homeBtn" href="game.html?v=78">INICIO</a>
 <button id="perfBtn" title="Modo rendimiento">AUTO</button>
 <div id="tc">
   <div id="joy-base"><div id="joy-knob"></div></div>
@@ -601,7 +601,7 @@ const perfBtn=document.getElementById('perfBtn');
 // ── RESIZE ──────────────────────────────────────────────────
 let tcH=0,isTouchDevice=false;
 
-// ── V77: modo rendimiento móvil/PC ──────────────────────────
+// ── V78: modo rendimiento móvil/PC ──────────────────────────
 let COSMO_LOWQ=false, _cosmoFps=60, _cosmoFpsT=0, _cosmoFpsC=0;
 function cosmoStoreGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function cosmoStoreSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
@@ -1183,14 +1183,32 @@ function tryAlienAttack(e,type,range){
   SFX.shot();
 }
 function mkBoss(x,hp,isMini,kind){hp=Math.max(2,Math.round((hp||8)*df().bsc));const sz=isMini?40:56;return{x,y:60,w:sz,h:sz,hp,maxHp:hp,vx:0,vy:0,onG:false,alive:true,inv:0,timer:0,rage:false,triggered:false,isMini:!!isMini,kind:kind||(isMini?'tentaculos':'bestia')};}
+function bossWakeReady(centerOffset=28,screenLead=120){
+  if(!boss||!player||player.dead||player.goal)return false;
+  const sx=boss.x-camX,pc=player.x+player.w*.5,bc=boss.x+centerOffset;
+  return Math.abs(pc-bc)<460||sx<CW+screenLead;
+}
+function placeBossInView(rightPad=120){
+  if(!boss)return;
+  const minX=camX+32,maxX=camX+CW-rightPad;
+  boss.x=Math.max(minX,Math.min(maxX,boss.x));
+  if(boss.y<-60||boss.y>GY-boss.h+28)boss.y=GY-boss.h;
+  boss.vy=0;
+}
+function keepBossInCamera(leftPad=24,rightPad=110){
+  if(!boss||!boss.triggered)return;
+  const minX=camX+leftPad,maxX=camX+CW-rightPad;
+  if(boss.x<minX){boss.x=minX;boss.vx=Math.abs(boss.vx)||1.2;}
+  else if(boss.x>maxX){boss.x=maxX;boss.vx=-Math.abs(boss.vx)||-1.2;}
+}
 function updBoss(sl){
   if(!boss||!boss.alive)return;
   if(boss.isMini){
     if(!boss.triggered){
       boss.vy+=GRAV;if(boss.vy>16)boss.vy=16;boss.y+=boss.vy;
       for(const s of sl){if(!hit(boss,s))continue;if(boss.vy>=0){boss.y=s.y-boss.h;boss.vy=0;}break;}
-      const sx=boss.x-camX;
-      if(player&&Math.abs(player.x-(boss.x+20))<350&&sx<CW-54){
+      if(bossWakeReady(20,135)){
+        placeBossInView(104);
         boss.triggered=true;boss.vx=-1.35;shake(6);SFX.warn();
         bossIntroTimer=120;bossIntroText='BOSS 3 · GUARDIAN ALIEN';
         parts.push(new TextPop(boss.x+20,boss.y-20,'¡GUARDIAN!','#00cc44'));
@@ -1204,6 +1222,7 @@ function updBoss(sl){
     for(const s of sl){if(!hit(boss,s))continue;boss.vx>0?(boss.x=s.x-boss.w,boss.vx*=-1):(boss.x=s.x+boss.w,boss.vx*=-1);break;}
     for(const s of sl){if(!hit(boss,s))continue;if(boss.vy>=0){boss.y=s.y-boss.h;boss.vy=0;boss.onG=true;}else{boss.y=s.y+boss.h;boss.vy=1;}break;}
     if(boss.x<0){boss.x=0;boss.vx=Math.abs(boss.vx);}
+    keepBossInCamera(30,104);
     if(boss.onG&&boss.timer%75===0)boss.vy=-13;
     if(boss.timer%95===0&&player)boss.vx=(player.x>boss.x?1:-1)*2.0*(boss.rage?1.35:1);
     if(player&&!player.dead&&boss.timer%65===0){const dx=player.x-(boss.x+20);bossProjs.push({x:boss.x+20,y:boss.y+20,vx:(dx>0?1:-1)*2.5*df().pspd,vy:0,life:200,active:true});}
@@ -1237,8 +1256,8 @@ function updBoss(sl){
     boss.vy+=GRAV;if(boss.vy>16)boss.vy=16;
     boss.y+=boss.vy;
     for(const s of sl){if(!hit(boss,s))continue;if(boss.vy>=0){boss.y=s.y-boss.h;boss.vy=0;}break;}
-    const sx=boss.x-camX;
-    if(player&&Math.abs(player.x-(boss.x+28))<360&&sx<CW-72){
+    if(bossWakeReady(28,150)){
+      placeBossInView(134);
       boss.triggered=true;boss.vx=-1.8;
       shake(8);SFX.warn();
       bossIntroTimer=130;bossIntroText=levelNum===2?'BOSS 3 · NUCLEO ALIEN':'JEFE FINAL · '+LEVEL_NAMES[levelNum];
@@ -1253,6 +1272,7 @@ function updBoss(sl){
   for(const s of sl){if(!hit(boss,s))continue;boss.vx>0?(boss.x=s.x-boss.w,boss.vx=-Math.abs(boss.vx)):(boss.x=s.x+boss.w,boss.vx=Math.abs(boss.vx));break;}
   boss.onG=false;boss.y+=boss.vy;
   for(const s of sl){if(!hit(boss,s))continue;if(boss.vy>=0){boss.y=s.y-boss.h;boss.vy=0;boss.onG=true;}else{boss.y=s.y+boss.h;boss.vy=1;}break;}
+  keepBossInCamera(36,134);
   // Rage ground-slam: landing spawns shockwaves the player must jump over
   if(boss.rage&&boss.onG&&!boss._wasOnG&&boss.y+boss.h>=GY-4){
     shake(6);hap(40);SFX.stomp();
@@ -4238,14 +4258,16 @@ function drawBossRealSprite(ox){
   if(!boss||!boss.alive)return false;
   const sheets=BOSS_SHEETS[boss.kind]||BOSS_SHEETS.bestia;
   const sx=boss.x-ox;
-  if(sx<-150||sx>CW+90){drawBossEdgeMarker(sx);return true;}
+  const bossCenter=sx+boss.w*.5;
+  if(bossCenter<-28||bossCenter>CW+28){drawBossEdgeMarker(bossCenter);return true;}
   const cycle=boss.isMini?65:(boss.rage?55:90),fc=boss.timer%cycle;
   const anim=!boss.triggered?'idle':boss.inv>0?'hurt':fc>=cycle-50&&fc<cycle-30?'attack':'move';
   const s=sheets[anim]||sheets.move||sheets.idle;
   if(!s||!s.img.naturalWidth)return false;
+  const fw=s.img.naturalWidth/s.frames,fh=s.img.naturalHeight||s.fh;
   const f=Math.abs((NOW/(anim==='attack'?90:130)|0))%s.frames;
-  const visualW=boss.isMini?92:boss.kind==='arana'?138:126;
-  const visualH=Math.min(boss.isMini?104:128,visualW*(s.fh/s.fw));
+  const visualW=boss.isMini?124:boss.kind==='arana'?148:136;
+  const visualH=Math.min(boss.isMini?132:138,visualW*(fh/fw));
   const footY=boss.y+boss.h+(boss.isMini?12:18);
   const x=Math.round(sx+boss.w/2-visualW/2),y=Math.round(footY-visualH);
   const pulse=.5+.5*Math.sin(NOW*.008),rage=boss.rage;
@@ -4254,8 +4276,8 @@ function drawBossRealSprite(ox){
   ct.shadowColor=rage?'#ff44ff':boss.isMini?'#b8ff44':'#ff8844';ct.shadowBlur=(rage?24:14)+8*(1-boss.hp/boss.maxHp);
   if(boss.inv>0&&(boss.inv/3|0)%2===1)ct.globalAlpha=.45;
   const flip=boss.vx>0;
-  if(flip){ct.translate(x+visualW,0);ct.scale(-1,1);ct.drawImage(s.img,f*s.fw,0,s.fw,s.fh,0,y,visualW,visualH);}
-  else ct.drawImage(s.img,f*s.fw,0,s.fw,s.fh,x,y,visualW,visualH);
+  if(flip){ct.translate(x+visualW,0);ct.scale(-1,1);ct.drawImage(s.img,f*fw,0,fw,fh,0,y,visualW,visualH);}
+  else ct.drawImage(s.img,f*fw,0,fw,fh,x,y,visualW,visualH);
   ct.shadowBlur=0;ct.globalAlpha=1;ct.restore();
   if(!boss.triggered){
     ct.save();ct.globalAlpha=.84+.16*pulse;ct.strokeStyle='#ffe66b';ct.lineWidth=2;ct.shadowColor='#ffe66b';ct.shadowBlur=14;
@@ -4962,7 +4984,7 @@ const ppP=e=>{e.preventDefault();tcpEl.classList.add('on');togglePause();hap(15)
 const ppR=e=>{e.preventDefault();tcpEl.classList.remove('on');};
 tcpEl.addEventListener('touchstart',ppP,{passive:false});tcpEl.addEventListener('touchend',ppR,{passive:false});
 tcpEl.addEventListener('mousedown',ppP);tcpEl.addEventListener('mouseup',ppR);
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=77').catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=78').catch(()=>{}));}
 </script>
 </body>
 </html>
