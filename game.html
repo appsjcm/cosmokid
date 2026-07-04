@@ -5,12 +5,12 @@
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="description" content="Modo 2.5D estable v78 de Cosmo Kid: boss visible, meta con bandera, teclado PC reforzado y control táctil libre.">
+<meta name="description" content="Modo 2.5D estable v79 de Cosmo Kid: indicador blindado premium, boss visible, meta con bandera y control táctil libre.">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0a2040">
-<title>Cosmo Kid 2.5D · Modo estable v78</title>
+<title>Cosmo Kid 2.5D · Modo estable v79</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{overscroll-behavior:none;touch-action:none}
@@ -205,7 +205,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
 .hp-c{margin:12px 0 4px;background:rgba(0,60,90,.85);border:1.5px solid rgba(0,200,255,.45);color:#bfefff;font-size:.85rem;letter-spacing:2px;padding:10px 28px;border-radius:10px;cursor:pointer;font-family:monospace;min-height:48px}
 .hp-c:hover,.hp-c:active{background:rgba(0,110,160,.6);border-color:#00ccff}
 
-/* V78: boss visible + meta con bandera + pantalla completa móvil */
+/* V79: blindaje premium + boss visible + pantalla completa móvil */
 #ov{
   background:
     radial-gradient(circle at 50% 18%,rgba(124,243,255,.26),transparent 28%),
@@ -216,7 +216,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),inset 0 -80px 120px rgba(0,0,0,.36),0 0 70px rgba(0,200,255,.22);
 }
 #ov:before{
-  content:'COSMO KID · V78 BOSS';
+  content:'COSMO KID · V79 ARMOR';
   position:absolute;top:14px;left:50%;transform:translateX(-50%);
   z-index:1;border-radius:999px;padding:7px 12px;
   background:rgba(1,7,18,.68);border:1px solid rgba(255,230,107,.38);
@@ -323,7 +323,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
   <canvas id="c" width="600" height="380" tabindex="0"></canvas>
   <div id="ov">
     <div id="ov-t">COSMO KID</div>
-    <div id="ov-sub">Aventura Espacial · 8 Misiones · v78</div>
+    <div id="ov-sub">Aventura Espacial · 8 Misiones · v79</div>
     <div id="ov-hi"></div>
     <div id="ov-m"></div>
     <div id="ov-b"></div>
@@ -462,7 +462,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
   <span class="k">P</span> pausa
 </div>
 <button id="fs-btn" title="Pantalla completa">&#x26F6;</button>
-<a id="homeBtn" href="game.html?v=78">INICIO</a>
+<a id="homeBtn" href="game.html?v=79">INICIO</a>
 <button id="perfBtn" title="Modo rendimiento">AUTO</button>
 <div id="tc">
   <div id="joy-base"><div id="joy-knob"></div></div>
@@ -601,7 +601,7 @@ const perfBtn=document.getElementById('perfBtn');
 // ── RESIZE ──────────────────────────────────────────────────
 let tcH=0,isTouchDevice=false;
 
-// ── V78: modo rendimiento móvil/PC ──────────────────────────
+// ── V79: modo rendimiento móvil/PC ──────────────────────────
 let COSMO_LOWQ=false, _cosmoFps=60, _cosmoFpsT=0, _cosmoFpsC=0;
 function cosmoStoreGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function cosmoStoreSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
@@ -4096,11 +4096,16 @@ function drawDroid(e,ox){
   ct.restore();
   if(e.hp>1&&!e.shell){
     if(e.hpFlash>0){ct.globalAlpha=e.hpFlash/14*.65;ct.fillStyle='#fff';ct.fillRect(x,y,e.w,e.h);ct.globalAlpha=1;}
-    const ap=.6+.4*Math.sin(NOW*.09);
-    ct.shadowColor='#ffcc00';ct.shadowBlur=10+6*ap;
-    ct.strokeStyle=`rgba(255,200,0,${.75+.25*ap})`;ct.lineWidth=2.5;ct.strokeRect(x-1,y-1,e.w+2,e.h+2);
-    ct.shadowBlur=0;
-    ct.fillStyle=`rgba(255,180,0,${.82+.18*ap})`;ct.font='bold 9px monospace';ct.textAlign='center';ct.textBaseline='top';ct.fillText('★ARM',x+e.w/2,y-12);
+    const ap=.55+.45*Math.sin(NOW*.09),cx=x+e.w/2,cy=y+e.h/2;
+    ct.save();
+    ct.shadowColor='#ffe66b';ct.shadowBlur=11+7*ap;ct.lineCap='round';
+    ct.strokeStyle=`rgba(255,230,107,${.46+.24*ap})`;ct.lineWidth=2.2;
+    ct.beginPath();ct.ellipse(cx,cy,e.w*.68+2*ap,e.h*.62+2*ap,0,Math.PI*.08,Math.PI*1.43);ct.stroke();
+    ct.strokeStyle=`rgba(124,243,255,${.24+.20*ap})`;ct.lineWidth=1.25;
+    ct.beginPath();ct.ellipse(cx,cy,e.w*.52,e.h*.48,0,Math.PI*1.54,Math.PI*2.34);ct.stroke();
+    ct.shadowBlur=8+5*ap;ct.fillStyle=`rgba(255,230,107,${.70+.20*ap})`;
+    [[x+3,y+8],[x+e.w-3,y+8],[cx,y-1]].forEach(([ax,ay])=>{ct.beginPath();ct.arc(ax,ay,2.2,0,Math.PI*2);ct.fill();});
+    ct.restore();
   }
   if(e.alert>0){const aa=Math.min(1,e.alert/20);ct.globalAlpha=aa;ct.shadowColor='#ff8800';ct.shadowBlur=8*aa;ct.fillStyle='#ffee22';ct.font='bold 15px monospace';ct.textAlign='center';ct.textBaseline='bottom';ct.fillText('!',x+e.w/2,y-4);ct.shadowBlur=0;ct.globalAlpha=1;}
 }
@@ -4239,19 +4244,26 @@ function drawAlienSprite(type,anim,frame,x,y,dw,dh,dir,alpha){
 }
 function drawBossEdgeMarker(bx){
   const toRight=bx>CW/2,pulse=.5+.5*Math.sin(NOW*.008);
-  const bw=62,bh=68,x=toRight?CW-bw-5:5,y=CH*.48-bh/2;
+  const x=toRight?CW-38:38,y=CH*.48,r=22+3*pulse;
   ct.save();
-  ct.globalAlpha=.84+.16*pulse;
-  ct.fillStyle='rgba(8,4,24,.9)';ct.strokeStyle='#ffcc33';ct.lineWidth=2;
-  ct.shadowColor='#ffcc33';ct.shadowBlur=12+10*pulse;
-  rr(x,y,bw,bh,12);ct.fill();ct.stroke();ct.shadowBlur=0;
-  ct.fillStyle='#ffcc33';ct.beginPath();
-  if(toRight){ct.moveTo(x+bw-12,y+bh/2);ct.lineTo(x+bw-28,y+bh/2-12);ct.lineTo(x+bw-28,y+bh/2+12);}
-  else{ct.moveTo(x+12,y+bh/2);ct.lineTo(x+28,y+bh/2-12);ct.lineTo(x+28,y+bh/2+12);}
+  ct.globalAlpha=.82+.18*pulse;
+  const g=ct.createRadialGradient(x,y,4,x,y,r+20);
+  g.addColorStop(0,'rgba(255,230,107,.42)');
+  g.addColorStop(.42,'rgba(255,150,64,.20)');
+  g.addColorStop(1,'rgba(8,4,24,.02)');
+  ct.fillStyle=g;ct.beginPath();ct.arc(x,y,r+18,0,Math.PI*2);ct.fill();
+  ct.shadowColor='#ffe66b';ct.shadowBlur=12+10*pulse;
+  ct.strokeStyle=`rgba(255,230,107,${.58+.28*pulse})`;ct.lineWidth=2.2;
+  ct.beginPath();ct.arc(x,y,r,0,Math.PI*2);ct.stroke();
+  ct.strokeStyle='rgba(124,243,255,.42)';ct.lineWidth=1;
+  ct.beginPath();ct.arc(x,y,r+6,Math.PI*.12,Math.PI*1.72);ct.stroke();
+  ct.fillStyle='#ffe66b';ct.beginPath();
+  if(toRight){ct.moveTo(x+10,y);ct.lineTo(x-6,y-9);ct.lineTo(x-6,y+9);}
+  else{ct.moveTo(x-10,y);ct.lineTo(x+6,y-9);ct.lineTo(x+6,y+9);}
   ct.closePath();ct.fill();
-  ct.fillStyle='#fff';ct.font='bold 10px monospace';ct.textAlign='center';ct.textBaseline='middle';
-  ct.fillText('BOSS',x+bw/2,y+18);
-  ct.fillStyle='#ff6644';ct.font='bold 8px monospace';ct.fillText('ARENA',x+bw/2,y+49);
+  ct.shadowBlur=0;
+  ct.fillStyle='rgba(255,255,255,.88)';ct.font='bold 8px monospace';ct.textAlign='center';ct.textBaseline='top';
+  ct.fillText('BOSS',x,y+r+8);
   ct.restore();
 }
 function drawBossRealSprite(ox){
@@ -4984,7 +4996,7 @@ const ppP=e=>{e.preventDefault();tcpEl.classList.add('on');togglePause();hap(15)
 const ppR=e=>{e.preventDefault();tcpEl.classList.remove('on');};
 tcpEl.addEventListener('touchstart',ppP,{passive:false});tcpEl.addEventListener('touchend',ppR,{passive:false});
 tcpEl.addEventListener('mousedown',ppP);tcpEl.addEventListener('mouseup',ppR);
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=78').catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=79').catch(()=>{}));}
 </script>
 </body>
 </html>
