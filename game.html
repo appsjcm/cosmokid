@@ -5,12 +5,12 @@
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="description" content="Modo 2.5D estable v79 de Cosmo Kid: indicador blindado premium, boss visible, meta con bandera y control táctil libre.">
+<meta name="description" content="Modo 2.5D estable v80 de Cosmo Kid: camara dinamica, indicador blindado premium, boss visible y control tactil libre.">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0a2040">
-<title>Cosmo Kid 2.5D · Modo estable v79</title>
+<title>Cosmo Kid 2.5D · Modo estable v80</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{overscroll-behavior:none;touch-action:none}
@@ -205,7 +205,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
 .hp-c{margin:12px 0 4px;background:rgba(0,60,90,.85);border:1.5px solid rgba(0,200,255,.45);color:#bfefff;font-size:.85rem;letter-spacing:2px;padding:10px 28px;border-radius:10px;cursor:pointer;font-family:monospace;min-height:48px}
 .hp-c:hover,.hp-c:active{background:rgba(0,110,160,.6);border-color:#00ccff}
 
-/* V79: blindaje premium + boss visible + pantalla completa móvil */
+/* V80: camara dinamica + blindaje premium + pantalla completa movil */
 #ov{
   background:
     radial-gradient(circle at 50% 18%,rgba(124,243,255,.26),transparent 28%),
@@ -216,7 +216,7 @@ canvas:fullscreen,canvas:-webkit-full-screen{width:100vw!important;height:100vh!
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),inset 0 -80px 120px rgba(0,0,0,.36),0 0 70px rgba(0,200,255,.22);
 }
 #ov:before{
-  content:'COSMO KID · V79 ARMOR';
+  content:'COSMO KID · V80 CAMERA';
   position:absolute;top:14px;left:50%;transform:translateX(-50%);
   z-index:1;border-radius:999px;padding:7px 12px;
   background:rgba(1,7,18,.68);border:1px solid rgba(255,230,107,.38);
@@ -302,7 +302,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
 @media(max-width:620px){.settings-grid,.key-grid{grid-template-columns:1fr}.settings-title{font-size:1.05rem}.settings-card{border-radius:22px;padding:14px}}
 
 </style>
-<link rel="manifest" href="manifest.webmanifest?v=73">
+<link rel="manifest" href="manifest.webmanifest?v=80">
 <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
@@ -323,7 +323,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
   <canvas id="c" width="600" height="380" tabindex="0"></canvas>
   <div id="ov">
     <div id="ov-t">COSMO KID</div>
-    <div id="ov-sub">Aventura Espacial · 8 Misiones · v79</div>
+    <div id="ov-sub">Aventura Espacial · 8 Misiones · v80</div>
     <div id="ov-hi"></div>
     <div id="ov-m"></div>
     <div id="ov-b"></div>
@@ -462,7 +462,7 @@ body.touch .settings-grid{grid-template-columns:1fr}
   <span class="k">P</span> pausa
 </div>
 <button id="fs-btn" title="Pantalla completa">&#x26F6;</button>
-<a id="homeBtn" href="game.html?v=79">INICIO</a>
+<a id="homeBtn" href="game.html?v=80">INICIO</a>
 <button id="perfBtn" title="Modo rendimiento">AUTO</button>
 <div id="tc">
   <div id="joy-base"><div id="joy-knob"></div></div>
@@ -601,7 +601,7 @@ const perfBtn=document.getElementById('perfBtn');
 // ── RESIZE ──────────────────────────────────────────────────
 let tcH=0,isTouchDevice=false;
 
-// ── V79: modo rendimiento móvil/PC ──────────────────────────
+// ── V80: modo rendimiento móvil/PC ──────────────────────────
 let COSMO_LOWQ=false, _cosmoFps=60, _cosmoFpsT=0, _cosmoFpsC=0;
 function cosmoStoreGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function cosmoStoreSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
@@ -833,7 +833,7 @@ if(setPadResetBtn)setPadResetBtn.addEventListener('click',e=>{e.preventDefault()
 // ── STATE ───────────────────────────────────────────────────
 let gst='menu',score=0,coins=0,lives=3,tLeft=300,levelEndTime=0;
 let bonusRoom=null;
-let camX=0,tAccum=0,dTimer=0,wTimer=0;
+let camX=0,camY=0,camLean=0,camZoom=1,tAccum=0,dTimer=0,wTimer=0;
 let lvCountdown=0,lvGoTimer=0,lowTimeWarned=false;
 let player,enemies,coinList,blkList,powerUps,lasers,parts,lvData;
 let levelNum=0,lw=3600,nextLvlReady=false;
@@ -1720,6 +1720,45 @@ function sortByWorldPos(list){
   return (list||[]).sort((a,b)=>(a.x??0)-(b.x??0)||(a.y??0)-(b.y??0)||(a.t||a.kind||'').localeCompare(b.t||b.kind||''));
 }
 function clampNum(v,min,max){return Math.max(min,Math.min(max,v));}
+function resetDynamicCamera(){camY=0;camLean=0;camZoom=1;}
+function updateDynamicCamera(startLocked=false){
+  if(!player||!lvData){resetDynamicCamera();return;}
+  const speed=clampNum(Math.abs(player.vx)/(RS*1.55),0,1);
+  const dash=player.dashTimer>0?1:0;
+  const dir=(Math.abs(player.vx)>.25?Math.sign(player.vx):player.dir)||1;
+  let look=dir*(46+62*speed)+(dash?player.dashDir*70:0);
+  if(player.crouch)look*=.55;
+  let targetX=player.x-CW*(player.onG?.40:.43)+look;
+  if(boss&&boss.alive&&boss.triggered){
+    const pc=player.x+player.w*.5,bc=boss.x+boss.w*.5,dist=Math.abs(pc-bc);
+    const bossOnScreen=bc-camX>-80&&bc-camX<CW+120;
+    const mix=Math.max(bossOnScreen ? .22 : 0,clampNum((CW*1.15-dist)/(CW*.9),0,.48));
+    if(mix>0)targetX=targetX*(1-mix)+((pc+bc)*.5-CW*.5)*mix;
+  }
+  camX+=(targetX-camX)*(dash?.26:player.onG?.14:.105);
+  camX=Math.max(0,Math.min(lw-CW,camX));
+  const verticalFocus=CH*.55-(player.y+player.h*.5);
+  let targetY=clampNum(verticalFocus*.16,-22,22);
+  if(player.vy>8)targetY-=clampNum((player.vy-8)*1.1,0,10);
+  if(player.vy<-7)targetY+=clampNum((-player.vy-7)*.8,0,8);
+  if(player.pounding)targetY-=9;
+  if(startLocked)targetY*=.35;
+  camY+=(targetY-camY)*(dash?.18:.10);
+  camY=clampNum(camY,-28,24);
+  const targetLean=clampNum(player.vx*.0022+(dash?player.dashDir*.012:0),-.022,.022);
+  camLean+=(targetLean-camLean)*.08;
+  const targetZoom=1+speed*.006+dash*.018+(bossIntroTimer>0?.012:0);
+  camZoom+=(targetZoom-camZoom)*.07;
+  camZoom=clampNum(camZoom,1,1.035);
+}
+function applyDynamicCameraTransform(){
+  if(Math.abs(camY)<.25&&Math.abs(camLean)<.001&&Math.abs(camZoom-1)<.001)return;
+  ct.translate(CW/2,CH/2);
+  ct.rotate(camLean);
+  ct.scale(camZoom,camZoom);
+  ct.translate(-CW/2,-CH/2);
+  ct.translate(0,Math.round(camY));
+}
 function premiumPolishLevel(lv,li){
   if(!lv)return lv;
   const lift=li<2?12:li<5?18:24;
@@ -2127,7 +2166,7 @@ function initGame(startLevel=0){
   lvCountdown=180;lvGoTimer=0;startMusic();
 }
 function resetRound(){
-  camX=0;tAccum=0;dTimer=0;wTimer=0;tLeft=Math.round(LEVEL_TIME[levelNum]*df().tsc);comboMult=1;comboTimer=0;lvNoHit=true;lowTimeWarned=false;
+  camX=0;resetDynamicCamera();tAccum=0;dTimer=0;wTimer=0;tLeft=Math.round(LEVEL_TIME[levelNum]*df().tsc);comboMult=1;comboTimer=0;lvNoHit=true;lowTimeWarned=false;
   bonusRoom=null;
   player=mkPlayer();
   if(cpX>=0){player.x=cpX;camX=Math.max(0,Math.min(lw-CW,cpX-CW*.38));showBanner('CHECKPOINT RESTAURADO');}
@@ -2316,10 +2355,7 @@ function update(){
     if(p.cst===0&&standing){p.cst=1;p.ctimer=38;hap(8);}
     if(p.cst===1&&--p.ctimer<=0){p.cst=2;p.respawnT=150;shake(2);hap(12);SFX.brk();for(let i=0;i<9;i++)parts.push(new Pop(p.x+Math.random()*p.w,p.y+8,(Math.random()-.5)*4,-Math.random()*2,'#998877',24+Math.random()*10|0));}
   }
-  const look=player.dir*Math.min(92,Math.abs(player.vx)*15)+(player.dashTimer>0?player.dashDir*54:0);
-  const tc=player.x-CW*.38+look;
-  camX+=(tc-camX)*(player.dashTimer>0?.22:.135);
-  camX=Math.max(0,Math.min(lw-CW,camX));
+  updateDynamicCamera(startLocked);
   if(!startLocked){
     enemies.forEach(e=>updEnemy(e,sl));
     for(const e of enemies){if(!e.alive||e.stomp||!hit(player,e))continue;const pb=player.y+player.h-player.vy;if(player.dashTimer>0&&e.t!=='h'){stompE(e);parts.push(new Pop(e.x+e.w/2,e.y+e.h/2,player.dashDir*3,-2,'#66ddff',18));continue;}if(player.vy>1.8&&pb<=e.y+6){if(e.t==='h'){player.vy=-6;if(player.inv<=0&&!chts.ghost)pHurt();}else{stompE(e);player.vy=-9;}}else if(player.star>0){stompE(e);player.vy=-6;addScore(100);}else if(player.inv<=0&&!chts.ghost){pHurt();break;}}
@@ -4569,6 +4605,8 @@ function render(){
   if(!COSMO_LOWQ&&gst==='playing'&&lvData)drawAmbient();
   drawPremiumBanner();
   if(!lvData){if(gst==='menu')drawMenuPreview();ct.restore();return;}
+  ct.save();
+  applyDynamicCameraTransform();
   drawNeoCanvasWorld(ox);
   coinList.forEach(c=>{const sx=c.x-ox;if(!c.col&&sx>-20&&sx<CW+20)drawCrystal(c,ox);});
   powerUps.forEach(pu=>{const sx=pu.x-ox;if(sx>-40&&sx<CW+40)drawPU(pu,ox);});
@@ -4634,6 +4672,7 @@ function render(){
     ct.fillStyle=col;ct.fillText('x'+comboMult,cx,cy+sz/2);
     ct.globalAlpha=1;
   }
+  ct.restore();
   if(gst==='menu')drawMenuPreview();
   // Progress bar
   if(gst==='playing'&&player&&!player.dead&&!player.goal&&lvData){
@@ -4996,7 +5035,7 @@ const ppP=e=>{e.preventDefault();tcpEl.classList.add('on');togglePause();hap(15)
 const ppR=e=>{e.preventDefault();tcpEl.classList.remove('on');};
 tcpEl.addEventListener('touchstart',ppP,{passive:false});tcpEl.addEventListener('touchend',ppR,{passive:false});
 tcpEl.addEventListener('mousedown',ppP);tcpEl.addEventListener('mouseup',ppR);
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=79').catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=80').catch(()=>{}));}
 </script>
 </body>
 </html>

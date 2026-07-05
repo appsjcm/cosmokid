@@ -1,8 +1,8 @@
-const COSMO_CACHE = 'cosmo-kid-v79-armor-premium';
+const COSMO_CACHE = 'cosmo-kid-v80-dynamic-camera';
 const CORE = [
   './',
-  './index.html?v=79',
-  './game.html?v=79',
+  './index.html?v=80',
+  './game.html?v=80',
 
   './diagnostico.html?v=77',
   './manifest.webmanifest',
@@ -228,7 +228,7 @@ self.addEventListener('fetch', event => {
         const copy = res.clone();
         caches.open(COSMO_CACHE).then(cache => cache.put(req, copy));
         return res;
-    }).catch(() => caches.match(req).then(cached => cached || caches.match('./game.html?v=79')))
+    }).catch(() => caches.match(req).then(cached => cached || caches.match('./game.html?v=80')))
     );
     return;
   }
