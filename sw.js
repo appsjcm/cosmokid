@@ -1,10 +1,12 @@
-const COSMO_CACHE = 'cosmo-kid-v80-dynamic-camera';
+const COSMO_CACHE = 'cosmo-kid-v81-split-files';
 const CORE = [
   './',
-  './index.html?v=80',
-  './game.html?v=80',
+  './index.html?v=81',
+  './game.html?v=81',
+  './assets/css/game.css?v=81',
+  './assets/js/game.js?v=81',
 
-  './diagnostico.html?v=77',
+  './diagnostico.html?v=81',
   './manifest.webmanifest',
   './assets/cover/cosmokid_cover.png',
   './assets/cover/cosmokid_cover_premium_wide.jpg',
@@ -228,7 +230,7 @@ self.addEventListener('fetch', event => {
         const copy = res.clone();
         caches.open(COSMO_CACHE).then(cache => cache.put(req, copy));
         return res;
-    }).catch(() => caches.match(req).then(cached => cached || caches.match('./game.html?v=80')))
+    }).catch(() => caches.match(req).then(cached => cached || caches.match('./game.html?v=81')))
     );
     return;
   }
